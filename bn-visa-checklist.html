@@ -3,994 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🇧🇩 বাংলাদেশী ভিসা চেকলিস্ট | Visa Checklist BD</title>
-    <meta name="description" content="বাংলাদেশী পাসপোর্ট হোল্ডারদের জন্য ভিসা ডকুমেন্ট চেকলিস্ট - ৪৪টি দেশ">
+    <title>🇧🇩 ভিসা চেকলিস্ট | বাংলাদেশী পাসপোর্টধারীদের জন্য</title>
+    <meta name="description" content="বাংলাদেশী পাসপোর্টধারীদের জন্য ব্যক্তিগত ভিসা ডকুমেন্ট চেকলিস্ট - ৪৪টি দেশ">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'SolaimanLipi', 'Noto Sans Bengali', 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
-            min-height: 100vh;
-            padding: 10px;
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .bd-flag {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        header h1 {
-            font-size: 1.6em;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            font-size: 0.95em;
-            opacity: 0.95;
-        }
-
-        .lang-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .lang-toggle:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .form-section {
-            padding: 25px 20px;
-            background: #f8f9fa;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 1em;
-        }
-
-        .form-group select,
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
-            font-family: 'SolaimanLipi', 'Noto Sans Bengali', Arial, sans-serif;
-        }
-
-        .form-group select:focus,
-        .form-group input:focus {
-            outline: none;
-            border-color: #00D9A3;
-            box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
-        }
-
-        .lead-capture-section {
-            background: #fff8e1;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #ffc107;
-        }
-
-        .visa-selection-section {
-            margin-top: 20px;
-        }
-
-        .difficulty-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        .difficulty-easy {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .difficulty-medium {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .difficulty-hard {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .difficulty-very-hard {
-            background: #d6d8db;
-            color: #1b1e21;
-        }
-
-        .generate-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
-            font-family: 'SolaimanLipi', 'Noto Sans Bengali', Arial, sans-serif;
-        }
-
-        .generate-btn:active {
-            transform: scale(0.98);
-        }
-
-        .checklist-section {
-            padding: 25px 20px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .checklist-header {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .checklist-header h2 {
-            font-size: 1.4em;
-            margin-bottom: 12px;
-        }
-
-        .info-row {
-            font-size: 0.9em;
-            opacity: 0.95;
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .checklist-items {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 12px;
-            margin-bottom: 8px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-        }
-
-        .checklist-item:active {
-            background: #e9ecef;
-            border-color: #00D9A3;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            margin-right: 12px;
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 2px;
-            accent-color: #00D9A3;
-        }
-
-        .checklist-item label {
-            cursor: pointer;
-            font-size: 0.95em;
-            color: #333;
-            flex: 1;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .checklist-item input[type="checkbox"]:checked + label {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .progress-indicator {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #ffc107;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #006a4e 0%, #f42a41 100%);
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            text-align: center;
-            font-weight: 700;
-            color: #856404;
-            font-size: 0.95em;
-        }
-
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
-            font-family: 'SolaimanLipi', 'Noto Sans Bengali', Arial, sans-serif;
-        }
-
-        .btn-success {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        footer {
-            background: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        footer p {
-            font-size: 0.85em;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .credit-info {
-            font-size: 0.8em;
-            color: #007bff;
-            margin-top: 10px;
-        }
-
-        .gofly-section {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
-            color: white;
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 10px;
-        }
-
-        .gofly-section h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .gofly-info {
-            font-size: 0.85em;
-            line-height: 1.8;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            flex: 1;
-            min-width: 140px;
-            padding: 12px;
-            background: white;
-            color: #00D9A3;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            transition: transform 0.2s;
-        }
-
-        .contact-btn:active {
-            transform: scale(0.95);
-        }
-
-        .stats-row {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.3em;
-            font-weight: 700;
-        }
-
-        .stat-label {
-            font-size: 0.8em;
-            opacity: 0.9;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            .button-group {
-                flex-direction: row;
-            }
-
-            .btn {
-                width: auto;
-                padding: 12px 30px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'SolaimanLipi', 'Kalpurush', 'Segoe UI', sans-serif; background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); min-height: 100vh; padding: 10px; line-height: 1.9; }
+        .container { max-width: 700px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); overflow: hidden; }
+        header { background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; padding: 25px 20px; text-align: center; position: relative; }
+        .bd-flag { font-size: 2.5em; margin-bottom: 10px; }
+        header h1 { font-size: 1.6em; margin-bottom: 8px; font-weight: 700; }
+        .subtitle { font-size: 0.95em; opacity: 0.95; }
+        .lang-toggle { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 20px; font-size: 0.85em; cursor: pointer; transition: background 0.3s; text-decoration: none; color: white; }
+        .lang-toggle:hover { background: rgba(255,255,255,0.3); }
+        .progress-container { padding: 25px 20px 15px; background: #f8f9fa; }
+        .progress-bar { display: flex; justify-content: space-between; align-items: center; position: relative; margin-bottom: 15px; }
+        .progress-step { flex: 1; text-align: center; position: relative; z-index: 2; }
+        .progress-circle { width: 40px; height: 40px; border-radius: 50%; background: #e0e0e0; color: #999; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: 700; font-size: 1.1em; transition: all 0.3s ease; }
+        .progress-step.active .progress-circle { background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; transform: scale(1.1); }
+        .progress-step.completed .progress-circle { background: #00D9A3; color: white; }
+        .progress-step.completed .progress-circle::after { content: '✓'; }
+        .progress-label { font-size: 0.75em; color: #666; font-weight: 600; }
+        .progress-step.active .progress-label { color: #00D9A3; }
+        .progress-line { position: absolute; top: 20px; left: 0; right: 0; height: 3px; background: #e0e0e0; z-index: 1; }
+        .progress-line-fill { height: 100%; background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); transition: width 0.3s ease; width: 0%; }
+        .form-step { display: none; padding: 25px 20px; animation: fadeIn 0.4s ease; }
+        .form-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .step-title { font-size: 1.4em; color: #333; margin-bottom: 8px; font-weight: 700; }
+        .step-subtitle { font-size: 0.95em; color: #666; margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; font-size: 1.05em; }
+        .form-group select, .form-group input { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: all 0.3s ease; background: white; font-family: 'SolaimanLipi', 'Kalpurush', sans-serif; }
+        .form-group select:focus, .form-group input:focus { outline: none; border-color: #00D9A3; box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1); }
+        .btn-container { display: flex; gap: 15px; margin-top: 30px; }
+        .btn { flex: 1; padding: 14px; border: none; border-radius: 8px; font-size: 1.05em; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: 'SolaimanLipi', 'Kalpurush', sans-serif; }
+        .btn-next, .btn-submit { background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; }
+        .btn-prev { background: #f0f0f0; color: #333; }
+        .btn:active { transform: scale(0.98); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .checklist-header { background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .checklist-header h2 { font-size: 1.5em; margin-bottom: 12px; }
+        .info-row { font-size: 0.95em; opacity: 0.95; margin-top: 6px; }
+        .doc-category { background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+        .category-title { font-size: 1.15em; color: #00D9A3; font-weight: 700; margin-bottom: 15px; }
+        .doc-item { padding: 12px; margin-bottom: 10px; background: white; border-radius: 8px; border-left: 4px solid #00D9A3; font-size: 0.95em; display: flex; align-items: start; gap: 10px; }
+        .doc-item::before { content: '✓'; color: #00D9A3; font-weight: 700; font-size: 1.2em; }
+        .tip-box { background: #fff8e1; border-left: 4px solid #ffc107; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 0.95em; }
+        .tip-box strong { color: #f57c00; }
+        footer { background: #2c3e50; color: white; padding: 25px 20px; text-align: center; }
+        .footer-title { font-size: 1.4em; font-weight: 700; margin-bottom: 8px; color: #00D9A3; }
+        .footer-contact { font-size: 0.95em; margin: 5px 0; }
+        .footer-credit { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85em; opacity: 0.8; }
+        .whatsapp-btn { display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin: 15px 0; font-weight: 600; transition: transform 0.2s; }
+        .whatsapp-btn:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="en-visa-checklist.html" class="lang-toggle">🌐 English</a>
+            <a href="en-visa-checklist.html" class="lang-toggle">🇬🇧 English</a>
             <div class="bd-flag">🇧🇩</div>
-            <h1>বাংলাদেশী ভিসা চেকলিস্ট</h1>
-            <p class="subtitle">৪৪টি দেশের ভিসার ডকুমেন্ট তালিকা পান</p>
+            <h1>ব্যক্তিগত ভিসা চেকলিস্ট</h1>
+            <p class="subtitle">বাংলাদেশী পাসপোর্টধারীদের জন্য • ৪৪টি দেশ</p>
         </header>
-
-        <div id="formSection" class="form-section">
-            <div class="visa-selection-section">
-                <h3 style="color: #00D9A3; margin-bottom: 15px; text-align: center;">🌍 ভিসা তথ্য</h3>
-                <div class="form-group">
-                    <label for="destination">🌍 কোন দেশে যেতে চান?</label>
-                    <select id="destination" required></select>
-                </div>
-
-                <div class="form-group">
-                    <label for="visaType">📋 ভিসার ধরন:</label>
-                    <select id="visaType" required>
-                        <option value="">ভিসার ধরন নির্বাচন করুন...</option>
-                        <option value="Tourist">টুরিস্ট / ভিজিটর ভিসা</option>
-                        <option value="Student">স্টুডেন্ট ভিসা</option>
-                        <option value="Business">বিজনেস ভিসা</option>
-                        <option value="Transit">ট্রানজিট ভিসা</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="lead-capture-section">
-                <h3 style="color: #00D9A3; margin-bottom: 15px; text-align: center;">📝 আপনার তথ্য দিন</h3>
-                <div class="form-group">
-                    <label for="userName">👤 নাম <span style="color: red;">*</span></label>
-                    <input type="text" id="userName" placeholder="আপনার পুরো নাম" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="userPhone">📱 ফোন নম্বর <span style="color: red;">*</span></label>
-                    <input type="tel" id="userPhone" placeholder="01XXXXXXXXX" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="userEmail">📧 ইমেইল (ঐচ্ছিক)</label>
-                    <input type="email" id="userEmail" placeholder="example@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="employmentStatus">💼 পেশা/চাকরি <span style="color: red;">*</span></label>
-                    <select id="employmentStatus" required>
-                        <option value="">নির্বাচন করুন...</option>
-                        <option value="government">সরকারি চাকরি</option>
-                        <option value="private">বেসরকারি চাকরি</option>
-                        <option value="self-employed">ব্যবসা/স্ব-নিয়োজিত</option>
-                        <option value="student">শিক্ষার্থী</option>
-                        <option value="unemployed">বেকার/গৃহিণী</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="monthlyIncome">💰 মাসিক আয় (ঐচ্ছিক)</label>
-                    <select id="monthlyIncome">
-                        <option value="">নির্বাচন করুন...</option>
-                        <option value="0-30k">৳০ - ৩০,০০০</option>
-                        <option value="30k-60k">৳৩০,০০০ - ৬০,০০০</option>
-                        <option value="60k-100k">৳৬০,০০০ - ১,০০,০০০</option>
-                        <option value="100k+">৳১,০০,০০০+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="travelHistory">✈️ আগে বিদেশ ভ্রমণ করেছেন? <span style="color: red;">*</span></label>
-                    <select id="travelHistory" required>
-                        <option value="">নির্বাচন করুন...</option>
-                        <option value="yes">হ্যাঁ, একাধিকবার</option>
-                        <option value="once">হ্যাঁ, একবার</option>
-                        <option value="no">না, প্রথমবার</option>
-                    </select>
-                </div>
-            </div>
-
-            <button id="generateBtn" class="generate-btn">চেকলিস্ট তৈরি করুন →</button>
-            <p style="font-size: 0.8em; text-align: center; margin-top: 10px; color: #666;">
-                🔒 আপনার তথ্য সম্পূর্ণ গোপনীয় থাকবে
-            </p>
-        </div>
-
-        <div id="checklistSection" class="checklist-section hidden">
-            <div id="checklistHeader" class="checklist-header"></div>
-            <div id="progressContainer"></div>
-            <div id="checklistContent" class="checklist-items"></div>
-            <div class="button-group">
-                <button id="downloadBtn" class="btn btn-success">📥 ডাউনলোড করুন</button>
-                <button id="resetBtn" class="btn btn-secondary">🔄 নতুন চেকলিস্ট</button>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
+                <div class="progress-step active" data-step="1"><div class="progress-circle">১</div><div class="progress-label">গন্তব্য</div></div>
+                <div class="progress-step" data-step="2"><div class="progress-circle">২</div><div class="progress-label">যোগাযোগ</div></div>
+                <div class="progress-step" data-step="3"><div class="progress-circle">৩</div><div class="progress-label">বিবরণ</div></div>
+                <div class="progress-step" data-step="4"><div class="progress-circle">৪</div><div class="progress-label">চেকলিস্ট</div></div>
             </div>
         </div>
-
+        <div class="form-step active" id="step1">
+            <h2 class="step-title">🌍 আপনার গন্তব্য নির্বাচন করুন</h2>
+            <p class="step-subtitle">যে দেশে যেতে চান সেটি বাছাই করুন</p>
+            <div class="form-group">
+                <label for="country">📍 গন্তব্য দেশ <span style="color: red;">*</span></label>
+                <select id="country" required>
+                    <option value="">-- দেশ নির্বাচন করুন --</option>
+                    <optgroup label="🟢 সহজ ভিসা">
+                        <option value="Thailand">🇹🇭 থাইল্যান্ড</option>
+                        <option value="Malaysia">🇲🇾 মালয়েশিয়া</option>
+                        <option value="Indonesia">🇮🇩 ইন্দোনেশিয়া</option>
+                        <option value="Turkey">🇹🇷 তুরস্ক</option>
+                        <option value="Sri Lanka">🇱🇰 শ্রীলংকা</option>
+                        <option value="Maldives">🇲🇻 মালদ্বীপ</option>
+                        <option value="Nepal">🇳🇵 নেপাল</option>
+                        <option value="Bhutan">🇧🇹 ভুটান</option>
+                        <option value="Georgia">🇬🇪 জর্জিয়া</option>
+                        <option value="Armenia">🇦🇲 আর্মেনিয়া</option>
+                    </optgroup>
+                    <optgroup label="🟡 মাঝারি কঠিন">
+                        <option value="India">🇮🇳 ভারত</option>
+                        <option value="UAE">🇦🇪 সংযুক্ত আরব আমিরাত</option>
+                        <option value="Saudi Arabia">🇸🇦 সৌদি আরব</option>
+                        <option value="Qatar">🇶🇦 কাতার</option>
+                        <option value="Oman">🇴🇲 ওমান</option>
+                        <option value="Kuwait">🇰🇼 কুয়েত</option>
+                        <option value="Bahrain">🇧🇭 বাহরাইন</option>
+                        <option value="China">🇨🇳 চীন</option>
+                        <option value="Singapore">🇸🇬 সিঙ্গাপুর</option>
+                        <option value="Vietnam">🇻🇳 ভিয়েতনাম</option>
+                        <option value="Egypt">🇪🇬 মিশর</option>
+                        <option value="Jordan">🇯🇴 জর্ডান</option>
+                    </optgroup>
+                    <optgroup label="🔴 কঠিন ভিসা">
+                        <option value="USA">🇺🇸 যুক্তরাষ্ট্র (USA)</option>
+                        <option value="UK">🇬🇧 যুক্তরাজ্য (UK)</option>
+                        <option value="Canada">🇨🇦 কানাডা</option>
+                        <option value="Australia">🇦🇺 অস্ট্রেলিয়া</option>
+                        <option value="Schengen">🇪🇺 শেনজেন (ইউরোপ)</option>
+                        <option value="Japan">🇯🇵 জাপান</option>
+                        <option value="South Korea">🇰🇷 দক্ষিণ কোরিয়া</option>
+                        <option value="New Zealand">🇳🇿 নিউজিল্যান্ড</option>
+                    </optgroup>
+                    <optgroup label="⚫ অতি কঠিন">
+                        <option value="Germany">🇩🇪 জার্মানি</option>
+                        <option value="France">🇫🇷 ফ্রান্স</option>
+                        <option value="Italy">🇮🇹 ইতালি</option>
+                        <option value="Spain">🇪🇸 স্পেন</option>
+                        <option value="Switzerland">🇨🇭 সুইজারল্যান্ড</option>
+                        <option value="Netherlands">🇳🇱 নেদারল্যান্ডস</option>
+                        <option value="Sweden">🇸🇪 সুইডেন</option>
+                        <option value="Norway">🇳🇴 নরওয়ে</option>
+                        <option value="Denmark">🇩🇰 ডেনমার্ক</option>
+                        <option value="Belgium">🇧🇪 বেলজিয়াম</option>
+                        <option value="Austria">🇦🇹 অস্ট্রিয়া</option>
+                        <option value="Poland">🇵🇱 পোল্যান্ড</option>
+                        <option value="Czech Republic">🇨🇿 চেক প্রজাতন্ত্র</option>
+                        <option value="Hungary">🇭🇺 হাঙ্গেরি</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="visaType">🎯 সফরের উদ্দেশ্য <span style="color: red;">*</span></label>
+                <select id="visaType" required>
+                    <option value="">-- উদ্দেশ্য নির্বাচন করুন --</option>
+                    <option value="Tourist">🏖️ পর্যটন / ভ্রমণ</option>
+                    <option value="Business">💼 ব্যবসা / সম্মেলন</option>
+                    <option value="Medical">🏥 চিকিৎসা</option>
+                    <option value="Visit">👨‍👩‍👧 পরিবার দেখা</option>
+                    <option value="Transit">✈️ ট্রানজিট (যাত্রা বিরতি)</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-next" onclick="nextStep(1)">পরবর্তী →</button>
+            </div>
+        </div>
+        <div class="form-step" id="step2">
+            <h2 class="step-title">👤 আপনার যোগাযোগের তথ্য</h2>
+            <p class="step-subtitle">আপনার ব্যক্তিগত চেকলিস্ট পাঠানো হবে</p>
+            <div class="form-group">
+                <label for="userName">📝 পূর্ণ নাম <span style="color: red;">*</span></label>
+                <input type="text" id="userName" placeholder="আপনার পূর্ণ নাম লিখুন" required>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">📧 ইমেইল ঠিকানা</label>
+                <input type="email" id="userEmail" placeholder="example@email.com">
+            </div>
+            <div class="form-group">
+                <label for="userPhone">📱 মোবাইল নম্বর <span style="color: red;">*</span></label>
+                <input type="tel" id="userPhone" placeholder="০১XXXXXXXXX" required>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="prevStep(2)">← পূর্ববর্তী</button>
+                <button class="btn btn-next" onclick="nextStep(2)">পরবর্তী →</button>
+            </div>
+        </div>
+        <div class="form-step" id="step3">
+            <h2 class="step-title">📋 অতিরিক্ত বিবরণ</h2>
+            <p class="step-subtitle">এটি আপনার চেকলিস্ট ব্যক্তিগতকরণে সাহায্য করবে</p>
+            <div class="form-group">
+                <label for="employmentStatus">💼 পেশা/কর্মসংস্থান <span style="color: red;">*</span></label>
+                <select id="employmentStatus" required>
+                    <option value="">-- পেশা নির্বাচন করুন --</option>
+                    <option value="Government">👔 সরকারি চাকরিজীবী</option>
+                    <option value="Private">🏢 বেসরকারি চাকরিজীবী</option>
+                    <option value="Self-employed">💼 ব্যবসায়ী / স্বনিযুক্ত</option>
+                    <option value="Student">🎓 শিক্ষার্থী</option>
+                    <option value="Unemployed">❌ বেকার / গৃহিণী</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="monthlyIncome">💰 মাসিক আয় <span style="color: red;">*</span></label>
+                <select id="monthlyIncome" required>
+                    <option value="">-- আয়ের পরিমাণ নির্বাচন করুন --</option>
+                    <option value="0-30k">৳০ - ৳৩০,০০০</option>
+                    <option value="30k-60k">৳৩০,০০০ - ৳৬০,০০০</option>
+                    <option value="60k-100k">৳৬০,০০০ - ৳১,০০,০০০</option>
+                    <option value="100k+">৳১,০০,০০০+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="travelHistory">✈️ আন্তর্জাতিক ভ্রমণ অভিজ্ঞতা <span style="color: red;">*</span></label>
+                <select id="travelHistory" required>
+                    <option value="">-- অভিজ্ঞতা নির্বাচন করুন --</option>
+                    <option value="None">🆕 প্রথমবার (কোন আন্তর্জাতিক ভ্রমণ নেই)</option>
+                    <option value="Some">✈️ ১-২ বার বিদেশ গিয়েছি</option>
+                    <option value="Multiple">🌍 ৩+ বার (নিয়মিত ভ্রমণকারী)</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="prevStep(3)">← পূর্ববর্তী</button>
+                <button class="btn btn-submit" onclick="generateChecklist()">🎯 চেকলিস্ট পান</button>
+            </div>
+        </div>
+        <div class="form-step" id="step4">
+            <div id="checklistResult"></div>
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="resetForm()">← নতুন করে শুরু করুন</button>
+                <button class="btn btn-next" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
+            </div>
+        </div>
         <footer>
-            <div class="gofly-section">
-                <h3>✈️ goFLY Limited</h3>
-                <div class="gofly-info">
-                    <p>📍 <strong>অফিস:</strong> ১ শুক্রাবাদ রোড, মতিউর নিবাস, নিউ মডেল ডিগ্রি কলেজের পাশে</p>
-                    <p style="padding-left: 20px;">মেট্রো শপিং মলের বিপরীতে, ঢাকা ১২০৭</p>
-                    <div class="contact-buttons">
-                        <a href="tel:01713289170" class="contact-btn">📞 01713-289170</a>
-                        <a href="sms:01713289175" class="contact-btn">💬 01713-289175</a>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <div class="stat-number">⭐ 4.8</div>
-                            <div class="stat-label">431+ রিভিউ</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">👥 10k+</div>
-                            <div class="stat-label">গ্রাহক</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">🔄 70%</div>
-                            <div class="stat-label">রিপিট</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">📅 2017</div>
-                            <div class="stat-label">থেকে</div>
-                        </div>
-                    </div>
-                    <p style="margin-top: 15px; font-size: 0.75em; opacity: 0.9;">
-                        🏆 IATA: 42337956 | 📋 ATAB: 4298 | ✈️ Civil Aviation: 0007726
-                    </p>
-                </div>
-            </div>
-            <p style="margin-top: 15px;">⚠️ <strong>দ্রষ্টব্য:</strong> এই চেকলিস্ট শুধুমাত্র সাধারণ দিকনির্দেশনার জন্য। সর্বদা সংশ্লিষ্ট দেশের দূতাবাস বা কনস্যুলেটের সাথে যাচাই করুন।</p>
-            <p>🇧🇩 বাংলাদেশী পাসপোর্ট হোল্ডারদের জন্য বিশেষভাবে তৈরি</p>
+            <h3 class="footer-title">goFLY Limited</h3>
+            <p class="footer-contact">📍 ঢাকা, বাংলাদেশ</p>
+            <p class="footer-contact">📞 +৮৮০-XXX-XXXXXX</p>
+            <p class="footer-contact">📧 info@gofly.com.bd</p>
+            <a href="https://wa.me/880XXXXXXXXX" class="whatsapp-btn">💬 হোয়াটসঅ্যাপে যোগাযোগ করুন</a>
+            <p class="footer-credit">🚀 Powered by goFLY • আপনার বিশ্বস্ত ভ্রমণ সহযোগী</p>
         </footer>
     </div>
-
     <script>
-        // Countries data (44 countries from goFLY)
-        const countries = [
-            // EASY
-            {name: "নেপাল", nameEn: "Nepal", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৫,০০০-৬,০০০", visaType: "ভিসা অন অ্যারাইভাল", processingTime: "তাৎক্ষণিক"},
-            {name: "মালদ্বীপ", nameEn: "Maldives", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৫,০০০-৬,০০০", visaType: "ভিসা অন অ্যারাইভাল", processingTime: "তাৎক্ষণিক"},
-            {name: "শ্রীলঙ্কা", nameEn: "Sri Lanka", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৬,০০০-৮,০০০", visaType: "ই-টিএ (অনলাইন)", processingTime: "১-২ দিন"},
-            {name: "ভিয়েতনাম", nameEn: "Vietnam", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৬,০০০-৮,০০০", visaType: "ই-ভিসা", processingTime: "৫-৭ দিন"},
-            {name: "তুরস্ক", nameEn: "Turkey", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৬,০০০-৮,০০০", visaType: "ই-ভিসা", processingTime: "৩-৭ দিন"},
-            {name: "কেনিয়া", nameEn: "Kenya", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৭,০০০-৮,০০০", visaType: "ইটিএ", processingTime: "২-৩ দিন"},
-            {name: "ইথিওপিয়া", nameEn: "Ethiopia", difficulty: "easy", difficultyBn: "সহজ", cost: "৳৭,০০০-৮,০০০", visaType: "ই-ভিসা", processingTime: "৩-৫ দিন"},
-            // MEDIUM
-            {name: "মালয়েশিয়া", nameEn: "Malaysia", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৬,০০০-৮,০০০", visaType: "ই-ভিসা/eNTRI", processingTime: "৩-৫ দিন"},
-            {name: "থাইল্যান্ড", nameEn: "Thailand", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৬,০০০-৮,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৩-৭ দিন"},
-            {name: "সিঙ্গাপুর", nameEn: "Singapore", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৭,০০০-৯,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৫-৭ দিন"},
-            {name: "সংযুক্ত আরব আমিরাত / দুবাই", nameEn: "UAE / Dubai", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৮,০০০-১০,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৩-৫ দিন"},
-            {name: "ভারত", nameEn: "India", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৬,০০০-৮,০০০", visaType: "ই-ভিসা/নিয়মিত", processingTime: "৪-৭ দিন"},
-            {name: "ইন্দোনেশিয়া", nameEn: "Indonesia", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৭,০০০-৯,০০০", visaType: "ভিসা অন অ্যারাইভাল", processingTime: "তাৎক্ষণিক"},
-            {name: "চীন", nameEn: "China", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৮,০০০-১০,০০০", visaType: "টুরিস্ট ভিসা (L)", processingTime: "৫-৭ দিন"},
-            {name: "দক্ষিণ কোরিয়া", nameEn: "South Korea", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৮,০০০-১০,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৫-১০ দিন"},
-            {name: "সৌদি আরব (উমরাহ)", nameEn: "Saudi Arabia (Umrah)", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৮,০০০-১০,০০০", visaType: "উমরাহ ভিসা", processingTime: "৭-১৫ দিন"},
-            {name: "ফিলিপাইন", nameEn: "Philippines", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৭,০০০-৯,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৫-৭ দিন"},
-            {name: "হংকং", nameEn: "Hong Kong", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৭,০০০-৯,০০০", visaType: "ভিসা/প্রি-অ্যারাইভাল", processingTime: "৫-৭ দিন"},
-            {name: "পাকিস্তান", nameEn: "Pakistan", difficulty: "medium", difficultyBn: "মাঝারি", cost: "৳৬,০০০-৮,০০০", visaType: "ই-ভিসা", processingTime: "৩-৫ দিন"},
-            // HARD
-            {name: "জাপান", nameEn: "Japan", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১২,০০০-১৫,০০০", visaType: "টুরিস্ট ভিসা", processingTime: "৭-১৫ দিন"},
-            {name: "অস্ট্রিয়া", nameEn: "Austria", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "বেলজিয়াম", nameEn: "Belgium", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "ডেনমার্ক", nameEn: "Denmark", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "ফিনল্যান্ড", nameEn: "Finland", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "ফ্রান্স", nameEn: "France", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "জার্মানি", nameEn: "Germany", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "গ্রীস", nameEn: "Greece", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "ইতালি", nameEn: "Italy", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "নেদারল্যান্ডস", nameEn: "Netherlands", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "নরওয়ে", nameEn: "Norway", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "পোল্যান্ড", nameEn: "Poland", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "পর্তুগাল", nameEn: "Portugal", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "স্পেন", nameEn: "Spain", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "সুইডেন", nameEn: "Sweden", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "সুইজারল্যান্ড", nameEn: "Switzerland", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৫,০০০-২০,০০০", visaType: "শেঙ্গেন ভিসা", processingTime: "১৫-৩০ দিন"},
-            {name: "যুক্তরাজ্য", nameEn: "United Kingdom", difficulty: "hard", difficultyBn: "কঠিন", cost: "৳১৮,০০০-২০,০০০", visaType: "ভিজিটর ভিসা", processingTime: "১৫-২০ দিন"},
-            // VERY HARD
-            {name: "যুক্তরাষ্ট্র (USA)", nameEn: "USA", difficulty: "very-hard", difficultyBn: "অত্যন্ত কঠিন", cost: "পরিবর্তনশীল", visaType: "B1/B2 ভিসা", processingTime: "পরিবর্তনশীল"},
-            {name: "কানাডা", nameEn: "Canada", difficulty: "very-hard", difficultyBn: "অত্যন্ত কঠিন", cost: "পরিবর্তনশীল", visaType: "ভিজিটর ভিসা (TRV)", processingTime: "৩০+ দিন"},
-            {name: "অস্ট্রেলিয়া", nameEn: "Australia", difficulty: "very-hard", difficultyBn: "অত্যন্ত কঠিন", cost: "পরিবর্তনশীল", visaType: "ভিজিটর ভিসা (600)", processingTime: "২০-৪০ দিন"},
-            {name: "নিউজিল্যান্ড", nameEn: "New Zealand", difficulty: "very-hard", difficultyBn: "অত্যন্ত কঠিন", cost: "পরিবর্তনশীল", visaType: "ভিজিটর ভিসা", processingTime: "২০-৪৫ দিন"}
-        ];
-
-        // Document checklists in Bangla
-        const visaChecklists = {
-            common: [
-                "বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ)",
-                "সম্পূর্ণ ভরাট করা ভিসা আবেদন ফর্ম",
-                "সাম্প্রতিক পাসপোর্ট সাইজের ছবি",
-                "ট্রাভেল ইনস্যুরেন্সের প্রমাণ",
-                "ফ্লাইট রিজার্ভেশন/যাত্রাপথ",
-                "থাকার ব্যবস্থার বুকিং নিশ্চয়তা"
-            ],
-            Tourist: [
-                "ব্যাংক স্টেটমেন্ট (শেষ ৩-৬ মাস)",
-                "চাকরির সার্টিফিকেট বা ছুটির অনুমোদন",
-                "ভ্রমণ পরিকল্পনা",
-                "হোটেল রিজার্ভেশন",
-                "রিটার্ন ফ্লাইট টিকেট",
-                "পর্যাপ্ত অর্থের প্রমাণ"
-            ],
-            Student: [
-                "শিক্ষা প্রতিষ্ঠান থেকে গ্রহণপত্র",
-                "টিউশন ফি পেমেন্টের প্রমাণ",
-                "একাডেমিক ট্রান্সক্রিপ্ট ও সার্টিফিকেট",
-                "ভাষা দক্ষতা পরীক্ষার ফলাফল (IELTS/TOEFL)",
-                "উদ্দেশ্য বিবৃতি",
-                "আর্থিক সামর্থ্যের প্রমাণ",
-                "স্পন্সর লেটার (প্রযোজ্য হলে)"
-            ],
-            Work: [
-                "চাকরির অফার লেটার",
-                "কর্মসংস্থান চুক্তি",
-                "নিয়োগকর্তার আমন্ত্রণপত্র",
-                "পেশাগত যোগ্যতা/সার্টিফিকেট",
-                "রিজিউম/সিভি",
-                "পূর্ববর্তী চাকরির রেকর্ড"
-            ],
-            Business: [
-                "ব্যবসায়িক আমন্ত্রণপত্র",
-                "কোম্পানির নিবন্ধন সার্টিফিকেট",
-                "ব্যবসায়িক ব্যাংক স্টেটমেন্ট",
-                "ট্রেড লাইসেন্স",
-                "মিটিং/কনফারেন্স আমন্ত্রণ"
-            ],
-            Transit: [
-                "চূড়ান্ত গন্তব্যের বৈধ ভিসা",
-                "নিশ্চিত পরবর্তী ফ্লাইট টিকেট",
-                "স্বল্প সময়ের থাকার প্রমাণ"
-            ]
-        };
-
-        // DOM Elements
-        const destinationSelect = document.getElementById('destination');
-        const visaTypeSelect = document.getElementById('visaType');
-        const generateBtn = document.getElementById('generateBtn');
-        const formSection = document.getElementById('formSection');
-        const checklistSection = document.getElementById('checklistSection');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const resetBtn = document.getElementById('resetBtn');
-
-        let selectedCountry = null;
-        let selectedVisaType = '';
-
-        // Initialize
-        function init() {
-            populateCountryDropdown();
-            generateBtn.addEventListener('click', generateChecklist);
-            resetBtn.addEventListener('click', reset);
-            downloadBtn.addEventListener('click', downloadChecklist);
-        }
-
-        function populateCountryDropdown() {
-            const sorted = [...countries].sort((a, b) => a.name.localeCompare(b.name, 'bn'));
-
-            let html = '<option value="">একটি দেশ নির্বাচন করুন...</option>';
-            const grouped = { easy: [], medium: [], hard: [], "very-hard": [] };
-
-            sorted.forEach(country => grouped[country.difficulty].push(country));
-
-            const labels = {
-                easy: "✅ সহজ",
-                medium: "⚠️ মাঝারি",
-                hard: "🔴 কঠিন",
-                "very-hard": "⛔ অত্যন্ত কঠিন"
-            };
-
-            Object.keys(labels).forEach(difficulty => {
-                html += `<optgroup label="${labels[difficulty]}">`;
-                grouped[difficulty].forEach(country => {
-                    html += `<option value="${country.nameEn}">${country.name}</option>`;
-                });
-                html += `</optgroup>`;
-            });
-
-            destinationSelect.innerHTML = html;
-        }
-
-        function generateChecklist() {
-            // Validate user info
-            const userName = document.getElementById('userName').value.trim();
-            const userPhone = document.getElementById('userPhone').value.trim();
-            const userEmail = document.getElementById('userEmail').value.trim();
-            const employmentStatus = document.getElementById('employmentStatus').value;
-            const monthlyIncome = document.getElementById('monthlyIncome').value;
-            const travelHistory = document.getElementById('travelHistory').value;
-            const destination = destinationSelect.value;
-            const visaType = visaTypeSelect.value;
-
-            if (!userName || !userPhone || !employmentStatus || !travelHistory) {
-                alert('অনুগ্রহ করে সব আবশ্যক তথ্য পূরণ করুন!');
-                return;
-            }
-
-            // Basic phone validation (Bangladesh)
-            if (!/^01[0-9]{9}$/.test(userPhone)) {
-                alert('সঠিক বাংলাদেশী ফোন নম্বর দিন (01XXXXXXXXX)');
-                return;
-            }
-
-            if (!destination || !visaType) {
-                alert('অনুগ্রহ করে দেশ এবং ভিসার ধরন নির্বাচন করুন!');
-                return;
-            }
-
-            // Capture ENHANCED lead data
-            const leadData = {
-                name: userName,
-                phone: userPhone,
-                email: userEmail || 'Not provided',
-                employmentStatus: employmentStatus,
-                monthlyIncome: monthlyIncome || 'Not provided',
-                travelHistory: travelHistory,
-                destination: destination,
-                visaType: visaType,
-                timestamp: new Date().toISOString(),
-                source: 'BD Visa Checklist Tool'
-            };
-
-            // Log lead data (in production, send to backend/CRM)
-            console.log('🎯 ENHANCED LEAD CAPTURED:', leadData);
-
-            // You can send this to a backend API:
-            // fetch('https://gofly.com/api/leads', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(leadData)
-            // });
-
-            selectedCountry = countries.find(c => c.nameEn === destination);
-            selectedVisaType = visaType;
-
-            showChecklist();
-        }
-
-        function showChecklist() {
-            // Get user info for personalization
-            const userName = document.getElementById('userName').value.trim();
-            const userPhone = document.getElementById('userPhone').value.trim();
-
-            // Header with personalization
-            const difficultyClass = `difficulty-${selectedCountry.difficulty}`;
-            document.getElementById('checklistHeader').innerHTML = `
-                <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-                    <div style="font-size: 0.95em;">👤 <strong>${userName}</strong> এর জন্য বিশেষভাবে তৈরি</div>
-                    <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.9;">📱 ${userPhone}</div>
-                </div>
-                <h2>📋 ${selectedCountry.name} - ${getVisaTypeBangla(selectedVisaType)}</h2>
-                <div class="info-row">
-                    <strong>কঠিনতা:</strong>
-                    <span class="difficulty-badge ${difficultyClass}">${selectedCountry.difficultyBn}</span>
-                </div>
-                <div class="info-row"><strong>খরচ:</strong> ${selectedCountry.cost}</div>
-                <div class="info-row"><strong>প্রসেসিং সময়:</strong> ${selectedCountry.processingTime}</div>
-                <div class="info-row"><strong>ভিসার ধরন:</strong> ${selectedCountry.visaType}</div>
-                <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; font-size: 0.85em;">
-                    💡 <strong>বিশেষ পরামর্শ:</strong> ${getPersonalizedTip(selectedCountry.difficulty, selectedVisaType)}
-                </div>
-            `;
-
-            // Checklist items - BASE
-            let items = [...visaChecklists.common];
-            if (visaChecklists[selectedVisaType]) {
-                items = items.concat(visaChecklists[selectedVisaType]);
-            }
-
-            // ADD PROFESSION-SPECIFIC ITEMS
-            const employmentStatus = document.getElementById('employmentStatus').value;
-            const travelHistory = document.getElementById('travelHistory').value;
-            const monthlyIncome = document.getElementById('monthlyIncome').value;
-
-            items = items.concat(getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, selectedVisaType));
-
-            // Remove duplicates
-            items = [...new Set(items)];
-
-            let html = '';
-            items.forEach((item, index) => {
-                html += `
-                    <div class="checklist-item">
-                        <input type="checkbox" id="item-${index}" class="checkbox">
-                        <label for="item-${index}">${item}</label>
-                    </div>
-                `;
-            });
-
-            document.getElementById('checklistContent').innerHTML = html;
-
-            // Add progress tracking
-            document.querySelectorAll('.checkbox').forEach(cb => {
-                cb.addEventListener('change', updateProgress);
-            });
-
-            formSection.classList.add('hidden');
-            checklistSection.classList.remove('hidden');
-            updateProgress();
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        function updateProgress() {
-            const checkboxes = document.querySelectorAll('.checkbox');
-            const checked = document.querySelectorAll('.checkbox:checked').length;
-            const total = checkboxes.length;
-
-            if (total > 0) {
-                const percentage = Math.round((checked / total) * 100);
-                document.getElementById('progressContainer').innerHTML = `
-                    <div class="progress-indicator">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${percentage}%"></div>
-                        </div>
-                        <p class="progress-text">${checked} টি সম্পন্ন হয়েছে, মোট ${total} টির মধ্যে (${percentage}%)</p>
-                    </div>
-                `;
-            }
-        }
-
-        function getPersonalizedDocuments(employment, travelHistory, income, visaType) {
-            let additionalDocs = [];
-
-            // EMPLOYMENT-SPECIFIC DOCUMENTS
-            if (employment === 'government') {
-                additionalDocs.push('সরকারি বিভাগ থেকে NOC (অনাপত্তি সনদ)');
-                additionalDocs.push('চাকরির স্থায়ীকরণ পত্র (যদি থাকে)');
-                additionalDocs.push('সর্বশেষ বেতন স্লিপ');
-            } else if (employment === 'private') {
-                additionalDocs.push('কোম্পানির হেড থেকে অনুমতি পত্র');
-                additionalDocs.push('সর্বশেষ ৩ মাসের বেতন স্লিপ');
-                additionalDocs.push('কোম্পানির ট্রেড লাইসেন্স কপি');
-            } else if (employment === 'self-employed') {
-                additionalDocs.push('ব্যবসার ট্রেড লাইসেন্স');
-                additionalDocs.push('ব্যবসার ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)');
-                additionalDocs.push('ট্যাক্স রিটার্ন সার্টিফিকেট (TIN)');
-                additionalDocs.push('ব্যবসা নিবন্ধন সনদ');
-                additionalDocs.push('ক্লায়েন্ট/সাপ্লায়ারদের সাথে চুক্তিপত্র');
-            } else if (employment === 'student') {
-                additionalDocs.push('শিক্ষা প্রতিষ্ঠান থেকে ছুটির অনুমতিপত্র');
-                additionalDocs.push('শিক্ষার্থী আইডি কার্ড কপি');
-                additionalDocs.push('অভিভাবকের আয়ের প্রমাণপত্র');
-                additionalDocs.push('অভিভাবকের স্পন্সরশিপ লেটার');
-            } else if (employment === 'unemployed') {
-                additionalDocs.push('স্পন্সরের (স্বামী/স্ত্রী/পিতা) আয়ের প্রমাণ');
-                additionalDocs.push('স্পন্সরের ব্যাংক স্টেটমেন্ট');
-                additionalDocs.push('স্পন্সরশিপ লেটার (নোটারাইজড)');
-                additionalDocs.push('স্পন্সরের সাথে সম্পর্কের প্রমাণ (বিয়ের সনদ/জন্ম সনদ)');
-            }
-
-            // TRAVEL HISTORY-SPECIFIC
-            if (travelHistory === 'no') {
-                additionalDocs.push('⚠️ প্রথমবার ভ্রমণ: শক্তিশালী আর্থিক প্রমাণ অত্যাবশ্যক');
-                additionalDocs.push('সম্পত্তির দলিল (জমি/ফ্ল্যাট মালিকানা)');
-                additionalDocs.push('পরিবারের সাথে সম্পর্ক প্রমাণ (দেশে ফেরার নিশ্চয়তা)');
-                if (visaType === 'Tourist') {
-                    additionalDocs.push('বিস্তারিত ট্যুর প্ল্যান ও বুকিং প্রমাণ');
-                }
-            } else if (travelHistory === 'once') {
-                additionalDocs.push('পূর্ববর্তী ভিসা কপি (পাসপোর্টে স্ট্যাম্প)');
-                additionalDocs.push('আগের ভ্রমণের রিটার্ন টিকেট কপি');
-            } else if (travelHistory === 'yes') {
-                additionalDocs.push('✅ ভ্রমণ ইতিহাস: আপনার সুবিধা হবে');
-                additionalDocs.push('সব দেশের ভিসা কপি (পাসপোর্ট পেজ)');
-            }
-
-            // INCOME-SPECIFIC
-            if (income === '0-30k') {
-                additionalDocs.push('💰 কম আয়: স্পন্সরের সাহায্য বা যৌথ সম্পত্তি প্রমাণ প্রয়োজন');
-            } else if (income === '100k+') {
-                additionalDocs.push('💰 উচ্চ আয়: ভিসা পাওয়া সহজ হবে');
-            }
-
-            return additionalDocs;
-        }
-
-        function getVisaTypeBangla(type) {
-            const types = {
-                'Tourist': 'টুরিস্ট ভিসা',
-                'Student': 'স্টুডেন্ট ভিসা',
-                'Work': 'ওয়ার্ক ভিসা',
-                'Business': 'বিজনেস ভিসা',
-                'Transit': 'ট্রানজিট ভিসা'
-            };
-            return types[type] || type;
-        }
-
-        function getPersonalizedTip(difficulty, visaType) {
-            const tips = {
-                'easy': {
-                    'Tourist': 'আপনার ভাগ্য ভালো! এই দেশে ভিসা পাওয়া খুবই সহজ। সব ডকুমেন্ট ঠিক থাকলে ১-২ দিনেই পেয়ে যাবেন।',
-                    'Student': 'এই দেশে স্টুডেন্ট ভিসা প্রসেস সহজ। তবে একাডেমিক ডকুমেন্ট ভালো করে যাচাই করে নিন।',
-                    'Business': 'বিজনেস ভিসার জন্য কোম্পানির সব কাগজপত্র আপডেট রাখুন। দ্রুত পেয়ে যাবেন।',
-                    'Transit': 'ট্রানজিট ভিসা খুবই সহজ। পরবর্তী ফ্লাইট নিশ্চিত থাকলে সমস্যা নেই।'
-                },
-                'medium': {
-                    'Tourist': 'মাঝারি কঠিন। ব্যাংক স্টেটমেন্ট ও চাকরির প্রমাণপত্র ভালো করে তৈরি রাখুন। ৭-১০ দিন সময় লাগতে পারে।',
-                    'Student': 'ভালো প্রস্তুতি দরকার। IELTS/TOEFL স্কোর ভালো হলে সুবিধা হবে। goFLY সাহায্য করতে পারবে।',
-                    'Business': 'দুই দেশের বিজনেস সম্পর্ক প্রমাণ করতে হবে। goFLY এর অভিজ্ঞতা এখানে কাজে লাগবে।',
-                    'Transit': 'চূড়ান্ত গন্তব্যের ভিসা অবশ্যই লাগবে। নিশ্চিত হয়ে নিন।'
-                },
-                'hard': {
-                    'Tourist': 'চ্যালেঞ্জিং! শক্তিশালী আর্থিক প্রমাণ ও ভ্রমণ ইতিহাস দরকার। goFLY এর সাথে যোগাযোগ করুন - আমরা সফলতার হার বাড়াতে পারব।',
-                    'Student': 'খুব ভালো একাডেমিক রেকর্ড ও আর্থিক সামর্থ্য দেখাতে হবে। goFLY এর গাইডেন্স নিন।',
-                    'Business': 'প্রফেশনাল সাপোর্ট প্রয়োজন। goFLY এর অভিজ্ঞ টিম আপনাকে সাহায্য করবে।',
-                    'Transit': 'শেঙ্গেন দেশের জন্য সব কাগজপত্র পারফেক্ট হতে হবে। এক্সপার্ট সাহায্য নিন।'
-                },
-                'very-hard': {
-                    'Tourist': 'অত্যন্ত কঠিন! এই দেশগুলোর জন্য এক্সপার্ট সাপোর্ট অত্যাবশ্যক। goFLY এর ৭০% রিপিট কাস্টমার রেট এর কারণ - আমরা সফল হতে সাহায্য করি।',
-                    'Student': 'টপ লেভেল প্রস্তুতি দরকার। goFLY এর ১০,০০০+ সফল ক্লায়েন্ট এর অভিজ্ঞতা থেকে শিখুন।',
-                    'Business': 'পারফেক্ট ডকুমেন্টেশন + এক্সপার্ট গাইডেন্স = সফলতা। goFLY কল করুন: 01713-289170',
-                    'Transit': 'ভিসা অফিসার খুবই কড়া। প্রফেশনাল সাহায্য ছাড়া রিস্ক নেবেন না।'
-                }
-            };
-
-            return tips[difficulty]?.[visaType] || 'সব ডকুমেন্ট সঠিকভাবে প্রস্তুত করুন এবং প্রয়োজনে goFLY এর সাথে যোগাযোগ করুন।';
-        }
-
-        function downloadChecklist() {
-            const userName = document.getElementById('userName').value.trim();
-            const userPhone = document.getElementById('userPhone').value.trim();
-            const userEmail = document.getElementById('userEmail').value.trim();
-
-            let content = `বাংলাদেশী ভিসা চেকলিস্ট\n`;
-            content += `${'='.repeat(50)}\n\n`;
-            content += `👤 নাম: ${userName}\n`;
-            content += `📱 ফোন: ${userPhone}\n`;
-            if (userEmail) content += `📧 ইমেইল: ${userEmail}\n`;
-            content += `\n${'='.repeat(50)}\n\n`;
-            content += `গন্তব্য: ${selectedCountry.name}\n`;
-            content += `ভিসার ধরন: ${getVisaTypeBangla(selectedVisaType)}\n`;
-            content += `কঠিনতা: ${selectedCountry.difficultyBn}\n`;
-            content += `খরচ: ${selectedCountry.cost}\n`;
-            content += `প্রসেসিং সময়: ${selectedCountry.processingTime}\n`;
-            content += `তারিখ: ${new Date().toLocaleDateString('bn-BD')}\n\n`;
-            content += `💡 বিশেষ পরামর্শ: ${getPersonalizedTip(selectedCountry.difficulty, selectedVisaType)}\n\n`;
-            content += `${'='.repeat(50)}\n\n`;
-            content += `প্রয়োজনীয় ডকুমেন্ট:\n\n`;
-
-            const items = document.querySelectorAll('.checklist-item');
-            items.forEach((item, index) => {
-                const label = item.querySelector('label').textContent;
-                const checked = item.querySelector('input').checked;
-                content += `${index + 1}. [${checked ? '✓' : ' '}] ${label}\n`;
-            });
-
-            content += `\n${'='.repeat(50)}\n`;
-            content += `\n⚠️ দ্রষ্টব্য:\n`;
-            content += `এই চেকলিস্ট শুধুমাত্র সাধারণ দিকনির্দেশনার জন্য।\n`;
-            content += `সর্বদা দূতাবাসের সাথে যাচাই করুন।\n`;
-            content += `\nতথ্যসূত্র: goFLY Visa Eligibility Checker | goFLY Limited\n`;
-
-            const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `BD-Visa-Checklist-${selectedCountry.nameEn}-${Date.now()}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
-
-        function reset() {
-            destinationSelect.value = '';
-            visaTypeSelect.value = '';
-            checklistSection.classList.add('hidden');
-            formSection.classList.remove('hidden');
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        // Start
-        init();
+        let currentStep=1;const totalSteps=4;const countryData={Thailand:{difficulty:"easy"},Malaysia:{difficulty:"easy"},Indonesia:{difficulty:"easy"},Turkey:{difficulty:"easy"},"Sri Lanka":{difficulty:"easy"},Maldives:{difficulty:"easy"},Nepal:{difficulty:"easy"},Bhutan:{difficulty:"easy"},Georgia:{difficulty:"easy"},Armenia:{difficulty:"easy"},India:{difficulty:"medium"},UAE:{difficulty:"medium"},"Saudi Arabia":{difficulty:"medium"},Qatar:{difficulty:"medium"},Oman:{difficulty:"medium"},Kuwait:{difficulty:"medium"},Bahrain:{difficulty:"medium"},China:{difficulty:"medium"},Singapore:{difficulty:"medium"},Vietnam:{difficulty:"medium"},Egypt:{difficulty:"medium"},Jordan:{difficulty:"medium"},USA:{difficulty:"hard"},UK:{difficulty:"hard"},Canada:{difficulty:"hard"},Australia:{difficulty:"hard"},Schengen:{difficulty:"hard"},Japan:{difficulty:"hard"},"South Korea":{difficulty:"hard"},"New Zealand":{difficulty:"hard"},Germany:{difficulty:"very-hard"},France:{difficulty:"very-hard"},Italy:{difficulty:"very-hard"},Spain:{difficulty:"very-hard"},Switzerland:{difficulty:"very-hard"},Netherlands:{difficulty:"very-hard"},Sweden:{difficulty:"very-hard"},Norway:{difficulty:"very-hard"},Denmark:{difficulty:"very-hard"},Belgium:{difficulty:"very-hard"},Austria:{difficulty:"very-hard"},Poland:{difficulty:"very-hard"},"Czech Republic":{difficulty:"very-hard"},Hungary:{difficulty:"very-hard"}};function nextStep(t){if(1===t){const t=document.getElementById("country").value,e=document.getElementById("visaType").value;if(!t||!e)return void alert("অনুগ্রহ করে দেশ এবং সফরের উদ্দেশ্য নির্বাচন করুন")}else if(2===t){const t=document.getElementById("userName").value.trim(),e=document.getElementById("userPhone").value.trim();if(!t||!e)return void alert("অনুগ্রহ করে আপনার নাম এবং মোবাইল নম্বর দিন");if(!/^01[0-9]{9}$/.test(e))return void alert("সঠিক বাংলাদেশী মোবাইল নম্বর দিন (০১XXXXXXXXX)")}document.getElementById("step"+t).classList.remove("active"),document.getElementById("step"+(t+1)).classList.add("active"),updateProgress(t+1),currentStep=t+1,window.scrollTo({top:0,behavior:"smooth"})}function prevStep(t){document.getElementById("step"+t).classList.remove("active"),document.getElementById("step"+(t-1)).classList.add("active"),updateProgress(t-1),currentStep=t-1,window.scrollTo({top:0,behavior:"smooth"})}function updateProgress(t){document.querySelectorAll(".progress-step").forEach(((e,o)=>{const r=o+1;r<t?(e.classList.add("completed"),e.classList.remove("active")):r===t?(e.classList.add("active"),e.classList.remove("completed")):e.classList.remove("active","completed")})),document.getElementById("progressFill").style.width=(t-1)/(totalSteps-1)*100+"%"}function generateChecklist(){const t=document.getElementById("employmentStatus").value,e=document.getElementById("monthlyIncome").value,o=document.getElementById("travelHistory").value;if(!t||!e||!o)return void alert("অনুগ্রহ করে সব তথ্য পূরণ করুন");const r=document.getElementById("country").value,d=document.getElementById("visaType").value,n=document.getElementById("userName").value.trim(),s=document.getElementById("userEmail").value.trim(),c=document.getElementById("userPhone").value.trim();console.log("🎯 লিড ক্যাপচার:",{timestamp:(new Date).toLocaleString(),name:n,email:s,phone:c,country:r,visaType:d,employment:t,income:e,travelHistory:o,language:"bn"});const l=["বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ)","সাম্প্রতিক পাসপোর্ট সাইজ ছবি (সাদা ব্যাকগ্রাউন্ড)","ভিসা আবেদন ফর্ম (পূরণকৃত ও স্বাক্ষরিত)","ফ্লাইট বুকিং নিশ্চিতকরণ","হোটেল রিজার্ভেশন / থাকার প্রমাণ","ভ্রমণ বীমা (সুপারিশকৃত)","ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)"],i=getPersonalizedDocuments(t,o,e,d),a=getPersonalizedTips(r,t,o,e);countryData[r];let u=`<div class="checklist-header"><h2>✅ আপনার ব্যক্তিগত চেকলিস্ট</h2><div class="info-row">🌍 গন্তব্য: <strong>${r}</strong></div><div class="info-row">🎯 উদ্দেশ্য: <strong>${"Tourist"===d?"পর্যটন":"Business"===d?"ব্যবসা":"Medical"===d?"চিকিৎসা":"Visit"===d?"পরিবার দেখা":"ট্রানজিট"}</strong></div><div class="info-row">👤 ${n}</div><div class="info-row">📱 ${c}</div></div><div class="doc-category"><div class="category-title">📄 সাধারণ ডকুমেন্ট (সবার জন্য)</div>${l.map((t=>`<div class="doc-item">${t}</div>`)).join("")}</div><div class="doc-category"><div class="category-title">⭐ ব্যক্তিগত ডকুমেন্ট (আপনার প্রোফাইল অনুযায়ী)</div>${i.map((t=>`<div class="doc-item">${t}</div>`)).join("")}</div>${a.length>0?`<div class="tip-box"><strong>💡 আপনার জন্য পরামর্শ:</strong><br><br>${a.join("<br><br>")}</div>`:""}<div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;"><strong>🎯 সাহায্য দরকার?</strong><br><br>goFLY Limited আপনাকে সাহায্য করবে:<br>✅ ডকুমেন্ট প্রস্তুতি ও যাচাইকরণ<br>✅ ভিসা আবেদন জমা<br>✅ ইন্টারভিউ প্রস্তুতি (প্রয়োজনে)<br>✅ ফ্লাইট ও হোটেল বুকিং<br><br>📞 ব্যক্তিগত গাইডেন্সের জন্য আমাদের সাথে যোগাযোগ করুন!</div>`;document.getElementById("checklistResult").innerHTML=u,document.getElementById("step3").classList.remove("active"),document.getElementById("step4").classList.add("active"),updateProgress(4),currentStep=4,window.scrollTo({top:0,behavior:"smooth"})}function getPersonalizedDocuments(t,e,o,r){const d=[];return"Government"===t?(d.push("সরকারি কর্মচারী আইডি কার্ড (কপি)"),d.push("চাকরির সনদপত্র / NOC (অফিস থেকে)"),d.push("বেতনের সনদপত্র (শেষ ৩ মাস)")):"Private"===t?(d.push("কোম্পানি আইডি কার্ড (কপি)"),d.push("চাকরির সনদপত্র / নিয়োগ পত্র"),d.push("বেতনের সনদ ও পে-স্লিপ (শেষ ৩ মাস)")):"Self-employed"===t?(d.push("ট্রেড লাইসেন্স / ব্যবসা নিবন্ধন"),d.push("ব্যবসায়িক ব্যাংক স্টেটমেন্ট (৬ মাস)"),d.push("TIN সার্টিফিকেট"),d.push("ব্যবসায়িক কাগজপত্র (লেটারহেড, ভিজিটিং কার্ড)")):"Student"===t?(d.push("ছাত্র আইডি কার্ড (কপি)"),d.push("ভর্তি পত্র / এনরোলমেন্ট সার্টিফিকেট"),d.push("অভিভাবকের আয়ের প্রমাণ ও স্পন্সরশিপ লেটার"),d.push("বাবা-মায়ের ব্যাংক স্টেটমেন্ট")):"Unemployed"===t&&(d.push("স্পন্সর (স্বামী/স্ত্রী/বাবা-মা) আয়ের প্রমাণ"),d.push("পরিবারের সদস্যের স্পন্সরশিপ লেটার"),d.push("স্পন্সরের ব্যাংক স্টেটমেন্ট"),d.push("বিয়ের সার্টিফিকেট (স্বামী/স্ত্রী স্পন্সর হলে)")),"None"===e&&(d.push("সম্পত্তির কাগজপত্র (জমি/বাড়ির মালিকানা)"),d.push("পারিবারিক নিবন্ধন সনদ (জন্ম/বিয়ে)"),d.push("দেশে ফিরে আসার শক্তিশালী প্রমাণ")),"0-30k"===o?(d.push("💰 স্পন্সর সাহায্য বা যৌথ সম্পত্তি প্রমাণ প্রয়োজন"),d.push("💰 অতিরিক্ত আর্থিক সহায়তা ডকুমেন্ট দরকার")):"100k+"===o&&(d.push("💰 বিনিয়োগ কাগজপত্র (থাকলে) - আবেদন শক্তিশালী করে"),d.push("💰 ক্রেডিট কার্ড স্টেটমেন্ট - আর্থিক স্থিতিশীলতা দেখায়")),"Business"===r?(d.push("হোস্ট কোম্পানির ব্যবসায়িক আমন্ত্রণ পত্র"),d.push("চেম্বার অব কমার্স সদস্যপদ (প্রযোজ্য হলে)")):"Medical"===r?(d.push("মেডিকেল রিপোর্ট ও হাসপাতালের এপয়েন্টমেন্ট লেটার"),d.push("ডাক্তারের সুপারিশ পত্র")):"Visit"===r&&(d.push("হোস্টের আমন্ত্রণ পত্র (নোটারি করা)"),d.push("হোস্টের বাসস্থান প্রমাণ ও আইডি কপি")),d}function getPersonalizedTips(t,e,o,r){const d=[],n=countryData[t];return"None"===o&&d.push("⚠️ <strong>প্রথমবার ভ্রমণকারী:</strong> ভিসা অফিসাররা কঠোর। বাংলাদেশে পরিবার/সম্পত্তি বন্ধন দেখান। goFLY থেকে পেশাদার সাহায্য নিন।"),"0-30k"===r&&"easy"!==n.difficulty&&d.push("💰 <strong>এই গন্তব্যের জন্য কম আয়:</strong> একজন স্পন্সর (বাবা-মা/স্বামী-স্ত্রী) নিন বা যৌথ সম্পত্তি দেখান। শক্তিশালী আর্থিক প্রমাণ ছাড়া বাতিল হওয়ার ঝুঁকি বেশি।"),"hard"!==n.difficulty&&"very-hard"!==n.difficulty||"Unemployed"!==e&&"Student"!==e||d.push("🚨 <strong>চ্যালেঞ্জিং সমন্বয়:</strong> "+t+" ভিসা কঠিন, এবং আপনার প্রোফাইলে অতিরিক্ত কাগজপত্র দরকার। goFLY আপনার সাফল্যের হার অনেক বাড়াতে পারে।"),"Self-employed"===e&&d.push("💼 <strong>ব্যবসায়ী:</strong> নিশ্চিত করুন আপনার ব্যবসায়িক কাগজপত্র সঠিকভাবে যাচাই ও অনুবাদ করা (প্রয়োজনে)। ৬+ মাসের স্টেটমেন্ট দিয়ে ব্যবসায়িক স্থিতিশীলতা দেখান।"),d}function resetForm(){document.getElementById("step4").classList.remove("active"),document.getElementById("step1").classList.add("active"),updateProgress(1),currentStep=1,document.getElementById("country").value="",document.getElementById("visaType").value="",document.getElementById("userName").value="",document.getElementById("userEmail").value="",document.getElementById("userPhone").value="",document.getElementById("employmentStatus").value="",document.getElementById("monthlyIncome").value="",document.getElementById("travelHistory").value="",window.scrollTo({top:0,behavior:"smooth"})}
     </script>
 </body>
 </html>
