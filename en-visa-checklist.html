@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
             min-height: 100vh;
             padding: 10px;
             line-height: 1.8;
@@ -30,7 +30,7 @@
         }
 
         header {
-            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
             color: white;
             padding: 25px 20px;
             text-align: center;
@@ -102,7 +102,7 @@
         .form-group select:focus,
         .form-group input:focus {
             outline: none;
-            border-color: #006a4e;
+            border-color: #00D9A3;
             box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
         }
 
@@ -149,7 +149,7 @@
         .generate-btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -181,7 +181,7 @@
         }
 
         .checklist-header {
-            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
             color: white;
             padding: 20px;
             border-radius: 10px;
@@ -222,7 +222,7 @@
 
         .checklist-item:active {
             background: #e9ecef;
-            border-color: #006a4e;
+            border-color: #00D9A3;
         }
 
         .checklist-item input[type="checkbox"] {
@@ -232,7 +232,7 @@
             cursor: pointer;
             flex-shrink: 0;
             margin-top: 2px;
-            accent-color: #006a4e;
+            accent-color: #00D9A3;
         }
 
         .checklist-item label {
@@ -332,7 +332,7 @@
         }
 
         .gofly-section {
-            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
             color: white;
             padding: 20px;
             margin-top: 15px;
@@ -362,7 +362,7 @@
             min-width: 140px;
             padding: 12px;
             background: white;
-            color: #006a4e;
+            color: #00D9A3;
             border: none;
             border-radius: 8px;
             font-weight: 600;
@@ -430,26 +430,8 @@
         </header>
 
         <div id="formSection" class="form-section">
-            <div class="lead-capture-section">
-                <h3 style="color: #006a4e; margin-bottom: 15px; text-align: center;">📝 Your Information</h3>
-                <div class="form-group">
-                    <label for="userName">👤 Name <span style="color: red;">*</span></label>
-                    <input type="text" id="userName" placeholder="Your full name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="userPhone">📱 Phone Number <span style="color: red;">*</span></label>
-                    <input type="tel" id="userPhone" placeholder="01XXXXXXXXX" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="userEmail">📧 Email (Optional)</label>
-                    <input type="email" id="userEmail" placeholder="example@email.com">
-                </div>
-            </div>
-
             <div class="visa-selection-section">
-                <h3 style="color: #006a4e; margin-bottom: 15px; margin-top: 20px; text-align: center;">🌍 Visa Information</h3>
+                <h3 style="color: #00D9A3; margin-bottom: 15px; text-align: center;">🌍 Visa Information</h3>
                 <div class="form-group">
                     <label for="destination">🌍 Which country do you want to visit?</label>
                     <select id="destination" required></select>
@@ -464,6 +446,24 @@
                         <option value="Business">Business Visa</option>
                         <option value="Transit">Transit Visa</option>
                     </select>
+                </div>
+            </div>
+
+            <div class="lead-capture-section">
+                <h3 style="color: #00D9A3; margin-bottom: 15px; text-align: center;">📝 Your Information</h3>
+                <div class="form-group">
+                    <label for="userName">👤 Name <span style="color: red;">*</span></label>
+                    <input type="text" id="userName" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPhone">📱 Phone Number <span style="color: red;">*</span></label>
+                    <input type="tel" id="userPhone" placeholder="01XXXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">📧 Email (Optional)</label>
+                    <input type="email" id="userEmail" placeholder="example@email.com">
                 </div>
             </div>
 
