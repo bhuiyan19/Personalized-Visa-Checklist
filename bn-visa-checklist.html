@@ -310,6 +310,13 @@
         footer p {
             font-size: 0.85em;
             line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .credit-info {
+            font-size: 0.8em;
+            color: #007bff;
+            margin-top: 10px;
         }
 
         .hidden {
@@ -374,7 +381,8 @@
 
         <footer>
             <p>⚠️ <strong>দ্রষ্টব্য:</strong> এই চেকলিস্ট শুধুমাত্র সাধারণ দিকনির্দেশনার জন্য। সর্বদা সংশ্লিষ্ট দেশের দূতাবাস বা কনস্যুলেটের সাথে যাচাই করুন।</p>
-            <p style="margin-top: 10px;">🇧🇩 বাংলাদেশী পাসপোর্ট হোল্ডারদের জন্য বিশেষভাবে তৈরি</p>
+            <p>🇧🇩 বাংলাদেশী পাসপোর্ট হোল্ডারদের জন্য বিশেষভাবে তৈরি</p>
+            <p class="credit-info">📊 তথ্যসূত্র: <strong>goFLY Visa Eligibility Checker</strong> | goFLY Limited</p>
         </footer>
     </div>
 
@@ -633,6 +641,7 @@
             content += `\n⚠️ দ্রষ্টব্য:\n`;
             content += `এই চেকলিস্ট শুধুমাত্র সাধারণ দিকনির্দেশনার জন্য।\n`;
             content += `সর্বদা দূতাবাসের সাথে যাচাই করুন।\n`;
+            content += `\nতথ্যসূত্র: goFLY Visa Eligibility Checker | goFLY Limited\n`;
 
             const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
             const url = window.URL.createObjectURL(blob);
