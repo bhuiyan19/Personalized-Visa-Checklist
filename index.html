@@ -53,6 +53,16 @@
             opacity: 0.95;
         }
 
+        .passport-rank {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
         .lang-toggle {
             position: absolute;
             top: 15px;
@@ -405,6 +415,7 @@
             <div class="bd-flag">🇧🇩</div>
             <h1>Personalized Visa Checklist</h1>
             <p class="subtitle">For Bangladeshi Passport Holders • 44 Countries</p>
+            <div class="passport-rank">🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️</div>
         </header>
 
         <!-- Progress Indicator -->
@@ -601,6 +612,11 @@
             <p style="font-size: 0.8em; margin-top: 15px; opacity: 0.7; line-height: 1.6;">
                 <strong>Disclaimer:</strong> This checklist is for informational purposes only, based on public sources like Henley Passport Index 2026 (Bangladesh: Rank 95th, 37 visa-free destinations), Wikipedia, and embassy guidelines as of January 2026. Visa decisions depend on individual profiles. Rules change frequently. Always verify on official embassy websites or VFS Global. We are not responsible for visa rejections or changes.
             </p>
+            <p style="font-size: 0.75em; margin-top: 10px; opacity: 0.6;">
+                📚 Sources: <a href="https://www.henleyglobal.com/passport-index" target="_blank" style="color: #00D9A3;">Henley Passport Index</a> |
+                <a href="https://www.passportindex.org" target="_blank" style="color: #00D9A3;">Passport Index</a> |
+                <a href="https://www.vfsglobal.com" target="_blank" style="color: #00D9A3;">VFS Global</a>
+            </p>
             <p class="footer-credit">🚀 Powered by goFLY • Your Trusted Travel Partner Since 2020</p>
         </footer>
     </div>
@@ -751,13 +767,14 @@
 
             // Generate checklist
             const standardDocs = [
-                'Valid passport (minimum 6 months validity)',
-                'Recent passport-size photos (white background)',
-                'Visa application form (filled & signed)',
-                'Flight booking confirmation',
-                'Hotel reservation / Accommodation proof',
-                'Travel insurance (recommended)',
-                'Bank statement (last 6 months)'
+                'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
+                'Recent passport photos (35x45mm, white background, country-specific)',
+                'Completed visa application form (online/offline)',
+                'Flight itinerary/reservation (return ticket proof)',
+                'Hotel booking/accommodation proof',
+                'Travel insurance (Schengen mandatory: min €30,000 coverage)',
+                'Bank statements (last 6 months with salary credits)',
+                'Proof of ties to home country (job letter, family, property docs)'
             ];
 
             const personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
@@ -817,28 +834,31 @@
 
             // Employment-based documents
             if (employment === 'Government') {
-                docs.push('Government employee ID card (copy)');
-                docs.push('Service certificate / NOC from office');
-                docs.push('Salary certificate (last 3 months)');
+                docs.push('Government ID card copy');
+                docs.push('Official NOC/Service certificate with leave approval & return date');
+                docs.push('Salary certificate/pay slips (last 6 months)');
+                docs.push('Promotion letter (if any - strengthens ties)');
             } else if (employment === 'Private') {
-                docs.push('Company ID card (copy)');
-                docs.push('Job certificate / Appointment letter');
-                docs.push('Salary certificate & pay slips (last 3 months)');
+                docs.push('Company ID card');
+                docs.push('Employment letter/NOC on company letterhead');
+                docs.push('Salary slips (3-6 months)');
+                docs.push('Bank statement showing salary deposit');
             } else if (employment === 'Self-employed') {
-                docs.push('Trade license / Business registration');
-                docs.push('Business bank statements (6 months)');
-                docs.push('TIN certificate');
-                docs.push('Business documents (letterhead, visiting card)');
+                docs.push('Renewed Trade License');
+                docs.push('TIN certificate + Tax return (last 2 years)');
+                docs.push('Business bank statements (6-12 months)');
+                docs.push('Chamber membership, invoices, visiting card');
             } else if (employment === 'Student') {
-                docs.push('Student ID card (copy)');
-                docs.push('Admission letter / Enrollment certificate');
-                docs.push('Guardian income proof & sponsorship letter');
-                docs.push('Parent\'s bank statement');
+                docs.push('Student ID card');
+                docs.push('Enrollment/Admission letter from institution');
+                docs.push('NOC from university/school');
+                docs.push('Parent/guardian sponsorship letter + income proof');
+                docs.push('Parent\'s bank statements (6 months)');
             } else if (employment === 'Unemployed') {
-                docs.push('Sponsor (spouse/parent) income proof');
-                docs.push('Sponsorship letter from family member');
-                docs.push('Sponsor\'s bank statement');
-                docs.push('Marriage certificate (if spouse sponsors)');
+                docs.push('Sponsor (spouse/parent) full documents');
+                docs.push('Notarized sponsorship letter');
+                docs.push('Sponsor\'s bank statements + income proof');
+                docs.push('Relation proof (marriage/birth certificate)');
             }
 
             // Travel history based
