@@ -465,6 +465,39 @@
                     <label for="userEmail">📧 Email (Optional)</label>
                     <input type="email" id="userEmail" placeholder="example@email.com">
                 </div>
+
+                <div class="form-group">
+                    <label for="employmentStatus">💼 Employment Status <span style="color: red;">*</span></label>
+                    <select id="employmentStatus" required>
+                        <option value="">Select...</option>
+                        <option value="government">Government Employee</option>
+                        <option value="private">Private Employee</option>
+                        <option value="self-employed">Self-Employed / Business</option>
+                        <option value="student">Student</option>
+                        <option value="unemployed">Unemployed / Homemaker</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyIncome">💰 Monthly Income (Optional)</label>
+                    <select id="monthlyIncome">
+                        <option value="">Select...</option>
+                        <option value="0-30k">৳0 - 30,000</option>
+                        <option value="30k-60k">৳30,000 - 60,000</option>
+                        <option value="60k-100k">৳60,000 - 100,000</option>
+                        <option value="100k+">৳100,000+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="travelHistory">✈️ Previous International Travel? <span style="color: red;">*</span></label>
+                    <select id="travelHistory" required>
+                        <option value="">Select...</option>
+                        <option value="yes">Yes, multiple times</option>
+                        <option value="once">Yes, once</option>
+                        <option value="no">No, first time</option>
+                    </select>
+                </div>
             </div>
 
             <button id="generateBtn" class="generate-btn">Generate Checklist →</button>
@@ -670,11 +703,14 @@
             const userName = document.getElementById('userName').value.trim();
             const userPhone = document.getElementById('userPhone').value.trim();
             const userEmail = document.getElementById('userEmail').value.trim();
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+            const travelHistory = document.getElementById('travelHistory').value;
             const destination = destinationSelect.value;
             const visaType = visaTypeSelect.value;
 
-            if (!userName || !userPhone) {
-                alert('Please provide your name and phone number!');
+            if (!userName || !userPhone || !employmentStatus || !travelHistory) {
+                alert('Please fill in all required fields!');
                 return;
             }
 
@@ -689,11 +725,14 @@
                 return;
             }
 
-            // Capture lead data
+            // Capture ENHANCED lead data
             const leadData = {
                 name: userName,
                 phone: userPhone,
                 email: userEmail || 'Not provided',
+                employmentStatus: employmentStatus,
+                monthlyIncome: monthlyIncome || 'Not provided',
+                travelHistory: travelHistory,
                 destination: destination,
                 visaType: visaType,
                 timestamp: new Date().toISOString(),
@@ -701,7 +740,7 @@
             };
 
             // Log lead data (in production, send to backend/CRM)
-            console.log('🎯 NEW LEAD CAPTURED:', leadData);
+            console.log('🎯 ENHANCED LEAD CAPTURED:', leadData);
 
             // You can send this to a backend API:
             // fetch('https://gofly.com/api/leads', {
@@ -741,11 +780,20 @@
                 </div>
             `;
 
-            // Checklist items
+            // Checklist items - BASE
             let items = [...visaChecklists.common];
             if (visaChecklists[selectedVisaType]) {
                 items = items.concat(visaChecklists[selectedVisaType]);
             }
+
+            // ADD PROFESSION-SPECIFIC ITEMS
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const travelHistory = document.getElementById('travelHistory').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+
+            items = items.concat(getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, selectedVisaType));
+
+            // Remove duplicates
             items = [...new Set(items)];
 
             let html = '';
@@ -787,6 +835,62 @@
                     </div>
                 `;
             }
+        }
+
+        function getPersonalizedDocuments(employment, travelHistory, income, visaType) {
+            let additionalDocs = [];
+
+            // EMPLOYMENT-SPECIFIC DOCUMENTS
+            if (employment === 'government') {
+                additionalDocs.push('NOC (No Objection Certificate) from department');
+                additionalDocs.push('Permanent appointment letter (if applicable)');
+                additionalDocs.push('Latest salary slips');
+            } else if (employment === 'private') {
+                additionalDocs.push('Permission letter from company head');
+                additionalDocs.push('Last 3 months salary slips');
+                additionalDocs.push('Company trade license copy');
+            } else if (employment === 'self-employed') {
+                additionalDocs.push('Business trade license');
+                additionalDocs.push('Business bank statements (last 6 months)');
+                additionalDocs.push('Tax return certificate (TIN)');
+                additionalDocs.push('Business registration certificate');
+                additionalDocs.push('Contracts with clients/suppliers');
+            } else if (employment === 'student') {
+                additionalDocs.push('Leave permission from institution');
+                additionalDocs.push('Student ID card copy');
+                additionalDocs.push('Guardian income proof');
+                additionalDocs.push('Guardian sponsorship letter');
+            } else if (employment === 'unemployed') {
+                additionalDocs.push('Sponsor (spouse/parent) income proof');
+                additionalDocs.push('Sponsor bank statements');
+                additionalDocs.push('Sponsorship letter (notarized)');
+                additionalDocs.push('Relationship proof with sponsor (marriage/birth certificate)');
+            }
+
+            // TRAVEL HISTORY-SPECIFIC
+            if (travelHistory === 'no') {
+                additionalDocs.push('⚠️ First-time traveler: Strong financial proof essential');
+                additionalDocs.push('Property documents (land/apartment ownership)');
+                additionalDocs.push('Family ties proof (evidence of return intent)');
+                if (visaType === 'Tourist') {
+                    additionalDocs.push('Detailed tour plan with bookings');
+                }
+            } else if (travelHistory === 'once') {
+                additionalDocs.push('Previous visa copy (passport stamp)');
+                additionalDocs.push('Previous trip return ticket copy');
+            } else if (travelHistory === 'yes') {
+                additionalDocs.push('✅ Travel history: This will help your case');
+                additionalDocs.push('All country visa copies (passport pages)');
+            }
+
+            // INCOME-SPECIFIC
+            if (income === '0-30k') {
+                additionalDocs.push('💰 Low income: Sponsor help or joint property proof needed');
+            } else if (income === '100k+') {
+                additionalDocs.push('💰 High income: Visa approval will be easier');
+            }
+
+            return additionalDocs;
         }
 
         function getPersonalizedTip(difficulty, visaType) {
