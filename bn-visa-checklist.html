@@ -240,7 +240,401 @@
         </footer>
     </div>
     <script>
-        let currentStep=1;const totalSteps=4;const countryData={Thailand:{difficulty:"easy"},Malaysia:{difficulty:"easy"},Indonesia:{difficulty:"easy"},Turkey:{difficulty:"easy"},"Sri Lanka":{difficulty:"easy"},Maldives:{difficulty:"easy"},Nepal:{difficulty:"easy"},Bhutan:{difficulty:"easy"},Georgia:{difficulty:"easy"},Armenia:{difficulty:"easy"},India:{difficulty:"medium"},UAE:{difficulty:"medium"},"Saudi Arabia":{difficulty:"medium"},Qatar:{difficulty:"medium"},Oman:{difficulty:"medium"},Kuwait:{difficulty:"medium"},Bahrain:{difficulty:"medium"},China:{difficulty:"medium"},Singapore:{difficulty:"medium"},Vietnam:{difficulty:"medium"},Egypt:{difficulty:"medium"},Jordan:{difficulty:"medium"},USA:{difficulty:"hard"},UK:{difficulty:"hard"},Canada:{difficulty:"hard"},Australia:{difficulty:"hard"},Schengen:{difficulty:"hard"},Japan:{difficulty:"hard"},"South Korea":{difficulty:"hard"},"New Zealand":{difficulty:"hard"},Germany:{difficulty:"very-hard"},France:{difficulty:"very-hard"},Italy:{difficulty:"very-hard"},Spain:{difficulty:"very-hard"},Switzerland:{difficulty:"very-hard"},Netherlands:{difficulty:"very-hard"},Sweden:{difficulty:"very-hard"},Norway:{difficulty:"very-hard"},Denmark:{difficulty:"very-hard"},Belgium:{difficulty:"very-hard"},Austria:{difficulty:"very-hard"},Poland:{difficulty:"very-hard"},"Czech Republic":{difficulty:"very-hard"},Hungary:{difficulty:"very-hard"}};function nextStep(t){if(1===t){const t=document.getElementById("country").value,e=document.getElementById("visaType").value;if(!t||!e)return void alert("অনুগ্রহ করে দেশ এবং সফরের উদ্দেশ্য নির্বাচন করুন")}else if(2===t){const t=document.getElementById("userName").value.trim(),e=document.getElementById("userPhone").value.trim();if(!t||!e)return void alert("অনুগ্রহ করে আপনার নাম এবং মোবাইল নম্বর দিন");if(!/^01[0-9]{9}$/.test(e))return void alert("সঠিক বাংলাদেশী মোবাইল নম্বর দিন (০১XXXXXXXXX)")}document.getElementById("step"+t).classList.remove("active"),document.getElementById("step"+(t+1)).classList.add("active"),updateProgress(t+1),currentStep=t+1,window.scrollTo({top:0,behavior:"smooth"})}function prevStep(t){document.getElementById("step"+t).classList.remove("active"),document.getElementById("step"+(t-1)).classList.add("active"),updateProgress(t-1),currentStep=t-1,window.scrollTo({top:0,behavior:"smooth"})}function updateProgress(t){document.querySelectorAll(".progress-step").forEach(((e,o)=>{const r=o+1;r<t?(e.classList.add("completed"),e.classList.remove("active")):r===t?(e.classList.add("active"),e.classList.remove("completed")):e.classList.remove("active","completed")})),document.getElementById("progressFill").style.width=(t-1)/(totalSteps-1)*100+"%"}function generateChecklist(){const t=document.getElementById("employmentStatus").value,e=document.getElementById("monthlyIncome").value,o=document.getElementById("travelHistory").value;if(!t||!e||!o)return void alert("অনুগ্রহ করে সব তথ্য পূরণ করুন");const r=document.getElementById("country").value,d=document.getElementById("visaType").value,n=document.getElementById("userName").value.trim(),s=document.getElementById("userEmail").value.trim(),c=document.getElementById("userPhone").value.trim();console.log("🎯 লিড ক্যাপচার:",{timestamp:(new Date).toLocaleString(),name:n,email:s,phone:c,country:r,visaType:d,employment:t,income:e,travelHistory:o,language:"bn"});const l=["বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ)","সাম্প্রতিক পাসপোর্ট সাইজ ছবি (সাদা ব্যাকগ্রাউন্ড)","ভিসা আবেদন ফর্ম (পূরণকৃত ও স্বাক্ষরিত)","ফ্লাইট বুকিং নিশ্চিতকরণ","হোটেল রিজার্ভেশন / থাকার প্রমাণ","ভ্রমণ বীমা (সুপারিশকৃত)","ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)"],i=getPersonalizedDocuments(t,o,e,d),a=getPersonalizedTips(r,t,o,e);countryData[r];let u=`<div class="checklist-header"><h2>✅ আপনার ব্যক্তিগত চেকলিস্ট</h2><div class="info-row">🌍 গন্তব্য: <strong>${r}</strong></div><div class="info-row">🎯 উদ্দেশ্য: <strong>${"Tourist"===d?"পর্যটন":"Business"===d?"ব্যবসা":"Medical"===d?"চিকিৎসা":"Visit"===d?"পরিবার দেখা":"ট্রানজিট"}</strong></div><div class="info-row">👤 ${n}</div><div class="info-row">📱 ${c}</div></div><div class="doc-category"><div class="category-title">📄 সাধারণ ডকুমেন্ট (সবার জন্য)</div>${l.map((t=>`<div class="doc-item">${t}</div>`)).join("")}</div><div class="doc-category"><div class="category-title">⭐ ব্যক্তিগত ডকুমেন্ট (আপনার প্রোফাইল অনুযায়ী)</div>${i.map((t=>`<div class="doc-item">${t}</div>`)).join("")}</div>${a.length>0?`<div class="tip-box"><strong>💡 আপনার জন্য পরামর্শ:</strong><br><br>${a.join("<br><br>")}</div>`:""}<div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;"><strong>🎯 সাহায্য দরকার?</strong><br><br>goFLY Limited আপনাকে সাহায্য করবে:<br>✅ ডকুমেন্ট প্রস্তুতি ও যাচাইকরণ<br>✅ ভিসা আবেদন জমা<br>✅ ইন্টারভিউ প্রস্তুতি (প্রয়োজনে)<br>✅ ফ্লাইট ও হোটেল বুকিং<br><br>📞 ব্যক্তিগত গাইডেন্সের জন্য আমাদের সাথে যোগাযোগ করুন!</div>`;document.getElementById("checklistResult").innerHTML=u,document.getElementById("step3").classList.remove("active"),document.getElementById("step4").classList.add("active"),updateProgress(4),currentStep=4,window.scrollTo({top:0,behavior:"smooth"})}function getPersonalizedDocuments(t,e,o,r){const d=[];return"Government"===t?(d.push("সরকারি কর্মচারী আইডি কার্ড (কপি)"),d.push("চাকরির সনদপত্র / NOC (অফিস থেকে)"),d.push("বেতনের সনদপত্র (শেষ ৩ মাস)")):"Private"===t?(d.push("কোম্পানি আইডি কার্ড (কপি)"),d.push("চাকরির সনদপত্র / নিয়োগ পত্র"),d.push("বেতনের সনদ ও পে-স্লিপ (শেষ ৩ মাস)")):"Self-employed"===t?(d.push("ট্রেড লাইসেন্স / ব্যবসা নিবন্ধন"),d.push("ব্যবসায়িক ব্যাংক স্টেটমেন্ট (৬ মাস)"),d.push("TIN সার্টিফিকেট"),d.push("ব্যবসায়িক কাগজপত্র (লেটারহেড, ভিজিটিং কার্ড)")):"Student"===t?(d.push("ছাত্র আইডি কার্ড (কপি)"),d.push("ভর্তি পত্র / এনরোলমেন্ট সার্টিফিকেট"),d.push("অভিভাবকের আয়ের প্রমাণ ও স্পন্সরশিপ লেটার"),d.push("বাবা-মায়ের ব্যাংক স্টেটমেন্ট")):"Unemployed"===t&&(d.push("স্পন্সর (স্বামী/স্ত্রী/বাবা-মা) আয়ের প্রমাণ"),d.push("পরিবারের সদস্যের স্পন্সরশিপ লেটার"),d.push("স্পন্সরের ব্যাংক স্টেটমেন্ট"),d.push("বিয়ের সার্টিফিকেট (স্বামী/স্ত্রী স্পন্সর হলে)")),"None"===e&&(d.push("সম্পত্তির কাগজপত্র (জমি/বাড়ির মালিকানা)"),d.push("পারিবারিক নিবন্ধন সনদ (জন্ম/বিয়ে)"),d.push("দেশে ফিরে আসার শক্তিশালী প্রমাণ")),"0-30k"===o?(d.push("💰 স্পন্সর সাহায্য বা যৌথ সম্পত্তি প্রমাণ প্রয়োজন"),d.push("💰 অতিরিক্ত আর্থিক সহায়তা ডকুমেন্ট দরকার")):"100k+"===o&&(d.push("💰 বিনিয়োগ কাগজপত্র (থাকলে) - আবেদন শক্তিশালী করে"),d.push("💰 ক্রেডিট কার্ড স্টেটমেন্ট - আর্থিক স্থিতিশীলতা দেখায়")),"Business"===r?(d.push("হোস্ট কোম্পানির ব্যবসায়িক আমন্ত্রণ পত্র"),d.push("চেম্বার অব কমার্স সদস্যপদ (প্রযোজ্য হলে)")):"Medical"===r?(d.push("মেডিকেল রিপোর্ট ও হাসপাতালের এপয়েন্টমেন্ট লেটার"),d.push("ডাক্তারের সুপারিশ পত্র")):"Visit"===r&&(d.push("হোস্টের আমন্ত্রণ পত্র (নোটারি করা)"),d.push("হোস্টের বাসস্থান প্রমাণ ও আইডি কপি")),d}function getPersonalizedTips(t,e,o,r){const d=[],n=countryData[t];return"None"===o&&d.push("⚠️ <strong>প্রথমবার ভ্রমণকারী:</strong> ভিসা অফিসাররা কঠোর। বাংলাদেশে পরিবার/সম্পত্তি বন্ধন দেখান। goFLY থেকে পেশাদার সাহায্য নিন।"),"0-30k"===r&&"easy"!==n.difficulty&&d.push("💰 <strong>এই গন্তব্যের জন্য কম আয়:</strong> একজন স্পন্সর (বাবা-মা/স্বামী-স্ত্রী) নিন বা যৌথ সম্পত্তি দেখান। শক্তিশালী আর্থিক প্রমাণ ছাড়া বাতিল হওয়ার ঝুঁকি বেশি।"),"hard"!==n.difficulty&&"very-hard"!==n.difficulty||"Unemployed"!==e&&"Student"!==e||d.push("🚨 <strong>চ্যালেঞ্জিং সমন্বয়:</strong> "+t+" ভিসা কঠিন, এবং আপনার প্রোফাইলে অতিরিক্ত কাগজপত্র দরকার। goFLY আপনার সাফল্যের হার অনেক বাড়াতে পারে।"),"Self-employed"===e&&d.push("💼 <strong>ব্যবসায়ী:</strong> নিশ্চিত করুন আপনার ব্যবসায়িক কাগজপত্র সঠিকভাবে যাচাই ও অনুবাদ করা (প্রয়োজনে)। ৬+ মাসের স্টেটমেন্ট দিয়ে ব্যবসায়িক স্থিতিশীলতা দেখান।"),d}function resetForm(){document.getElementById("step4").classList.remove("active"),document.getElementById("step1").classList.add("active"),updateProgress(1),currentStep=1,document.getElementById("country").value="",document.getElementById("visaType").value="",document.getElementById("userName").value="",document.getElementById("userEmail").value="",document.getElementById("userPhone").value="",document.getElementById("employmentStatus").value="",document.getElementById("monthlyIncome").value="",document.getElementById("travelHistory").value="",window.scrollTo({top:0,behavior:"smooth"})}
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // সব দেশের সঠিক ভিসা তথ্য
+        const countryData = {
+            // ভিসা-মুক্ত/অন-অ্যারাইভাল (খুব সহজ)
+            'Maldives': { difficulty: 'easy', time: '০', fee: 'ফ্রি (আগমনে)', requiresVisa: false, verySimple: true },
+            'Nepal': { difficulty: 'easy', time: '০', fee: 'ফ্রি (আগমনে)', requiresVisa: false, verySimple: true },
+            'Bhutan': { difficulty: 'easy', time: '৫-৭', fee: '৳৮,০০০-১২,০০০', requiresVisa: true, verySimple: true },
+
+            // ই-ভিসা সহজ দেশ
+            'Thailand': { difficulty: 'easy', time: '৩-৫', fee: '৳৪,০০০-৬,০০০', requiresVisa: true, easyEVisa: true },
+            'Malaysia': { difficulty: 'easy', time: '২-৪', fee: '৳৩,০০০-৫,০০০', requiresVisa: true, easyEVisa: true },
+            'Indonesia': { difficulty: 'easy', time: '৩-৭', fee: '৳৩,৫০০-৫,৫০০', requiresVisa: true, easyEVisa: true },
+            'Turkey': { difficulty: 'easy', time: '৫-১০', fee: '৳৫,০০০-৮,০০০', requiresVisa: true, easyEVisa: true },
+            'Sri Lanka': { difficulty: 'easy', time: '১-২', fee: '৳২,৫০০-৪,০০০', requiresVisa: true, easyEVisa: true },
+            'Georgia': { difficulty: 'easy', time: '৩-৫', fee: '৳৪,০০০-৬,০০০', requiresVisa: true, easyEVisa: true },
+            'Armenia': { difficulty: 'easy', time: '৩-৫', fee: '৳৩,০০০-৫,০০০', requiresVisa: true, easyEVisa: true },
+
+            // মাঝারি কঠিন
+            'India': { difficulty: 'medium', time: '৪-৭', fee: '৳২,০০০-৪,০০০', moderate: true },
+            'UAE': { difficulty: 'medium', time: '৩-৫', fee: '৳৮,০০০-১৫,০০০', moderate: true },
+            'Saudi Arabia': { difficulty: 'medium', time: '৭-১৫', fee: '৳১৫,০০০-২৫,০০০', moderate: true },
+            'Qatar': { difficulty: 'medium', time: '৫-১০', fee: '৳১০,০০০-১৮,০০০', moderate: true },
+            'Oman': { difficulty: 'medium', time: '৫-১০', fee: '৳৮,০০০-১২,০০০', moderate: true },
+            'Kuwait': { difficulty: 'medium', time: '৭-১৫', fee: '৳১২,০০০-২০,০০০', moderate: true },
+            'Bahrain': { difficulty: 'medium', time: '৫-১০', fee: '৳৮,০০০-১৫,০০০', moderate: true },
+            'China': { difficulty: 'medium', time: '৭-১৫', fee: '৳১২,০০০-১৮,০০০', moderate: true },
+            'Singapore': { difficulty: 'medium', time: '৩-৫', fee: '৳৮,০০০-১২,০০০', moderate: true },
+            'Vietnam': { difficulty: 'medium', time: '৫-৭', fee: '৳৫,০০০-৮,০০০', moderate: true },
+            'Egypt': { difficulty: 'medium', time: '৭-১০', fee: '৳৮,০০০-১২,০০০', moderate: true },
+            'Jordan': { difficulty: 'medium', time: '৫-১০', fee: '৳৬,০০০-১০,০০০', moderate: true },
+
+            // কঠিন ও খুব কঠিন
+            'USA': { difficulty: 'hard', time: '৩০-৯০', fee: '৳১৮,০০০-২৫,০০০', comprehensive: true },
+            'UK': { difficulty: 'hard', time: '১৫-৩০', fee: '৳৩৫,০০০-৪৫,০০০', comprehensive: true },
+            'Canada': { difficulty: 'hard', time: '১৫-৩০', fee: '৳১৫,০০০-২২,০০০', comprehensive: true },
+            'Australia': { difficulty: 'hard', time: '১৫-৩০', fee: '৳২০,০০০-৩০,০০০', comprehensive: true },
+            'Schengen': { difficulty: 'hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Japan': { difficulty: 'hard', time: '৭-১৫', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
+            'South Korea': { difficulty: 'hard', time: '৭-১৫', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'New Zealand': { difficulty: 'hard', time: '১৫-৩০', fee: '৳১৮,০০০-২৫,০০০', comprehensive: true },
+            'Germany': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'France': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Italy': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Spain': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Switzerland': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳১০,০০০-১৫,০০০', comprehensive: true },
+            'Netherlands': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Sweden': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Norway': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Denmark': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Belgium': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Austria': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Poland': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
+            'Czech Republic': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
+            'Hungary': { difficulty: 'very-hard', time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true }
+        };
+
+        function nextStep(step) {
+            if (step === 1) {
+                const country = document.getElementById('country').value;
+                const visaType = document.getElementById('visaType').value;
+                if (!country || !visaType) {
+                    alert('অনুগ্রহ করে দেশ এবং সফরের উদ্দেশ্য নির্বাচন করুন');
+                    return;
+                }
+            } else if (step === 2) {
+                const userName = document.getElementById('userName').value.trim();
+                const userPhone = document.getElementById('userPhone').value.trim();
+                if (!userName || !userPhone) {
+                    alert('অনুগ্রহ করে আপনার নাম এবং মোবাইল নম্বর দিন');
+                    return;
+                }
+                if (!/^01[0-9]{9}$/.test(userPhone)) {
+                    alert('সঠিক বাংলাদেশী মোবাইল নম্বর দিন (০১XXXXXXXXX)');
+                    return;
+                }
+            }
+
+            document.getElementById('step' + step).classList.remove('active');
+            document.getElementById('step' + (step + 1)).classList.add('active');
+            updateProgress(step + 1);
+            currentStep = step + 1;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            document.getElementById('step' + step).classList.remove('active');
+            document.getElementById('step' + (step - 1)).classList.add('active');
+            updateProgress(step - 1);
+            currentStep = step - 1;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress(step) {
+            document.querySelectorAll('.progress-step').forEach((el, index) => {
+                const stepNum = index + 1;
+                if (stepNum < step) {
+                    el.classList.add('completed');
+                    el.classList.remove('active');
+                } else if (stepNum === step) {
+                    el.classList.add('active');
+                    el.classList.remove('completed');
+                } else {
+                    el.classList.remove('active', 'completed');
+                }
+            });
+
+            const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+        }
+
+        function generateChecklist() {
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+            const travelHistory = document.getElementById('travelHistory').value;
+
+            if (!employmentStatus || !monthlyIncome || !travelHistory) {
+                alert('অনুগ্রহ করে সব তথ্য পূরণ করুন');
+                return;
+            }
+
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+
+            console.log('🎯 লিড ক্যাপচার:', {
+                timestamp: new Date().toLocaleString(),
+                name: userName,
+                email: userEmail,
+                phone: userPhone,
+                country: country,
+                visaType: visaType,
+                employment: employmentStatus,
+                income: monthlyIncome,
+                travelHistory: travelHistory,
+                language: 'bn'
+            });
+
+            const countryInfo = countryData[country];
+            let standardDocs, personalizedDocs, tips;
+
+            if (countryInfo && countryInfo.verySimple) {
+                // ক্যাটাগরি ১: ভিসা-মুক্ত (খুব সহজ)
+                standardDocs = [
+                    'বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ)',
+                    'ফেরত ফ্লাইট টিকেট',
+                    'হোটেল বুকিং বা থাকার প্রমাণ',
+                    'পর্যাপ্ত ভ্রমণ খরচ (নগদ/কার্ড)'
+                ];
+
+                if (country === 'Bhutan') {
+                    standardDocs.push('ট্যুর প্যাকেজ বুকিং (অনুমোদিত অপারেটরের মাধ্যমে বাধ্যতামূলক)');
+                    standardDocs.push('সাসটেইনেবল ডেভেলপমেন্ট ফি ($১০০/দিন)');
+                }
+
+                personalizedDocs = [];
+                tips = [`✅ ${country} বাংলাদেশী পাসপোর্টধারীদের জন্য ভিসা-মুক্ত! খুবই সহজ প্রক্রিয়া।`];
+
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                // ক্যাটাগরি ২: ই-ভিসা সহজ দেশ
+                standardDocs = [
+                    'বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ + ২টি ফাঁকা পাতা)',
+                    'সাম্প্রতিক পাসপোর্ট সাইজ ছবি (৩৫x৪৫mm, সাদা ব্যাকগ্রাউন্ড)',
+                    'অনলাইন ভিসা আবেদন ফর্ম (পূরণকৃত)',
+                    'ফ্লাইট বুকিং (ফেরত টিকেট)',
+                    'হোটেল বুকিং/থাকার প্রমাণ',
+                    'ব্যাংক স্টেটমেন্ট (শেষ ৩ মাস)',
+                    'ভ্রমণ পরিকল্পনা'
+                ];
+
+                personalizedDocs = [];
+
+                if (employmentStatus === 'Government' || employmentStatus === 'Private') {
+                    personalizedDocs.push('চাকরির সনদপত্র/NOC');
+                } else if (employmentStatus === 'Self-employed') {
+                    personalizedDocs.push('ট্রেড লাইসেন্স কপি');
+                } else if (employmentStatus === 'Student') {
+                    personalizedDocs.push('ছাত্র আইডি + প্রতিষ্ঠান থেকে NOC');
+                    personalizedDocs.push('অভিভাবকের স্পন্সরশিপ লেটার');
+                } else if (employmentStatus === 'Unemployed') {
+                    personalizedDocs.push('স্পন্সর ডকুমেন্ট (প্রযোজ্য হলে)');
+                }
+
+                tips = [`✅ ${country} ই-ভিসা/অন অ্যারাইভাল ভিসা দেয় - সহজ অনলাইন প্রক্রিয়া! বাংলাদেশীদের জন্য সাফল্যের হার উচ্চ।`];
+
+            } else if (countryInfo && countryInfo.moderate) {
+                // ক্যাটাগরি ৩: মাঝারি কঠিন
+                standardDocs = [
+                    'বৈধ পাসপোর্ট (কমপক্ষে ৬ মাসের মেয়াদ + ২টি ফাঁকা পাতা)',
+                    'সাম্প্রতিক পাসপোর্ট ছবি (৩৫x৪৫mm, সাদা ব্যাকগ্রাউন্ড, দেশ-নির্দিষ্ট)',
+                    'ভিসা আবেদন ফর্ম (অনলাইন/অফলাইন পূরণকৃত)',
+                    'ফ্লাইট বুকিং/রিজার্ভেশন (ফেরত টিকেট প্রমাণ)',
+                    'হোটেল বুকিং/থাকার প্রমাণ',
+                    'ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)',
+                    'বেতনের সনদ বা আয়ের প্রমাণ (শেষ ৩ মাস)',
+                    'চাকরির সনদপত্র/NOC (চাকরিজীবীদের জন্য)',
+                    'কভার লেটার (সফরের উদ্দেশ্য ব্যাখ্যা)',
+                    'দিন-ভিত্তিক ভ্রমণ পরিকল্পনা'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+
+            } else {
+                // ক্যাটাগরি ৪: কঠিন ও খুব কঠিন (পূর্ণাঙ্গ)
+                standardDocs = [
+                    'বৈধ পাসপোর্ট (থাকার সময়ের বাইরে ৬+ মাস মেয়াদ + ২টি ফাঁকা পাতা)',
+                    'সাম্প্রতিক পাসপোর্ট ছবি (৩৫x৪৫mm, সাদা ব্যাকগ্রাউন্ড, দেশ-নির্দিষ্ট)',
+                    'ভিসা আবেদন ফর্ম (অনলাইন/অফলাইন সম্পূর্ণভাবে পূরণকৃত)',
+                    'ফ্লাইট বুকিং/রিজার্ভেশন (ফেরত টিকেট প্রমাণ)',
+                    'সম্পূর্ণ থাকার জন্য হোটেল বুকিং প্রমাণ',
+                    'ভ্রমণ বীমা (Schengen বাধ্যতামূলক: ন্যূনতম €৩০,০০০ কভারেজ)',
+                    'ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস, বেতন জমা হাইলাইট করা)',
+                    'আয়কর রিটার্ন (শেষ ২ বছর)',
+                    'বেতনের স্লিপ (শেষ ৬ মাস)',
+                    'চাকরির সনদপত্র/NOC (কোম্পানির লেটারহেডে)',
+                    'কোম্পানি নিবন্ধন/ট্রেড লাইসেন্স (স্বনিযুক্ত হলে)',
+                    'সম্পত্তির কাগজপত্র (জমি/বাড়ির মালিকানা)',
+                    'পারিবারিক বন্ধন প্রমাণ (বিয়ে/জন্ম সার্টিফিকেট)',
+                    'কভার লেটার (উদ্দেশ্য ও ফিরে আসার অভিপ্রায় ব্যাখ্যা)',
+                    'বিস্তারিত ভ্রমণ পরিকল্পনা বুকিং সহ'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+            }
+
+            // HTML তৈরি
+            let categoryLabel = 'প্রয়োজনীয় ডকুমেন্ট';
+            if (countryInfo && countryInfo.verySimple) {
+                categoryLabel = 'প্রয়োজনীয় ডকুমেন্ট (খুবই সহজ!)';
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                categoryLabel = 'প্রয়োজনীয় ডকুমেন্ট (ই-ভিসা/সহজ প্রক্রিয়া)';
+            } else if (countryInfo && countryInfo.moderate) {
+                categoryLabel = 'প্রয়োজনীয় ডকুমেন্ট (মাঝারি প্রক্রিয়া)';
+            } else if (countryInfo && countryInfo.comprehensive) {
+                categoryLabel = 'প্রয়োজনীয় ডকুমেন্ট (পূর্ণাঙ্গ প্রক্রিয়া)';
+            }
+
+            const visaTypeBn = visaType === 'Tourist' ? 'পর্যটন' :
+                               visaType === 'Business' ? 'ব্যবসা' :
+                               visaType === 'Medical' ? 'চিকিৎসা' :
+                               visaType === 'Visit' ? 'পরিবার দেখা' : 'ট্রানজিট';
+
+            let html = `
+                <div class="checklist-header">
+                    <h2>✅ আপনার ব্যক্তিগত চেকলিস্ট</h2>
+                    <div class="info-row">🌍 গন্তব্য: <strong>${country}</strong></div>
+                    <div class="info-row">🎯 উদ্দেশ্য: <strong>${visaTypeBn}</strong></div>
+                    <div class="info-row">👤 ${userName}</div>
+                    <div class="info-row">📱 ${userPhone}</div>
+                    <div class="info-row">⏱️ প্রসেসিং: <strong>${countryInfo ? countryInfo.time : 'N/A'} দিন</strong> | 💵 ফি: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
+                </div>
+
+                <div class="doc-category">
+                    <div class="category-title">📄 ${categoryLabel}</div>
+                    ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                </div>
+
+                ${personalizedDocs.length > 0 ? `
+                    <div class="doc-category">
+                        <div class="category-title">⭐ অতিরিক্ত ডকুমেন্ট (আপনার প্রোফাইল অনুযায়ী)</div>
+                        ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                    </div>
+                ` : ''}
+
+                ${tips.length > 0 ? `
+                    <div class="tip-box">
+                        <strong>💡 আপনার জন্য পরামর্শ:</strong><br><br>
+                        ${tips.join('<br><br>')}
+                    </div>
+                ` : ''}
+
+                <div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;">
+                    <strong>🎯 সাহায্য দরকার?</strong><br><br>
+                    goFLY Limited আপনাকে সাহায্য করবে:<br>
+                    ✅ ডকুমেন্ট প্রস্তুতি ও যাচাইকরণ<br>
+                    ✅ ভিসা আবেদন জমা<br>
+                    ✅ ইন্টারভিউ প্রস্তুতি (প্রয়োজনে)<br>
+                    ✅ ফ্লাইট ও হোটেল বুকিং<br><br>
+                    📞 ব্যক্তিগত গাইডেন্সের জন্য আমাদের সাথে যোগাযোগ করুন!
+                </div>
+            `;
+
+            document.getElementById('checklistResult').innerHTML = html;
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('step4').classList.add('active');
+            updateProgress(4);
+            currentStep = 4;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getPersonalizedDocuments(employment, travelHistory, income, visaType) {
+            const docs = [];
+
+            if (employment === 'Government') {
+                docs.push('সরকারি কর্মচারী আইডি কার্ড (কপি)');
+                docs.push('চাকরির সনদপত্র/NOC (অফিস থেকে ছুটি অনুমোদন সহ)');
+                docs.push('বেতনের সনদপত্র (শেষ ৬ মাস)');
+                docs.push('পদোন্নতি পত্র (থাকলে - বন্ধন শক্তিশালী করে)');
+            } else if (employment === 'Private') {
+                docs.push('কোম্পানি আইডি কার্ড');
+                docs.push('চাকরির সনদপত্র/NOC (কোম্পানির লেটারহেডে)');
+                docs.push('বেতনের স্লিপ (৩-৬ মাস)');
+                docs.push('ব্যাংক স্টেটমেন্ট বেতন জমা দেখানো সহ');
+            } else if (employment === 'Self-employed') {
+                docs.push('নবায়নকৃত ট্রেড লাইসেন্স');
+                docs.push('TIN সার্টিফিকেট + ট্যাক্স রিটার্ন (শেষ ২ বছর)');
+                docs.push('ব্যবসায়িক ব্যাংক স্টেটমেন্ট (৬-১২ মাস)');
+                docs.push('চেম্বার সদস্যপদ, ইনভয়েস, ভিজিটিং কার্ড');
+            } else if (employment === 'Student') {
+                docs.push('ছাত্র আইডি কার্ড');
+                docs.push('ভর্তি/এনরোলমেন্ট সনদ প্রতিষ্ঠান থেকে');
+                docs.push('বিশ্ববিদ্যালয়/স্কুল থেকে NOC');
+                docs.push('অভিভাবক/অভিভাবিকা স্পন্সরশিপ লেটার + আয়ের প্রমাণ');
+                docs.push('অভিভাবকের ব্যাংক স্টেটমেন্ট (৬ মাস)');
+            } else if (employment === 'Unemployed') {
+                docs.push('স্পন্সর (স্বামী/স্ত্রী/বাবা-মা) সম্পূর্ণ ডকুমেন্ট');
+                docs.push('নোটারিকৃত স্পন্সরশিপ লেটার');
+                docs.push('স্পন্সরের ব্যাংক স্টেটমেন্ট + আয়ের প্রমাণ');
+                docs.push('সম্পর্কের প্রমাণ (বিয়ে/জন্ম সার্টিফিকেট)');
+            }
+
+            if (travelHistory === 'None') {
+                docs.push('সম্পত্তির কাগজপত্র (জমি/বাড়ির মালিকানা)');
+                docs.push('পারিবারিক নিবন্ধন সনদ (জন্ম/বিয়ে)');
+                docs.push('ফিরে আসার শক্তিশালী অভিপ্রায় প্রমাণ');
+            }
+
+            if (income === '0-30k') {
+                docs.push('💰 স্পন্সর সাহায্য বা যৌথ সম্পত্তি প্রমাণ সুপারিশকৃত');
+                docs.push('💰 অতিরিক্ত আর্থিক সহায়তা ডকুমেন্ট প্রয়োজন');
+            } else if (income === '100k+') {
+                docs.push('💰 বিনিয়োগ কাগজপত্র (থাকলে) - আবেদন শক্তিশালী করে');
+                docs.push('💰 ক্রেডিট কার্ড স্টেটমেন্ট - আর্থিক স্থিতিশীলতা দেখায়');
+            }
+
+            if (visaType === 'Business') {
+                docs.push('হোস্ট কোম্পানির ব্যবসায়িক আমন্ত্রণ পত্র');
+                docs.push('চেম্বার অব কমার্স সদস্যপদ (প্রযোজ্য হলে)');
+            } else if (visaType === 'Medical') {
+                docs.push('মেডিকেল রিপোর্ট ও হাসপাতালের এপয়েন্টমেন্ট লেটার');
+                docs.push('ডাক্তারের সুপারিশ পত্র');
+            } else if (visaType === 'Visit') {
+                docs.push('হোস্টের আমন্ত্রণ পত্র (নোটারিকৃত)');
+                docs.push('হোস্টের বাসস্থান প্রমাণ ও আইডি কপি');
+            }
+
+            return docs;
+        }
+
+        function getPersonalizedTips(country, employment, travelHistory, income) {
+            const tips = [];
+            const countryInfo = countryData[country];
+
+            if (travelHistory === 'None') {
+                tips.push('⚠️ <strong>প্রথমবার ভ্রমণকারী:</strong> ভিসা অফিসাররা কঠোর। বাংলাদেশে শক্তিশালী পরিবার/সম্পত্তি বন্ধন দেখান। goFLY থেকে পেশাদার সাহায্য বিবেচনা করুন।');
+            }
+
+            if (income === '0-30k' && countryInfo.difficulty !== 'easy') {
+                tips.push('💰 <strong>এই গন্তব্যের জন্য কম আয়:</strong> একজন স্পন্সর (বাবা-মা/স্বামী-স্ত্রী) নিন বা যৌথ সম্পত্তি দেখান। শক্তিশালী আর্থিক প্রমাণ ছাড়া প্রত্যাখ্যানের ঝুঁকি বেশি।');
+            }
+
+            if ((countryInfo.difficulty === 'hard' || countryInfo.difficulty === 'very-hard') &&
+                (employment === 'Unemployed' || employment === 'Student')) {
+                tips.push('🚨 <strong>চ্যালেঞ্জিং সমন্বয়:</strong> ' + country + ' ভিসা কঠিন, এবং আপনার প্রোফাইলে অতিরিক্ত ডকুমেন্টেশন প্রয়োজন। goFLY আপনার সাফল্যের হার উল্লেখযোগ্যভাবে বাড়াতে পারে।');
+            }
+
+            if (employment === 'Self-employed') {
+                tips.push('💼 <strong>ব্যবসায়ী:</strong> নিশ্চিত করুন আপনার ব্যবসায়িক কাগজপত্র সঠিকভাবে যাচাই ও অনুবাদ করা (প্রয়োজনে)। ৬+ মাসের স্টেটমেন্ট দিয়ে ব্যবসায়িক স্থিতিশীলতা দেখান।');
+            }
+
+            return tips;
+        }
+
+        function resetForm() {
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            updateProgress(1);
+            currentStep = 1;
+
+            document.getElementById('country').value = '';
+            document.getElementById('visaType').value = '';
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('userPhone').value = '';
+            document.getElementById('employmentStatus').value = '';
+            document.getElementById('monthlyIncome').value = '';
+            document.getElementById('travelHistory').value = '';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>

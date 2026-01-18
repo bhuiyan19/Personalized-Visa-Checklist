@@ -657,52 +657,60 @@
         let currentStep = 1;
         const totalSteps = 4;
 
-        // All country data with specific requirements
+        // All country data with accurate visa requirements
+        // Categories: verySimple (on-arrival), easyEVisa (online), medium, hard, veryHard
         const countryData = {
-            'Thailand': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true },
-            'Malaysia': { difficulty: 'easy', time: '2-4', fee: '৳3,000-5,000', requiresVisa: true },
-            'Indonesia': { difficulty: 'easy', time: '3-7', fee: '৳3,500-5,500', requiresVisa: true },
-            'Turkey': { difficulty: 'easy', time: '5-10', fee: '৳5,000-8,000', requiresVisa: true },
-            'Sri Lanka': { difficulty: 'easy', time: '1-2', fee: '৳2,500-4,000', requiresVisa: true },
+            // VISA-FREE/ON-ARRIVAL (Super Easy - 4-5 docs)
             'Maldives': { difficulty: 'easy', time: '0', fee: 'Free (on arrival)', requiresVisa: false, verySimple: true },
             'Nepal': { difficulty: 'easy', time: '0', fee: 'Free (on arrival)', requiresVisa: false, verySimple: true },
             'Bhutan': { difficulty: 'easy', time: '5-7', fee: '৳8,000-12,000', requiresVisa: true, verySimple: true },
-            'Georgia': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true },
-            'Armenia': { difficulty: 'easy', time: '3-5', fee: '৳3,000-5,000', requiresVisa: true },
-            'India': { difficulty: 'medium', time: '4-7', fee: '৳2,000-4,000' },
-            'UAE': { difficulty: 'medium', time: '3-5', fee: '৳8,000-15,000' },
-            'Saudi Arabia': { difficulty: 'medium', time: '7-15', fee: '৳15,000-25,000' },
-            'Qatar': { difficulty: 'medium', time: '5-10', fee: '৳10,000-18,000' },
-            'Oman': { difficulty: 'medium', time: '5-10', fee: '৳8,000-12,000' },
-            'Kuwait': { difficulty: 'medium', time: '7-15', fee: '৳12,000-20,000' },
-            'Bahrain': { difficulty: 'medium', time: '5-10', fee: '৳8,000-15,000' },
-            'China': { difficulty: 'medium', time: '7-15', fee: '৳12,000-18,000' },
-            'Singapore': { difficulty: 'medium', time: '3-5', fee: '৳8,000-12,000' },
-            'Vietnam': { difficulty: 'medium', time: '5-7', fee: '৳5,000-8,000' },
-            'Egypt': { difficulty: 'medium', time: '7-10', fee: '৳8,000-12,000' },
-            'Jordan': { difficulty: 'medium', time: '5-10', fee: '৳6,000-10,000' },
-            'USA': { difficulty: 'hard', time: '30-90', fee: '৳18,000-25,000' },
-            'UK': { difficulty: 'hard', time: '15-30', fee: '৳35,000-45,000' },
-            'Canada': { difficulty: 'hard', time: '15-30', fee: '৳15,000-22,000' },
-            'Australia': { difficulty: 'hard', time: '15-30', fee: '৳20,000-30,000' },
-            'Schengen': { difficulty: 'hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Japan': { difficulty: 'hard', time: '7-15', fee: '৳6,000-10,000' },
-            'South Korea': { difficulty: 'hard', time: '7-15', fee: '৳8,000-12,000' },
-            'New Zealand': { difficulty: 'hard', time: '15-30', fee: '৳18,000-25,000' },
-            'Germany': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'France': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Italy': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Spain': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Switzerland': { difficulty: 'very-hard', time: '15-30', fee: '৳10,000-15,000' },
-            'Netherlands': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Sweden': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Norway': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Denmark': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Belgium': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Austria': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000' },
-            'Poland': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000' },
-            'Czech Republic': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000' },
-            'Hungary': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000' }
+
+            // E-VISA EASY COUNTRIES (Simple - 7-10 docs)
+            'Thailand': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true, easyEVisa: true },
+            'Malaysia': { difficulty: 'easy', time: '2-4', fee: '৳3,000-5,000', requiresVisa: true, easyEVisa: true },
+            'Indonesia': { difficulty: 'easy', time: '3-7', fee: '৳3,500-5,500', requiresVisa: true, easyEVisa: true },
+            'Turkey': { difficulty: 'easy', time: '5-10', fee: '৳5,000-8,000', requiresVisa: true, easyEVisa: true },
+            'Sri Lanka': { difficulty: 'easy', time: '1-2', fee: '৳2,500-4,000', requiresVisa: true, easyEVisa: true },
+            'Georgia': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true, easyEVisa: true },
+            'Armenia': { difficulty: 'easy', time: '3-5', fee: '৳3,000-5,000', requiresVisa: true, easyEVisa: true },
+
+            // MEDIUM DIFFICULTY (Moderate - 12-16 docs)
+            'India': { difficulty: 'medium', time: '4-7', fee: '৳2,000-4,000', moderate: true },
+            'UAE': { difficulty: 'medium', time: '3-5', fee: '৳8,000-15,000', moderate: true },
+            'Saudi Arabia': { difficulty: 'medium', time: '7-15', fee: '৳15,000-25,000', moderate: true },
+            'Qatar': { difficulty: 'medium', time: '5-10', fee: '৳10,000-18,000', moderate: true },
+            'Oman': { difficulty: 'medium', time: '5-10', fee: '৳8,000-12,000', moderate: true },
+            'Kuwait': { difficulty: 'medium', time: '7-15', fee: '৳12,000-20,000', moderate: true },
+            'Bahrain': { difficulty: 'medium', time: '5-10', fee: '৳8,000-15,000', moderate: true },
+            'China': { difficulty: 'medium', time: '7-15', fee: '৳12,000-18,000', moderate: true },
+            'Singapore': { difficulty: 'medium', time: '3-5', fee: '৳8,000-12,000', moderate: true },
+            'Vietnam': { difficulty: 'medium', time: '5-7', fee: '৳5,000-8,000', moderate: true },
+            'Egypt': { difficulty: 'medium', time: '7-10', fee: '৳8,000-12,000', moderate: true },
+            'Jordan': { difficulty: 'medium', time: '5-10', fee: '৳6,000-10,000', moderate: true },
+
+            // HARD & VERY HARD (Full comprehensive - 20+ docs)
+            'USA': { difficulty: 'hard', time: '30-90', fee: '৳18,000-25,000', comprehensive: true },
+            'UK': { difficulty: 'hard', time: '15-30', fee: '৳35,000-45,000', comprehensive: true },
+            'Canada': { difficulty: 'hard', time: '15-30', fee: '৳15,000-22,000', comprehensive: true },
+            'Australia': { difficulty: 'hard', time: '15-30', fee: '৳20,000-30,000', comprehensive: true },
+            'Schengen': { difficulty: 'hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Japan': { difficulty: 'hard', time: '7-15', fee: '৳6,000-10,000', comprehensive: true },
+            'South Korea': { difficulty: 'hard', time: '7-15', fee: '৳8,000-12,000', comprehensive: true },
+            'New Zealand': { difficulty: 'hard', time: '15-30', fee: '৳18,000-25,000', comprehensive: true },
+            'Germany': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'France': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Italy': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Spain': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Switzerland': { difficulty: 'very-hard', time: '15-30', fee: '৳10,000-15,000', comprehensive: true },
+            'Netherlands': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Sweden': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Norway': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Denmark': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Belgium': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Austria': { difficulty: 'very-hard', time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Poland': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000', comprehensive: true },
+            'Czech Republic': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000', comprehensive: true },
+            'Hungary': { difficulty: 'very-hard', time: '15-30', fee: '৳6,000-10,000', comprehensive: true }
         };
 
         function nextStep(step) {
@@ -804,7 +812,7 @@
             let standardDocs, personalizedDocs, tips;
 
             if (countryInfo && countryInfo.verySimple) {
-                // Simplified checklist for Nepal, Bhutan, Maldives
+                // CATEGORY 1: VISA-FREE/ON-ARRIVAL (Super Easy - 4-6 docs)
                 standardDocs = [
                     'Valid passport (minimum 6 months validity)',
                     'Return flight tickets',
@@ -820,17 +828,70 @@
                 personalizedDocs = [];
                 tips = [`✅ ${country} is visa-free for Bangladeshi passport holders! Very easy process.`];
 
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                // CATEGORY 2: E-VISA EASY COUNTRIES (Simple - 7-10 docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity + 2 blank pages)',
+                    'Recent passport-size photos (35x45mm, white background)',
+                    'Completed online visa application form',
+                    'Flight itinerary (return ticket booking)',
+                    'Hotel booking/accommodation proof',
+                    'Bank statement (last 3 months)',
+                    'Travel itinerary/plan'
+                ];
+
+                personalizedDocs = [];
+
+                // Add specific docs based on employment
+                if (employmentStatus === 'Government' || employmentStatus === 'Private') {
+                    personalizedDocs.push('Employment letter/NOC from company');
+                } else if (employmentStatus === 'Self-employed') {
+                    personalizedDocs.push('Trade license copy');
+                } else if (employmentStatus === 'Student') {
+                    personalizedDocs.push('Student ID + NOC from institution');
+                    personalizedDocs.push('Parent sponsorship letter');
+                } else if (employmentStatus === 'Unemployed') {
+                    personalizedDocs.push('Sponsor documents (if applicable)');
+                }
+
+                tips = [`✅ ${country} offers e-visa/visa on arrival - simple online process! Success rate is high for Bangladeshi passport holders.`];
+
+            } else if (countryInfo && countryInfo.moderate) {
+                // CATEGORY 3: MEDIUM DIFFICULTY (Moderate - 12-16 docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity + 2 blank pages)',
+                    'Recent passport photos (35x45mm, white background, country-specific)',
+                    'Completed visa application form (online/offline)',
+                    'Flight itinerary/reservation (return ticket proof)',
+                    'Hotel booking/accommodation proof',
+                    'Bank statements (last 6 months)',
+                    'Salary certificate or income proof (last 3 months)',
+                    'Employment letter/NOC (for employees)',
+                    'Cover letter explaining purpose of visit',
+                    'Travel itinerary with day-by-day plan'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+
             } else {
-                // Full checklist for other countries
+                // CATEGORY 4: HARD & VERY HARD (Full comprehensive - 20+ docs)
                 standardDocs = [
                     'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
                     'Recent passport photos (35x45mm, white background, country-specific)',
                     'Completed visa application form (online/offline)',
                     'Flight itinerary/reservation (return ticket proof)',
-                    'Hotel booking/accommodation proof',
+                    'Hotel booking/accommodation proof for entire stay',
                     'Travel insurance (Schengen mandatory: min €30,000 coverage)',
-                    'Bank statements (last 6 months with salary credits)',
-                    'Proof of ties to home country (job letter, family, property docs)'
+                    'Bank statements (last 6 months with salary credits highlighted)',
+                    'Income tax returns (last 2 years)',
+                    'Salary slips (last 6 months)',
+                    'Employment letter/NOC on company letterhead',
+                    'Company registration/trade license (if self-employed)',
+                    'Property documents (land/house ownership)',
+                    'Family ties proof (marriage/birth certificates)',
+                    'Cover letter explaining purpose & return intent',
+                    'Detailed travel itinerary with bookings'
                 ];
 
                 personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
@@ -838,6 +899,17 @@
             }
 
             // Generate HTML
+            let categoryLabel = 'Standard Documents';
+            if (countryInfo && countryInfo.verySimple) {
+                categoryLabel = 'Required Documents (Very Simple!)';
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                categoryLabel = 'Required Documents (E-Visa/Simple Process)';
+            } else if (countryInfo && countryInfo.moderate) {
+                categoryLabel = 'Required Documents (Moderate Process)';
+            } else if (countryInfo && countryInfo.comprehensive) {
+                categoryLabel = 'Required Documents (Comprehensive Process)';
+            }
+
             let html = `
                 <div class="checklist-header">
                     <h2>✅ Your Personalized Checklist</h2>
@@ -845,16 +917,17 @@
                     <div class="info-row">🎯 Purpose: <strong>${visaType}</strong></div>
                     <div class="info-row">👤 ${userName}</div>
                     <div class="info-row">📱 ${userPhone}</div>
+                    <div class="info-row">⏱️ Processing: <strong>${countryInfo ? countryInfo.time : 'N/A'} days</strong> | 💵 Fee: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
                 </div>
 
                 <div class="doc-category">
-                    <div class="category-title">📄 ${countryInfo && countryInfo.verySimple ? 'Required Documents' : 'Standard Documents (Everyone Needs)'}</div>
+                    <div class="category-title">📄 ${categoryLabel}</div>
                     ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
                 </div>
 
                 ${personalizedDocs.length > 0 ? `
                     <div class="doc-category">
-                        <div class="category-title">⭐ Personalized Documents (Based on Your Profile)</div>
+                        <div class="category-title">⭐ Additional Documents (Based on Your Profile)</div>
                         ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
                     </div>
                 ` : ''}
