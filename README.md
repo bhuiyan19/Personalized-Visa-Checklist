@@ -16,12 +16,25 @@ A live, interactive web application that generates customized visa application c
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 📱 Mobile Version (Easiest - No Installation Required!)
+
+**Perfect for mobile users!** Just open the file directly in your browser:
+
+1. Download or access: `visa-checklist-mobile.html`
+2. Open it in any web browser (Chrome, Safari, Firefox, etc.)
+3. Works instantly - no server or installation needed!
+4. Fully responsive and mobile-optimized
+
+**This is the simplest way to use the tool on mobile devices!**
+
+### 💻 Desktop Version (With Server)
+
+#### Prerequisites
 
 - Node.js (version 12 or higher)
 - npm (comes with Node.js)
 
-### Installation
+#### Installation
 
 1. Clone or download this repository
 2. Navigate to the project directory:
@@ -34,7 +47,7 @@ A live, interactive web application that generates customized visa application c
    npm install
    ```
 
-### Running the Tool
+#### Running the Tool
 
 Start the live server:
 ```bash
@@ -86,13 +99,14 @@ Open your web browser and visit the URL to start using the tool.
 
 ```
 Personalized-Visa-Checklist/
-├── index.html          # Main HTML file
-├── styles.css          # Styling and responsive design
-├── app.js             # Interactive functionality
-├── server.js          # Express server
-├── package.json       # Project configuration
-├── .gitignore         # Git ignore rules
-└── README.md          # This file
+├── visa-checklist-mobile.html  # 📱 Standalone mobile version (no server needed!)
+├── index.html                  # Main HTML file
+├── styles.css                  # Styling and responsive design
+├── app.js                      # Interactive functionality
+├── server.js                   # Express server
+├── package.json                # Project configuration
+├── .gitignore                  # Git ignore rules
+└── README.md                   # This file
 ```
 
 ## 🎨 Features in Detail

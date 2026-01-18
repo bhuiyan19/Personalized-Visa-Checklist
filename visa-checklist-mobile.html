@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Checklist Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        .form-section {
+            padding: 25px 20px;
+            background: #f8f9fa;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .generate-btn:active {
+            transform: scale(0.98);
+        }
+
+        .checklist-section {
+            padding: 25px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .checklist-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .checklist-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .checklist-header h3 {
+            font-size: 1.2em;
+            margin-bottom: 6px;
+        }
+
+        .applicant-info {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .progress-indicator {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 9px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+
+        .checklist-items {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .checklist-item:active {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #333;
+            flex: 1;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .checklist-item input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .download-btn,
+        .reset-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .download-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .reset-btn:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer p {
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .subtitle {
+                font-size: 1.05em;
+            }
+
+            .button-group {
+                flex-direction: row;
+            }
+
+            .download-btn,
+            .reset-btn {
+                width: auto;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Visa Checklist Generator</h1>
+            <p class="subtitle">Get your personalized visa checklist</p>
+        </header>
+
+        <div class="form-section">
+            <div class="form-group">
+                <label for="destination">Destination Country:</label>
+                <select id="destination" required>
+                    <option value="">Select a country...</option>
+                    <option value="USA">United States (USA)</option>
+                    <option value="UK">United Kingdom (UK)</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="UAE">United Arab Emirates (UAE)</option>
+                    <option value="Schengen">Schengen Countries</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="visaType">Visa Type:</label>
+                <select id="visaType" required>
+                    <option value="">Select visa type...</option>
+                    <option value="Tourist">Tourist / Visitor Visa</option>
+                    <option value="Student">Student Visa</option>
+                    <option value="Work">Work Visa</option>
+                    <option value="Business">Business Visa</option>
+                    <option value="Transit">Transit Visa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nationality">Your Nationality:</label>
+                <input type="text" id="nationality" placeholder="e.g., Bangladeshi" required>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">Generate Checklist</button>
+        </div>
+
+        <div id="checklist" class="checklist-section hidden">
+            <h2>Your Visa Checklist</h2>
+            <div id="checklistContent"></div>
+            <div class="button-group">
+                <button id="downloadBtn" class="download-btn">📥 Download</button>
+                <button id="resetBtn" class="reset-btn">🔄 New Checklist</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>⚠️ This checklist is for general guidance only. Always verify with the official embassy or consulate.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Visa Checklist Data
+        const visaChecklists = {
+            common: [
+                "Valid passport (minimum 6 months validity)",
+                "Completed visa application form",
+                "Recent passport-sized photographs",
+                "Proof of travel insurance",
+                "Flight reservation/itinerary",
+                "Accommodation booking confirmation"
+            ],
+            Tourist: [
+                "Bank statements (last 3-6 months)",
+                "Employment letter or leave approval",
+                "Travel itinerary",
+                "Hotel reservations",
+                "Return flight tickets",
+                "Proof of sufficient funds"
+            ],
+            Student: [
+                "Letter of acceptance from educational institution",
+                "Proof of tuition fee payment",
+                "Academic transcripts and certificates",
+                "Language proficiency test results (IELTS/TOEFL)",
+                "Statement of purpose",
+                "Financial documents showing ability to cover expenses",
+                "Sponsor letter (if applicable)",
+                "Medical examination results"
+            ],
+            Work: [
+                "Job offer letter",
+                "Employment contract",
+                "Employer invitation letter",
+                "Professional qualifications/certificates",
+                "Resume/CV",
+                "Previous employment records",
+                "Company registration documents",
+                "Tax documents"
+            ],
+            Business: [
+                "Business invitation letter",
+                "Company registration certificate",
+                "Business bank statements",
+                "Trade license",
+                "Previous business travel history",
+                "Meeting/conference invitation",
+                "Company profile"
+            ],
+            Transit: [
+                "Valid visa for final destination (if required)",
+                "Confirmed onward flight tickets",
+                "Proof of short stay duration"
+            ]
+        };
+
+        const countrySpecific = {
+            USA: [
+                "DS-160 confirmation page",
+                "SEVIS fee payment receipt (for students)",
+                "Interview appointment confirmation"
+            ],
+            UK: [
+                "TB test results (from approved clinics)",
+                "Financial sponsor documents",
+                "Biometric appointment confirmation"
+            ],
+            Canada: [
+                "Police clearance certificate",
+                "Medical examination by panel physician",
+                "Proof of ties to home country"
+            ],
+            Australia: [
+                "Health insurance (OSHC for students)",
+                "Character requirements documents",
+                "Skills assessment (for work visa)"
+            ],
+            Schengen: [
+                "Travel medical insurance (minimum €30,000 coverage)",
+                "Cover letter explaining purpose of visit",
+                "Proof of accommodation for entire stay"
+            ],
+            Germany: [
+                "Travel medical insurance (minimum €30,000 coverage)",
+                "Cover letter explaining purpose of visit",
+                "Proof of accommodation for entire stay"
+            ],
+            France: [
+                "Travel medical insurance (minimum €30,000 coverage)",
+                "Cover letter explaining purpose of visit",
+                "Proof of accommodation for entire stay"
+            ],
+            Japan: [
+                "Certificate of Eligibility (COE)",
+                "Guarantor documents (if applicable)",
+                "Detailed itinerary"
+            ],
+            Singapore: [
+                "Letter of introduction from local contact",
+                "Proof of financial means",
+                "Yellow fever vaccination certificate (if applicable)"
+            ],
+            UAE: [
+                "Sponsor letter (from hotel or resident)",
+                "Confirmed hotel booking",
+                "Proof of return ticket"
+            ]
+        };
+
+        // DOM Elements
+        const destinationSelect = document.getElementById('destination');
+        const visaTypeSelect = document.getElementById('visaType');
+        const nationalityInput = document.getElementById('nationality');
+        const generateBtn = document.getElementById('generateBtn');
+        const checklistSection = document.getElementById('checklist');
+        const checklistContent = document.getElementById('checklistContent');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Event Listeners
+        generateBtn.addEventListener('click', generateChecklist);
+        resetBtn.addEventListener('click', resetForm);
+        downloadBtn.addEventListener('click', downloadChecklist);
+
+        function generateChecklist() {
+            const destination = destinationSelect.value;
+            const visaType = visaTypeSelect.value;
+            const nationality = nationalityInput.value.trim();
+
+            if (!destination || !visaType || !nationality) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            // Combine checklists
+            let items = [...visaChecklists.common];
+
+            if (visaChecklists[visaType]) {
+                items = items.concat(visaChecklists[visaType]);
+            }
+
+            if (countrySpecific[destination]) {
+                items = items.concat(countrySpecific[destination]);
+            }
+
+            // Remove duplicates
+            items = [...new Set(items)];
+
+            // Generate HTML
+            let html = `
+                <div class="checklist-header">
+                    <h3>${visaType} Visa for ${destination}</h3>
+                    <p class="applicant-info">Nationality: ${nationality}</p>
+                </div>
+                <div class="checklist-items">
+            `;
+
+            items.forEach((item, index) => {
+                html += `
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item-${index}" class="checkbox">
+                        <label for="item-${index}">${item}</label>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            checklistContent.innerHTML = html;
+            checklistSection.classList.remove('hidden');
+
+            // Smooth scroll to checklist
+            checklistSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Add event listeners to checkboxes
+            document.querySelectorAll('.checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+
+            updateProgress();
+        }
+
+        function resetForm() {
+            destinationSelect.value = '';
+            visaTypeSelect.value = '';
+            nationalityInput.value = '';
+            checklistSection.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function downloadChecklist() {
+            const destination = destinationSelect.value;
+            const visaType = visaTypeSelect.value;
+            const nationality = nationalityInput.value;
+
+            let textContent = `PERSONALIZED VISA CHECKLIST\n`;
+            textContent += `${'='.repeat(50)}\n\n`;
+            textContent += `Destination: ${destination}\n`;
+            textContent += `Visa Type: ${visaType}\n`;
+            textContent += `Applicant Nationality: ${nationality}\n`;
+            textContent += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
+            textContent += `${'='.repeat(50)}\n\n`;
+            textContent += `REQUIRED DOCUMENTS:\n\n`;
+
+            const checkboxes = document.querySelectorAll('.checklist-item');
+            checkboxes.forEach((item, index) => {
+                const label = item.querySelector('label').textContent;
+                const checked = item.querySelector('input').checked;
+                textContent += `${index + 1}. [${checked ? 'X' : ' '}] ${label}\n`;
+            });
+
+            textContent += `\n${'='.repeat(50)}\n`;
+            textContent += `\n⚠️  IMPORTANT NOTE:\n`;
+            textContent += `This checklist is for general guidance only.\n`;
+            textContent += `Always verify requirements with the official embassy.\n`;
+
+            // Create and download file
+            const blob = new Blob([textContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `visa-checklist-${destination}-${visaType}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = document.querySelectorAll('.checkbox:checked').length;
+            const total = checkboxes.length;
+
+            if (total > 0) {
+                const percentage = Math.round((checked / total) * 100);
+
+                let progressDiv = document.querySelector('.progress-indicator');
+                if (!progressDiv) {
+                    progressDiv = document.createElement('div');
+                    progressDiv.className = 'progress-indicator';
+                    checklistContent.insertBefore(progressDiv, checklistContent.firstChild.nextSibling);
+                }
+
+                progressDiv.innerHTML = `
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%"></div>
+                    </div>
+                    <p class="progress-text">${checked} of ${total} completed (${percentage}%)</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
