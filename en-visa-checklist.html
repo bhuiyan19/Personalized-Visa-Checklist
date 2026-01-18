@@ -318,6 +318,75 @@
             margin-top: 10px;
         }
 
+        .gofly-section {
+            background: linear-gradient(135deg, #006a4e 0%, #f42a41 100%);
+            color: white;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .gofly-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .gofly-info {
+            font-size: 0.85em;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            background: white;
+            color: #006a4e;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: transform 0.2s;
+        }
+
+        .contact-btn:active {
+            transform: scale(0.95);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            opacity: 0.9;
+        }
+
         .hidden {
             display: none;
         }
@@ -359,7 +428,6 @@
                     <option value="">Select visa type...</option>
                     <option value="Tourist">Tourist / Visitor Visa</option>
                     <option value="Student">Student Visa</option>
-                    <option value="Work">Work Visa</option>
                     <option value="Business">Business Visa</option>
                     <option value="Transit">Transit Visa</option>
                 </select>
@@ -379,9 +447,40 @@
         </div>
 
         <footer>
-            <p>⚠️ <strong>Note:</strong> This checklist is for general guidance only. Always verify requirements with the official embassy or consulate.</p>
+            <div class="gofly-section">
+                <h3>✈️ goFLY Limited</h3>
+                <div class="gofly-info">
+                    <p>📍 <strong>Office:</strong> 1 Shukrabad Road, Motiur Nibash, Beside New Model Degree College</p>
+                    <p style="padding-left: 20px;">Opposite of Metro Shopping Mall, Dhaka 1207</p>
+                    <div class="contact-buttons">
+                        <a href="tel:01713289170" class="contact-btn">📞 01713-289170</a>
+                        <a href="sms:01713289175" class="contact-btn">💬 01713-289175</a>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-number">⭐ 4.8</div>
+                            <div class="stat-label">431+ Reviews</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">👥 10k+</div>
+                            <div class="stat-label">Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">🔄 70%</div>
+                            <div class="stat-label">Repeat</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">📅 2017</div>
+                            <div class="stat-label">Since</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.75em; opacity: 0.9;">
+                        🏆 IATA: 42337956 | 📋 ATAB: 4298 | ✈️ Civil Aviation: 0007726
+                    </p>
+                </div>
+            </div>
+            <p style="margin-top: 15px;">⚠️ <strong>Note:</strong> This checklist is for general guidance only. Always verify requirements with the official embassy or consulate.</p>
             <p>🇧🇩 Specially designed for Bangladeshi passport holders</p>
-            <p class="credit-info">📊 Data sourced from <strong>goFLY Visa Eligibility Checker</strong> | goFLY Limited</p>
         </footer>
     </div>
 
