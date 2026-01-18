@@ -88,7 +88,8 @@
             font-size: 1em;
         }
 
-        .form-group select {
+        .form-group select,
+        .form-group input {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -98,10 +99,22 @@
             background: white;
         }
 
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group input:focus {
             outline: none;
             border-color: #006a4e;
             box-shadow: 0 0 0 3px rgba(0, 106, 78, 0.1);
+        }
+
+        .lead-capture-section {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffc107;
+        }
+
+        .visa-selection-section {
+            margin-top: 20px;
         }
 
         .difficulty-badge {
@@ -417,23 +430,47 @@
         </header>
 
         <div id="formSection" class="form-section">
-            <div class="form-group">
-                <label for="destination">🌍 Which country do you want to visit?</label>
-                <select id="destination" required></select>
+            <div class="lead-capture-section">
+                <h3 style="color: #006a4e; margin-bottom: 15px; text-align: center;">📝 Your Information</h3>
+                <div class="form-group">
+                    <label for="userName">👤 Name <span style="color: red;">*</span></label>
+                    <input type="text" id="userName" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPhone">📱 Phone Number <span style="color: red;">*</span></label>
+                    <input type="tel" id="userPhone" placeholder="01XXXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">📧 Email (Optional)</label>
+                    <input type="email" id="userEmail" placeholder="example@email.com">
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="visaType">📋 Visa Type:</label>
-                <select id="visaType" required>
-                    <option value="">Select visa type...</option>
-                    <option value="Tourist">Tourist / Visitor Visa</option>
-                    <option value="Student">Student Visa</option>
-                    <option value="Business">Business Visa</option>
-                    <option value="Transit">Transit Visa</option>
-                </select>
+            <div class="visa-selection-section">
+                <h3 style="color: #006a4e; margin-bottom: 15px; margin-top: 20px; text-align: center;">🌍 Visa Information</h3>
+                <div class="form-group">
+                    <label for="destination">🌍 Which country do you want to visit?</label>
+                    <select id="destination" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="visaType">📋 Visa Type:</label>
+                    <select id="visaType" required>
+                        <option value="">Select visa type...</option>
+                        <option value="Tourist">Tourist / Visitor Visa</option>
+                        <option value="Student">Student Visa</option>
+                        <option value="Business">Business Visa</option>
+                        <option value="Transit">Transit Visa</option>
+                    </select>
+                </div>
             </div>
 
             <button id="generateBtn" class="generate-btn">Generate Checklist →</button>
+            <p style="font-size: 0.8em; text-align: center; margin-top: 10px; color: #666;">
+                🔒 Your information will be kept confidential
+            </p>
         </div>
 
         <div id="checklistSection" class="checklist-section hidden">
@@ -629,13 +666,49 @@
         }
 
         function generateChecklist() {
+            // Validate user info
+            const userName = document.getElementById('userName').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
             const destination = destinationSelect.value;
             const visaType = visaTypeSelect.value;
 
-            if (!destination || !visaType) {
-                alert('Please fill in all fields!');
+            if (!userName || !userPhone) {
+                alert('Please provide your name and phone number!');
                 return;
             }
+
+            // Basic phone validation (Bangladesh)
+            if (!/^01[0-9]{9}$/.test(userPhone)) {
+                alert('Please enter a valid Bangladeshi phone number (01XXXXXXXXX)');
+                return;
+            }
+
+            if (!destination || !visaType) {
+                alert('Please select destination and visa type!');
+                return;
+            }
+
+            // Capture lead data
+            const leadData = {
+                name: userName,
+                phone: userPhone,
+                email: userEmail || 'Not provided',
+                destination: destination,
+                visaType: visaType,
+                timestamp: new Date().toISOString(),
+                source: 'BD Visa Checklist Tool (English)'
+            };
+
+            // Log lead data (in production, send to backend/CRM)
+            console.log('🎯 NEW LEAD CAPTURED:', leadData);
+
+            // You can send this to a backend API:
+            // fetch('https://gofly.com/api/leads', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(leadData)
+            // });
 
             selectedCountry = countries.find(c => c.name === destination);
             selectedVisaType = visaType;
