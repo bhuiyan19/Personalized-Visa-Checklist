@@ -406,6 +406,33 @@
         .whatsapp-btn:hover {
             transform: scale(1.05);
         }
+
+        /* Print/PDF Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .progress-container, .btn-container, footer, .lang-toggle {
+                display: none !important;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .checklist-header, .doc-category, .tip-box {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Enhanced button styles */
+        .btn-container .btn {
+            font-size: 0.95em;
+        }
+
+        .btn-container {
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body>
@@ -599,7 +626,8 @@
             <div id="checklistResult"></div>
             <div class="btn-container">
                 <button class="btn btn-prev" onclick="resetForm()">← Start Over</button>
-                <button class="btn btn-next" onclick="window.print()">🖨️ Print Checklist</button>
+                <button class="btn btn-next" onclick="downloadPDF()" style="background: #FF6B35;">📥 Download PDF</button>
+                <button class="btn btn-next" onclick="window.print()">🖨️ Print</button>
             </div>
         </div>
 
@@ -629,18 +657,18 @@
         let currentStep = 1;
         const totalSteps = 4;
 
-        // All country data
+        // All country data with specific requirements
         const countryData = {
-            'Thailand': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000' },
-            'Malaysia': { difficulty: 'easy', time: '2-4', fee: '৳3,000-5,000' },
-            'Indonesia': { difficulty: 'easy', time: '3-7', fee: '৳3,500-5,500' },
-            'Turkey': { difficulty: 'easy', time: '5-10', fee: '৳5,000-8,000' },
-            'Sri Lanka': { difficulty: 'easy', time: '1-2', fee: '৳2,500-4,000' },
-            'Maldives': { difficulty: 'easy', time: '1-2', fee: 'Free (on arrival)' },
-            'Nepal': { difficulty: 'easy', time: '1', fee: 'Free (on arrival)' },
-            'Bhutan': { difficulty: 'easy', time: '5-7', fee: '৳8,000-12,000' },
-            'Georgia': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000' },
-            'Armenia': { difficulty: 'easy', time: '3-5', fee: '৳3,000-5,000' },
+            'Thailand': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true },
+            'Malaysia': { difficulty: 'easy', time: '2-4', fee: '৳3,000-5,000', requiresVisa: true },
+            'Indonesia': { difficulty: 'easy', time: '3-7', fee: '৳3,500-5,500', requiresVisa: true },
+            'Turkey': { difficulty: 'easy', time: '5-10', fee: '৳5,000-8,000', requiresVisa: true },
+            'Sri Lanka': { difficulty: 'easy', time: '1-2', fee: '৳2,500-4,000', requiresVisa: true },
+            'Maldives': { difficulty: 'easy', time: '0', fee: 'Free (on arrival)', requiresVisa: false, verySimple: true },
+            'Nepal': { difficulty: 'easy', time: '0', fee: 'Free (on arrival)', requiresVisa: false, verySimple: true },
+            'Bhutan': { difficulty: 'easy', time: '5-7', fee: '৳8,000-12,000', requiresVisa: true, verySimple: true },
+            'Georgia': { difficulty: 'easy', time: '3-5', fee: '৳4,000-6,000', requiresVisa: true },
+            'Armenia': { difficulty: 'easy', time: '3-5', fee: '৳3,000-5,000', requiresVisa: true },
             'India': { difficulty: 'medium', time: '4-7', fee: '৳2,000-4,000' },
             'UAE': { difficulty: 'medium', time: '3-5', fee: '৳8,000-15,000' },
             'Saudi Arabia': { difficulty: 'medium', time: '7-15', fee: '৳15,000-25,000' },
@@ -769,23 +797,47 @@
 
             console.log('🎯 LEAD CAPTURED:', leadData);
 
-            // Generate checklist
-            const standardDocs = [
-                'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
-                'Recent passport photos (35x45mm, white background, country-specific)',
-                'Completed visa application form (online/offline)',
-                'Flight itinerary/reservation (return ticket proof)',
-                'Hotel booking/accommodation proof',
-                'Travel insurance (Schengen mandatory: min €30,000 coverage)',
-                'Bank statements (last 6 months with salary credits)',
-                'Proof of ties to home country (job letter, family, property docs)'
-            ];
+            // Get country info
+            const countryInfo = countryData[country];
 
-            const personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
-            const tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+            // Generate checklist based on country type
+            let standardDocs, personalizedDocs, tips;
+
+            if (countryInfo && countryInfo.verySimple) {
+                // Simplified checklist for Nepal, Bhutan, Maldives
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity)',
+                    'Return flight tickets',
+                    'Hotel booking or accommodation proof',
+                    'Sufficient travel funds (cash/card)'
+                ];
+
+                if (country === 'Bhutan') {
+                    standardDocs.push('Tour package booking (mandatory through approved tour operator)');
+                    standardDocs.push('Sustainable Development Fee ($100/day)');
+                }
+
+                personalizedDocs = [];
+                tips = [`✅ ${country} is visa-free for Bangladeshi passport holders! Very easy process.`];
+
+            } else {
+                // Full checklist for other countries
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
+                    'Recent passport photos (35x45mm, white background, country-specific)',
+                    'Completed visa application form (online/offline)',
+                    'Flight itinerary/reservation (return ticket proof)',
+                    'Hotel booking/accommodation proof',
+                    'Travel insurance (Schengen mandatory: min €30,000 coverage)',
+                    'Bank statements (last 6 months with salary credits)',
+                    'Proof of ties to home country (job letter, family, property docs)'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+            }
 
             // Generate HTML
-            const countryInfo = countryData[country];
             let html = `
                 <div class="checklist-header">
                     <h2>✅ Your Personalized Checklist</h2>
@@ -796,14 +848,16 @@
                 </div>
 
                 <div class="doc-category">
-                    <div class="category-title">📄 Standard Documents (Everyone Needs)</div>
+                    <div class="category-title">📄 ${countryInfo && countryInfo.verySimple ? 'Required Documents' : 'Standard Documents (Everyone Needs)'}</div>
                     ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
                 </div>
 
-                <div class="doc-category">
-                    <div class="category-title">⭐ Personalized Documents (Based on Your Profile)</div>
-                    ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
-                </div>
+                ${personalizedDocs.length > 0 ? `
+                    <div class="doc-category">
+                        <div class="category-title">⭐ Personalized Documents (Based on Your Profile)</div>
+                        ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                    </div>
+                ` : ''}
 
                 ${tips.length > 0 ? `
                     <div class="tip-box">
@@ -942,6 +996,11 @@
             document.getElementById('travelHistory').value = '';
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function downloadPDF() {
+            // Open print dialog which allows saving as PDF
+            window.print();
         }
     </script>
 </body>
