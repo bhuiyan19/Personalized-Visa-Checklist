@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Visa Checklist Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Personalized Visa Checklist Generator</h1>
+            <p class="subtitle">Get your customized visa application checklist instantly</p>
+        </header>
+
+        <div class="form-section">
+            <div class="form-group">
+                <label for="destination">Destination Country:</label>
+                <select id="destination" required>
+                    <option value="">Select a country...</option>
+                    <option value="USA">United States (USA)</option>
+                    <option value="UK">United Kingdom (UK)</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="UAE">United Arab Emirates (UAE)</option>
+                    <option value="Schengen">Schengen Countries</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="visaType">Visa Type:</label>
+                <select id="visaType" required>
+                    <option value="">Select visa type...</option>
+                    <option value="Tourist">Tourist / Visitor Visa</option>
+                    <option value="Student">Student Visa</option>
+                    <option value="Work">Work Visa</option>
+                    <option value="Business">Business Visa</option>
+                    <option value="Transit">Transit Visa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nationality">Your Nationality:</label>
+                <input type="text" id="nationality" placeholder="e.g., Bangladeshi, Indian, Pakistani" required>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">Generate Checklist</button>
+        </div>
+
+        <div id="checklist" class="checklist-section" style="display: none;">
+            <h2>Your Personalized Visa Checklist</h2>
+            <div id="checklistContent"></div>
+            <button id="downloadBtn" class="download-btn">Download as PDF</button>
+            <button id="resetBtn" class="reset-btn">Create New Checklist</button>
+        </div>
+
+        <footer>
+            <p>⚠️ Note: This checklist is for general guidance only. Always verify requirements with the official embassy or consulate.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
