@@ -466,6 +466,39 @@
                     <label for="userEmail">📧 ইমেইল (ঐচ্ছিক)</label>
                     <input type="email" id="userEmail" placeholder="example@email.com">
                 </div>
+
+                <div class="form-group">
+                    <label for="employmentStatus">💼 পেশা/চাকরি <span style="color: red;">*</span></label>
+                    <select id="employmentStatus" required>
+                        <option value="">নির্বাচন করুন...</option>
+                        <option value="government">সরকারি চাকরি</option>
+                        <option value="private">বেসরকারি চাকরি</option>
+                        <option value="self-employed">ব্যবসা/স্ব-নিয়োজিত</option>
+                        <option value="student">শিক্ষার্থী</option>
+                        <option value="unemployed">বেকার/গৃহিণী</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyIncome">💰 মাসিক আয় (ঐচ্ছিক)</label>
+                    <select id="monthlyIncome">
+                        <option value="">নির্বাচন করুন...</option>
+                        <option value="0-30k">৳০ - ৩০,০০০</option>
+                        <option value="30k-60k">৳৩০,০০০ - ৬০,০০০</option>
+                        <option value="60k-100k">৳৬০,০০০ - ১,০০,০০০</option>
+                        <option value="100k+">৳১,০০,০০০+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="travelHistory">✈️ আগে বিদেশ ভ্রমণ করেছেন? <span style="color: red;">*</span></label>
+                    <select id="travelHistory" required>
+                        <option value="">নির্বাচন করুন...</option>
+                        <option value="yes">হ্যাঁ, একাধিকবার</option>
+                        <option value="once">হ্যাঁ, একবার</option>
+                        <option value="no">না, প্রথমবার</option>
+                    </select>
+                </div>
             </div>
 
             <button id="generateBtn" class="generate-btn">চেকলিস্ট তৈরি করুন →</button>
@@ -671,11 +704,14 @@
             const userName = document.getElementById('userName').value.trim();
             const userPhone = document.getElementById('userPhone').value.trim();
             const userEmail = document.getElementById('userEmail').value.trim();
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+            const travelHistory = document.getElementById('travelHistory').value;
             const destination = destinationSelect.value;
             const visaType = visaTypeSelect.value;
 
-            if (!userName || !userPhone) {
-                alert('অনুগ্রহ করে আপনার নাম এবং ফোন নম্বর দিন!');
+            if (!userName || !userPhone || !employmentStatus || !travelHistory) {
+                alert('অনুগ্রহ করে সব আবশ্যক তথ্য পূরণ করুন!');
                 return;
             }
 
@@ -690,11 +726,14 @@
                 return;
             }
 
-            // Capture lead data
+            // Capture ENHANCED lead data
             const leadData = {
                 name: userName,
                 phone: userPhone,
                 email: userEmail || 'Not provided',
+                employmentStatus: employmentStatus,
+                monthlyIncome: monthlyIncome || 'Not provided',
+                travelHistory: travelHistory,
                 destination: destination,
                 visaType: visaType,
                 timestamp: new Date().toISOString(),
@@ -702,7 +741,7 @@
             };
 
             // Log lead data (in production, send to backend/CRM)
-            console.log('🎯 NEW LEAD CAPTURED:', leadData);
+            console.log('🎯 ENHANCED LEAD CAPTURED:', leadData);
 
             // You can send this to a backend API:
             // fetch('https://gofly.com/api/leads', {
@@ -742,11 +781,20 @@
                 </div>
             `;
 
-            // Checklist items
+            // Checklist items - BASE
             let items = [...visaChecklists.common];
             if (visaChecklists[selectedVisaType]) {
                 items = items.concat(visaChecklists[selectedVisaType]);
             }
+
+            // ADD PROFESSION-SPECIFIC ITEMS
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const travelHistory = document.getElementById('travelHistory').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+
+            items = items.concat(getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, selectedVisaType));
+
+            // Remove duplicates
             items = [...new Set(items)];
 
             let html = '';
@@ -788,6 +836,62 @@
                     </div>
                 `;
             }
+        }
+
+        function getPersonalizedDocuments(employment, travelHistory, income, visaType) {
+            let additionalDocs = [];
+
+            // EMPLOYMENT-SPECIFIC DOCUMENTS
+            if (employment === 'government') {
+                additionalDocs.push('সরকারি বিভাগ থেকে NOC (অনাপত্তি সনদ)');
+                additionalDocs.push('চাকরির স্থায়ীকরণ পত্র (যদি থাকে)');
+                additionalDocs.push('সর্বশেষ বেতন স্লিপ');
+            } else if (employment === 'private') {
+                additionalDocs.push('কোম্পানির হেড থেকে অনুমতি পত্র');
+                additionalDocs.push('সর্বশেষ ৩ মাসের বেতন স্লিপ');
+                additionalDocs.push('কোম্পানির ট্রেড লাইসেন্স কপি');
+            } else if (employment === 'self-employed') {
+                additionalDocs.push('ব্যবসার ট্রেড লাইসেন্স');
+                additionalDocs.push('ব্যবসার ব্যাংক স্টেটমেন্ট (শেষ ৬ মাস)');
+                additionalDocs.push('ট্যাক্স রিটার্ন সার্টিফিকেট (TIN)');
+                additionalDocs.push('ব্যবসা নিবন্ধন সনদ');
+                additionalDocs.push('ক্লায়েন্ট/সাপ্লায়ারদের সাথে চুক্তিপত্র');
+            } else if (employment === 'student') {
+                additionalDocs.push('শিক্ষা প্রতিষ্ঠান থেকে ছুটির অনুমতিপত্র');
+                additionalDocs.push('শিক্ষার্থী আইডি কার্ড কপি');
+                additionalDocs.push('অভিভাবকের আয়ের প্রমাণপত্র');
+                additionalDocs.push('অভিভাবকের স্পন্সরশিপ লেটার');
+            } else if (employment === 'unemployed') {
+                additionalDocs.push('স্পন্সরের (স্বামী/স্ত্রী/পিতা) আয়ের প্রমাণ');
+                additionalDocs.push('স্পন্সরের ব্যাংক স্টেটমেন্ট');
+                additionalDocs.push('স্পন্সরশিপ লেটার (নোটারাইজড)');
+                additionalDocs.push('স্পন্সরের সাথে সম্পর্কের প্রমাণ (বিয়ের সনদ/জন্ম সনদ)');
+            }
+
+            // TRAVEL HISTORY-SPECIFIC
+            if (travelHistory === 'no') {
+                additionalDocs.push('⚠️ প্রথমবার ভ্রমণ: শক্তিশালী আর্থিক প্রমাণ অত্যাবশ্যক');
+                additionalDocs.push('সম্পত্তির দলিল (জমি/ফ্ল্যাট মালিকানা)');
+                additionalDocs.push('পরিবারের সাথে সম্পর্ক প্রমাণ (দেশে ফেরার নিশ্চয়তা)');
+                if (visaType === 'Tourist') {
+                    additionalDocs.push('বিস্তারিত ট্যুর প্ল্যান ও বুকিং প্রমাণ');
+                }
+            } else if (travelHistory === 'once') {
+                additionalDocs.push('পূর্ববর্তী ভিসা কপি (পাসপোর্টে স্ট্যাম্প)');
+                additionalDocs.push('আগের ভ্রমণের রিটার্ন টিকেট কপি');
+            } else if (travelHistory === 'yes') {
+                additionalDocs.push('✅ ভ্রমণ ইতিহাস: আপনার সুবিধা হবে');
+                additionalDocs.push('সব দেশের ভিসা কপি (পাসপোর্ট পেজ)');
+            }
+
+            // INCOME-SPECIFIC
+            if (income === '0-30k') {
+                additionalDocs.push('💰 কম আয়: স্পন্সরের সাহায্য বা যৌথ সম্পত্তি প্রমাণ প্রয়োজন');
+            } else if (income === '100k+') {
+                additionalDocs.push('💰 উচ্চ আয়: ভিসা পাওয়া সহজ হবে');
+            }
+
+            return additionalDocs;
         }
 
         function getVisaTypeBangla(type) {
