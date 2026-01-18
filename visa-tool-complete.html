@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Visa Checklist & Eligibility Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .form-section {
+            padding: 25px 20px;
+            background: #f8f9fa;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .difficulty-very-hard {
+            background: #d6d8db;
+            color: #1b1e21;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .generate-btn:active {
+            transform: scale(0.98);
+        }
+
+        .eligibility-section,
+        .checklist-section {
+            padding: 25px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .eligibility-header,
+        .checklist-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .eligibility-header h3,
+        .checklist-header h3 {
+            font-size: 1.2em;
+            margin-bottom: 6px;
+        }
+
+        .info-row {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .question-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .question-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .radio-option:hover {
+            background: #e9ecef;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 3px solid;
+        }
+
+        .result-card.passed {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .result-card.failed {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .result-score {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .result-message {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .checklist-items {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .checklist-item:active {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #333;
+            flex: 1;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .checklist-item input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .progress-indicator {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 9px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer p {
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.05em;
+            }
+
+            .button-group {
+                flex-direction: row;
+            }
+
+            .btn {
+                width: auto;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Visa Checklist & Eligibility Checker</h1>
+            <p class="subtitle">Check eligibility & get your personalized checklist</p>
+        </header>
+
+        <!-- Step 1: Country Selection -->
+        <div id="countrySection" class="form-section">
+            <div class="form-group">
+                <label for="destination">Select Destination Country:</label>
+                <select id="destination" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="visaType">Visa Type:</label>
+                <select id="visaType" required>
+                    <option value="">Select visa type...</option>
+                    <option value="Tourist">Tourist / Visitor Visa</option>
+                    <option value="Student">Student Visa</option>
+                    <option value="Work">Work Visa</option>
+                    <option value="Business">Business Visa</option>
+                    <option value="Transit">Transit Visa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nationality">Your Nationality:</label>
+                <input type="text" id="nationality" placeholder="e.g., Bangladeshi" required>
+            </div>
+
+            <button id="nextBtn" class="generate-btn">Check Eligibility →</button>
+        </div>
+
+        <!-- Step 2: Eligibility Questions -->
+        <div id="eligibilitySection" class="eligibility-section hidden">
+            <h2 class="section-title">Eligibility Assessment</h2>
+            <div id="eligibilityHeader" class="eligibility-header"></div>
+            <div id="questionsContainer"></div>
+            <div class="button-group">
+                <button id="calculateBtn" class="btn btn-primary">Calculate Eligibility</button>
+                <button id="backBtn" class="btn btn-secondary">← Back</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Results & Checklist -->
+        <div id="resultsSection" class="checklist-section hidden">
+            <h2 class="section-title">Your Results</h2>
+            <div id="resultCard"></div>
+
+            <div id="checklistContainer">
+                <h3 style="margin: 20px 0 15px; font-size: 1.2em; color: #333;">📋 Required Documents</h3>
+                <div id="checklistContent"></div>
+            </div>
+
+            <div class="button-group">
+                <button id="downloadBtn" class="btn btn-success">📥 Download</button>
+                <button id="resetBtn" class="btn btn-secondary">🔄 New Check</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>⚠️ This tool provides general guidance only. Always verify with official sources.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Countries data from goFLY
+        const countries = [
+            // EASY
+            {name: "Nepal", difficulty: "easy", cost: "৳5,000-6,000", visaType: "Visa on Arrival", processingTime: "Instant"},
+            {name: "Maldives", difficulty: "easy", cost: "৳5,000-6,000", visaType: "Visa on Arrival", processingTime: "Instant"},
+            {name: "Sri Lanka", difficulty: "easy", cost: "৳6,000-8,000", visaType: "ETA (Online)", processingTime: "1-2 days"},
+            {name: "Vietnam", difficulty: "easy", cost: "৳6,000-8,000", visaType: "e-Visa", processingTime: "5-7 days"},
+            {name: "Turkey", difficulty: "easy", cost: "৳6,000-8,000", visaType: "e-Visa", processingTime: "3-7 days"},
+            {name: "Kenya", difficulty: "easy", cost: "৳7,000-8,000", visaType: "eTA", processingTime: "2-3 days"},
+            {name: "Ethiopia", difficulty: "easy", cost: "৳7,000-8,000", visaType: "eVisa", processingTime: "3-5 days"},
+            // MEDIUM
+            {name: "Malaysia", difficulty: "medium", cost: "৳6,000-8,000", visaType: "eVisa/eNTRI", processingTime: "3-5 days"},
+            {name: "Thailand", difficulty: "medium", cost: "৳6,000-8,000", visaType: "Tourist Visa", processingTime: "3-7 days"},
+            {name: "Singapore", difficulty: "medium", cost: "৳7,000-9,000", visaType: "Tourist Visa", processingTime: "5-7 days"},
+            {name: "UAE / Dubai", difficulty: "medium", cost: "৳8,000-10,000", visaType: "Tourist Visa", processingTime: "3-5 days"},
+            {name: "India", difficulty: "medium", cost: "৳6,000-8,000", visaType: "e-Visa/Regular", processingTime: "4-7 days"},
+            {name: "Indonesia", difficulty: "medium", cost: "৳7,000-9,000", visaType: "Visa on Arrival", processingTime: "Instant"},
+            {name: "China", difficulty: "medium", cost: "৳8,000-10,000", visaType: "Tourist Visa (L)", processingTime: "5-7 days"},
+            {name: "South Korea", difficulty: "medium", cost: "৳8,000-10,000", visaType: "Tourist Visa", processingTime: "5-10 days"},
+            {name: "Saudi Arabia (Umrah)", difficulty: "medium", cost: "৳8,000-10,000", visaType: "Umrah Visa", processingTime: "7-15 days"},
+            {name: "Philippines", difficulty: "medium", cost: "৳7,000-9,000", visaType: "Tourist Visa", processingTime: "5-7 days"},
+            {name: "Hong Kong", difficulty: "medium", cost: "৳7,000-9,000", visaType: "Visa/Pre-arrival", processingTime: "5-7 days"},
+            {name: "Pakistan", difficulty: "medium", cost: "৳6,000-8,000", visaType: "e-Visa", processingTime: "3-5 days"},
+            // HARD
+            {name: "Japan", difficulty: "hard", cost: "৳12,000-15,000", visaType: "Tourist Visa", processingTime: "7-15 days"},
+            {name: "Austria", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Belgium", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Denmark", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Finland", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "France", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Germany", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Greece", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Italy", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Netherlands", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Norway", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Poland", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Portugal", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Spain", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Sweden", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "Switzerland", difficulty: "hard", cost: "৳15,000-20,000", visaType: "Schengen Visa", processingTime: "15-30 days"},
+            {name: "United Kingdom", difficulty: "hard", cost: "৳18,000-20,000", visaType: "Visitor Visa", processingTime: "15-20 days"},
+            // VERY HARD
+            {name: "USA", difficulty: "very-hard", cost: "Varies", visaType: "B1/B2 Visa", processingTime: "Varies"},
+            {name: "Canada", difficulty: "very-hard", cost: "Varies", visaType: "Visitor Visa (TRV)", processingTime: "30+ days"},
+            {name: "Australia", difficulty: "very-hard", cost: "Varies", visaType: "Visitor Visa (600)", processingTime: "20-40 days"},
+            {name: "New Zealand", difficulty: "very-hard", cost: "Varies", visaType: "Visitor Visa", processingTime: "20-45 days"}
+        ];
+
+        // Eligibility questions by difficulty
+        const eligibilityQuestions = {
+            easy: [
+                {
+                    question: "Passport validity remaining?",
+                    options: [
+                        {text: "Less than 3 months", points: 0},
+                        {text: "3-6 months", points: 5},
+                        {text: "6-12 months", points: 8},
+                        {text: "More than 12 months", points: 8}
+                    ]
+                },
+                {
+                    question: "Employment status?",
+                    options: [
+                        {text: "Unemployed", points: 0},
+                        {text: "Student", points: 10},
+                        {text: "Self-employed/Business", points: 12},
+                        {text: "Employed (Private)", points: 15},
+                        {text: "Government Employee", points: 15}
+                    ]
+                },
+                {
+                    question: "Bank balance (approximate)?",
+                    options: [
+                        {text: "Less than ৳50,000", points: 0},
+                        {text: "৳50,000 - ৳2,00,000", points: 8},
+                        {text: "৳2,00,000 - ৳5,00,000", points: 12},
+                        {text: "More than ৳5,00,000", points: 12}
+                    ]
+                },
+                {
+                    question: "Previous international travel?",
+                    options: [
+                        {text: "Never traveled", points: 3},
+                        {text: "1-2 countries", points: 8},
+                        {text: "3-5 countries", points: 10},
+                        {text: "More than 5 countries", points: 10}
+                    ]
+                },
+                {
+                    question: "Do you have return tickets booked?",
+                    options: [
+                        {text: "No", points: 0},
+                        {text: "Not yet, will book", points: 3},
+                        {text: "Yes, confirmed", points: 7}
+                    ]
+                }
+            ],
+            medium: [
+                {
+                    question: "Passport validity remaining?",
+                    options: [
+                        {text: "Less than 3 months", points: 0},
+                        {text: "3-6 months", points: 8},
+                        {text: "6-12 months", points: 15},
+                        {text: "More than 12 months", points: 15}
+                    ]
+                },
+                {
+                    question: "Employment status?",
+                    options: [
+                        {text: "Unemployed", points: 0},
+                        {text: "Student", points: 10},
+                        {text: "Self-employed/Business", points: 13},
+                        {text: "Employed (Private)", points: 17},
+                        {text: "Government Employee", points: 20}
+                    ]
+                },
+                {
+                    question: "Bank balance?",
+                    options: [
+                        {text: "Less than ৳1,00,000", points: 0},
+                        {text: "৳1,00,000 - ৳3,00,000", points: 8},
+                        {text: "৳3,00,000 - ৳10,00,000", points: 12},
+                        {text: "More than ৳10,00,000", points: 15}
+                    ]
+                },
+                {
+                    question: "Previous international travel?",
+                    options: [
+                        {text: "Never", points: 0},
+                        {text: "1-2 countries", points: 8},
+                        {text: "3-5 countries", points: 10},
+                        {text: "Visited developed countries", points: 12}
+                    ]
+                },
+                {
+                    question: "Do you own property?",
+                    options: [
+                        {text: "No", points: 0},
+                        {text: "Yes, land/house in my name", points: 8}
+                    ]
+                },
+                {
+                    question: "Who will sponsor your trip?",
+                    options: [
+                        {text: "No sponsor", points: 0},
+                        {text: "Family member", points: 5},
+                        {text: "Self-sponsored", points: 7}
+                    ]
+                }
+            ],
+            hard: [
+                {
+                    question: "Passport validity remaining?",
+                    options: [
+                        {text: "Less than 6 months", points: 0},
+                        {text: "6-12 months", points: 15},
+                        {text: "More than 12 months", points: 20}
+                    ]
+                },
+                {
+                    question: "Employment status?",
+                    options: [
+                        {text: "Unemployed", points: 0},
+                        {text: "Student", points: 12},
+                        {text: "Self-employed/Business", points: 15},
+                        {text: "Employed (Private)", points: 18},
+                        {text: "Government Employee", points: 20}
+                    ]
+                },
+                {
+                    question: "Monthly income?",
+                    options: [
+                        {text: "Less than ৳30,000", points: 0},
+                        {text: "৳30,000 - ৳50,000", points: 8},
+                        {text: "৳50,000 - ৳1,00,000", points: 12},
+                        {text: "More than ৳1,00,000", points: 15}
+                    ]
+                },
+                {
+                    question: "Bank balance?",
+                    options: [
+                        {text: "Less than ৳3,00,000", points: 0},
+                        {text: "৳3,00,000 - ৳10,00,000", points: 10},
+                        {text: "More than ৳10,00,000", points: 15}
+                    ]
+                },
+                {
+                    question: "Previous travel to developed countries?",
+                    options: [
+                        {text: "Never", points: 0},
+                        {text: "1-2 countries", points: 8},
+                        {text: "Multiple countries", points: 12}
+                    ]
+                },
+                {
+                    question: "Purpose of visit?",
+                    options: [
+                        {text: "Tourism", points: 10},
+                        {text: "Business/Conference", points: 12},
+                        {text: "Visiting family/friends", points: 8}
+                    ]
+                },
+                {
+                    question: "Previous visa rejections from this country?",
+                    options: [
+                        {text: "Yes", points: 0},
+                        {text: "No", points: 10}
+                    ]
+                }
+            ],
+            "very-hard": [
+                {
+                    question: "Passport validity remaining?",
+                    options: [
+                        {text: "Less than 6 months", points: 0},
+                        {text: "6-12 months", points: 20},
+                        {text: "More than 12 months", points: 30}
+                    ]
+                },
+                {
+                    question: "Employment status?",
+                    options: [
+                        {text: "Unemployed", points: 0},
+                        {text: "Student", points: 12},
+                        {text: "Self-employed/Business", points: 15},
+                        {text: "Employed (Private)", points: 18},
+                        {text: "Government Employee", points: 20}
+                    ]
+                },
+                {
+                    question: "How long in current job?",
+                    options: [
+                        {text: "Less than 6 months", points: 0},
+                        {text: "6 months - 2 years", points: 8},
+                        {text: "2-5 years", points: 12},
+                        {text: "More than 5 years", points: 15}
+                    ]
+                },
+                {
+                    question: "Monthly income?",
+                    options: [
+                        {text: "Less than ৳50,000", points: 0},
+                        {text: "৳50,000 - ৳1,00,000", points: 10},
+                        {text: "More than ৳1,00,000", points: 20}
+                    ]
+                },
+                {
+                    question: "Bank balance?",
+                    options: [
+                        {text: "Less than ৳5,00,000", points: 0},
+                        {text: "৳5,00,000 - ৳25,00,000", points: 12},
+                        {text: "More than ৳25,00,000", points: 20}
+                    ]
+                },
+                {
+                    question: "Travel history to developed countries?",
+                    options: [
+                        {text: "Never", points: 0},
+                        {text: "1-2 countries", points: 8},
+                        {text: "3+ countries", points: 15}
+                    ]
+                },
+                {
+                    question: "Family ties in Bangladesh?",
+                    options: [
+                        {text: "No close family", points: 0},
+                        {text: "Some family members", points: 5},
+                        {text: "Spouse & children in BD", points: 10}
+                    ]
+                },
+                {
+                    question: "Previous visa rejections?",
+                    options: [
+                        {text: "Yes, from this country", points: 0},
+                        {text: "Yes, from other countries", points: 5},
+                        {text: "No rejections", points: 10}
+                    ]
+                }
+            ]
+        };
+
+        // Document checklists
+        const visaChecklists = {
+            common: [
+                "Valid passport (minimum 6 months validity)",
+                "Completed visa application form",
+                "Recent passport-sized photographs",
+                "Proof of travel insurance",
+                "Flight reservation/itinerary",
+                "Accommodation booking confirmation"
+            ],
+            Tourist: [
+                "Bank statements (last 3-6 months)",
+                "Employment letter or leave approval",
+                "Travel itinerary",
+                "Hotel reservations",
+                "Return flight tickets",
+                "Proof of sufficient funds"
+            ],
+            Student: [
+                "Letter of acceptance from institution",
+                "Proof of tuition fee payment",
+                "Academic transcripts",
+                "Language proficiency test results",
+                "Statement of purpose",
+                "Financial documents",
+                "Sponsor letter (if applicable)"
+            ],
+            Work: [
+                "Job offer letter",
+                "Employment contract",
+                "Employer invitation letter",
+                "Professional qualifications",
+                "Resume/CV",
+                "Previous employment records"
+            ],
+            Business: [
+                "Business invitation letter",
+                "Company registration certificate",
+                "Business bank statements",
+                "Trade license",
+                "Meeting/conference invitation"
+            ],
+            Transit: [
+                "Valid visa for final destination",
+                "Confirmed onward flight tickets",
+                "Proof of short stay"
+            ]
+        };
+
+        // Passing scores
+        const passingScores = {
+            easy: 40,
+            medium: 55,
+            hard: 65,
+            "very-hard": 70
+        };
+
+        // State
+        let selectedCountry = null;
+        let selectedVisaType = "";
+        let selectedNationality = "";
+        let userAnswers = [];
+        let eligibilityScore = 0;
+
+        // DOM Elements
+        const destinationSelect = document.getElementById('destination');
+        const visaTypeSelect = document.getElementById('visaType');
+        const nationalityInput = document.getElementById('nationality');
+        const nextBtn = document.getElementById('nextBtn');
+        const backBtn = document.getElementById('backBtn');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        const countrySection = document.getElementById('countrySection');
+        const eligibilitySection = document.getElementById('eligibilitySection');
+        const resultsSection = document.getElementById('resultsSection');
+
+        // Initialize
+        function init() {
+            populateCountryDropdown();
+            attachEventListeners();
+        }
+
+        function populateCountryDropdown() {
+            const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+
+            let html = '<option value="">Select a country...</option>';
+            const grouped = {
+                easy: [],
+                medium: [],
+                hard: [],
+                "very-hard": []
+            };
+
+            sortedCountries.forEach(country => {
+                grouped[country.difficulty].push(country);
+            });
+
+            const labels = {
+                easy: "✅ EASY",
+                medium: "⚠️ MEDIUM",
+                hard: "🔴 HARD",
+                "very-hard": "⛔ VERY HARD"
+            };
+
+            Object.keys(labels).forEach(difficulty => {
+                html += `<optgroup label="${labels[difficulty]}">`;
+                grouped[difficulty].forEach(country => {
+                    html += `<option value="${country.name}" data-difficulty="${country.difficulty}">${country.name}</option>`;
+                });
+                html += `</optgroup>`;
+            });
+
+            destinationSelect.innerHTML = html;
+        }
+
+        function attachEventListeners() {
+            nextBtn.addEventListener('click', goToEligibility);
+            backBtn.addEventListener('click', goBackToCountry);
+            calculateBtn.addEventListener('click', calculateEligibility);
+            resetBtn.addEventListener('click', reset);
+            downloadBtn.addEventListener('click', downloadResults);
+        }
+
+        function goToEligibility() {
+            const destination = destinationSelect.value;
+            const visaType = visaTypeSelect.value;
+            const nationality = nationalityInput.value.trim();
+
+            if (!destination || !visaType || !nationality) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            selectedCountry = countries.find(c => c.name === destination);
+            selectedVisaType = visaType;
+            selectedNationality = nationality;
+
+            showEligibilityQuestions();
+            countrySection.classList.add('hidden');
+            eligibilitySection.classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function showEligibilityQuestions() {
+            const difficulty = selectedCountry.difficulty;
+            const questions = eligibilityQuestions[difficulty];
+
+            // Header
+            document.getElementById('eligibilityHeader').innerHTML = `
+                <h3>${selectedCountry.name} - ${selectedVisaType} Visa</h3>
+                <div class="info-row">Difficulty: <span class="difficulty-badge difficulty-${difficulty}">${difficulty.toUpperCase()}</span></div>
+                <div class="info-row">Cost: ${selectedCountry.cost}</div>
+                <div class="info-row">Processing: ${selectedCountry.processingTime}</div>
+                <div class="info-row">Passing Score: ${passingScores[difficulty]}/100</div>
+            `;
+
+            // Questions
+            let html = '';
+            questions.forEach((q, qIndex) => {
+                html += `
+                    <div class="question-card">
+                        <label class="question-label">${qIndex + 1}. ${q.question}</label>
+                        <div class="radio-group">
+                `;
+                q.options.forEach((option, oIndex) => {
+                    html += `
+                        <label class="radio-option">
+                            <input type="radio" name="q${qIndex}" value="${option.points}" data-qindex="${qIndex}">
+                            <span>${option.text}</span>
+                        </label>
+                    `;
+                });
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('questionsContainer').innerHTML = html;
+        }
+
+        function calculateEligibility() {
+            const difficulty = selectedCountry.difficulty;
+            const questions = eligibilityQuestions[difficulty];
+
+            userAnswers = [];
+            let totalScore = 0;
+
+            // Collect answers
+            for (let i = 0; i < questions.length; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    alert(`Please answer question ${i + 1}`);
+                    return;
+                }
+                const points = parseInt(selected.value);
+                userAnswers.push(points);
+                totalScore += points;
+            }
+
+            eligibilityScore = totalScore;
+            showResults();
+        }
+
+        function showResults() {
+            const difficulty = selectedCountry.difficulty;
+            const passingScore = passingScores[difficulty];
+            const passed = eligibilityScore >= passingScore;
+
+            // Result card
+            let resultHtml = `
+                <div class="result-card ${passed ? 'passed' : 'failed'}">
+                    <div class="result-title">${passed ? '✅ Eligible' : '❌ Not Eligible'}</div>
+                    <div class="result-score">Your Score: ${eligibilityScore}/100 (Required: ${passingScore}+)</div>
+                    <div class="result-message">
+                        ${passed
+                            ? `Congratulations! You meet the eligibility criteria for ${selectedCountry.name}. Below is your personalized document checklist.`
+                            : `Unfortunately, your current profile doesn't meet the minimum requirements. Consider improving your financial status, travel history, or employment situation before applying.`
+                        }
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('resultCard').innerHTML = resultHtml;
+
+            // Generate checklist
+            if (passed) {
+                generateChecklist();
+            } else {
+                document.getElementById('checklistContainer').classList.add('hidden');
+            }
+
+            eligibilitySection.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function generateChecklist() {
+            let items = [...visaChecklists.common];
+            if (visaChecklists[selectedVisaType]) {
+                items = items.concat(visaChecklists[selectedVisaType]);
+            }
+            items = [...new Set(items)];
+
+            let html = `
+                <div class="checklist-header">
+                    <h3>📋 ${selectedVisaType} Visa - ${selectedCountry.name}</h3>
+                    <div class="info-row">Nationality: ${selectedNationality}</div>
+                    <div class="info-row">Eligibility Score: ${eligibilityScore}/100</div>
+                </div>
+                <div class="checklist-items">
+            `;
+
+            items.forEach((item, index) => {
+                html += `
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item-${index}" class="checkbox">
+                        <label for="item-${index}">${item}</label>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            document.getElementById('checklistContent').innerHTML = html;
+            document.getElementById('checklistContainer').classList.remove('hidden');
+
+            document.querySelectorAll('.checkbox').forEach(cb => {
+                cb.addEventListener('change', updateProgress);
+            });
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = document.querySelectorAll('.checkbox:checked').length;
+            const total = checkboxes.length;
+
+            if (total > 0) {
+                const percentage = Math.round((checked / total) * 100);
+                let progressDiv = document.querySelector('.progress-indicator');
+
+                if (!progressDiv) {
+                    progressDiv = document.createElement('div');
+                    progressDiv.className = 'progress-indicator';
+                    document.getElementById('checklistContent').insertBefore(
+                        progressDiv,
+                        document.querySelector('.checklist-items')
+                    );
+                }
+
+                progressDiv.innerHTML = `
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%"></div>
+                    </div>
+                    <p class="progress-text">${checked} of ${total} completed (${percentage}%)</p>
+                `;
+            }
+        }
+
+        function goBackToCountry() {
+            eligibilitySection.classList.add('hidden');
+            countrySection.classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function reset() {
+            destinationSelect.value = '';
+            visaTypeSelect.value = '';
+            nationalityInput.value = '';
+            selectedCountry = null;
+            selectedVisaType = '';
+            selectedNationality = '';
+            userAnswers = [];
+            eligibilityScore = 0;
+
+            resultsSection.classList.add('hidden');
+            countrySection.classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function downloadResults() {
+            const passed = eligibilityScore >= passingScores[selectedCountry.difficulty];
+
+            let content = `VISA ELIGIBILITY & CHECKLIST REPORT\n`;
+            content += `${'='.repeat(50)}\n\n`;
+            content += `Destination: ${selectedCountry.name}\n`;
+            content += `Visa Type: ${selectedVisaType}\n`;
+            content += `Nationality: ${selectedNationality}\n`;
+            content += `Difficulty Level: ${selectedCountry.difficulty.toUpperCase()}\n`;
+            content += `Cost: ${selectedCountry.cost}\n`;
+            content += `Processing Time: ${selectedCountry.processingTime}\n`;
+            content += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+            content += `${'='.repeat(50)}\n\n`;
+            content += `ELIGIBILITY RESULT:\n`;
+            content += `Status: ${passed ? 'ELIGIBLE ✓' : 'NOT ELIGIBLE ✗'}\n`;
+            content += `Your Score: ${eligibilityScore}/100\n`;
+            content += `Required Score: ${passingScores[selectedCountry.difficulty]}/100\n\n`;
+
+            if (passed) {
+                content += `${'='.repeat(50)}\n\n`;
+                content += `REQUIRED DOCUMENTS:\n\n`;
+                const items = document.querySelectorAll('.checklist-item');
+                items.forEach((item, index) => {
+                    const label = item.querySelector('label').textContent;
+                    const checked = item.querySelector('input').checked;
+                    content += `${index + 1}. [${checked ? 'X' : ' '}] ${label}\n`;
+                });
+            }
+
+            content += `\n${'='.repeat(50)}\n`;
+            content += `\n⚠️  IMPORTANT:\n`;
+            content += `This is for guidance only. Verify with official sources.\n`;
+
+            const blob = new Blob([content], {type: 'text/plain'});
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `visa-report-${selectedCountry.name}-${Date.now()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>

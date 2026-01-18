@@ -1,31 +1,53 @@
-# 🌍 Personalized Visa Checklist Generator
+# 🌍 Personalized Visa Checklist & Eligibility Checker
 
-A live, interactive web application that generates customized visa application checklists based on your destination country, visa type, and nationality.
+A comprehensive, interactive web application that checks your visa eligibility and generates customized document checklists based on your profile, destination country, and visa type.
 
 ## ✨ Features
 
+### 🎯 Complete Tool (visa-tool-complete.html) - **RECOMMENDED**
+- **44 Countries**: Easy, Medium, Hard, and Very Hard destinations
+- **Eligibility Checker**: Answer questions to calculate your eligibility score
+- **Scoring System**: Pass/fail based on difficulty level (40-70 points required)
+- **Cost Information**: Estimated visa processing costs
+- **Processing Time**: Expected timeframes for each country
+- **Personalized Checklist**: Document list based on visa type and eligibility
+- **Mobile Optimized**: Works perfectly on all devices without server
+
+### 📋 Basic Checklist Tool
 - **Interactive Interface**: Beautiful, user-friendly web interface
 - **Personalized Checklists**: Get customized document lists based on:
-  - Destination country (USA, UK, Canada, Australia, Germany, France, Japan, Singapore, UAE, Schengen)
+  - Destination country
   - Visa type (Tourist, Student, Work, Business, Transit)
   - Your nationality
 - **Real-time Progress Tracking**: Check off items as you complete them and see your progress
 - **Download Feature**: Export your checklist as a text file for offline reference
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **Live Tool**: Runs on a local server for instant access
 
 ## 🚀 Quick Start
 
-### 📱 Mobile Version (Easiest - No Installation Required!)
+### 🌟 Complete Tool with Eligibility Checker (RECOMMENDED!)
 
-**Perfect for mobile users!** Just open the file directly in your browser:
+**The most comprehensive option - includes eligibility scoring + checklist:**
+
+1. Open: **`visa-tool-complete.html`**
+2. No installation or server needed!
+3. Works on any device (mobile, tablet, desktop)
+4. Features:
+   - 44 countries with difficulty levels
+   - Eligibility assessment with scoring
+   - Personalized document checklist
+   - Cost and processing time info
+
+**Perfect for anyone who wants to check if they're eligible before applying!**
+
+### 📱 Simple Checklist Version (Basic)
+
+**For quick document checklist only:**
 
 1. Download or access: `visa-checklist-mobile.html`
 2. Open it in any web browser (Chrome, Safari, Firefox, etc.)
 3. Works instantly - no server or installation needed!
-4. Fully responsive and mobile-optimized
-
-**This is the simplest way to use the tool on mobile devices!**
+4. Get document checklist without eligibility assessment
 
 ### 💻 Desktop Version (With Server)
 
@@ -67,18 +89,19 @@ Open your web browser and visit the URL to start using the tool.
 5. **Track Progress**: Check off items as you gather them
 6. **Download**: Save your checklist for offline reference
 
-## 🎯 Supported Countries
+## 🎯 Supported Countries (44 Total)
 
-- United States (USA)
-- United Kingdom (UK)
-- Canada
-- Australia
-- Germany
-- France
-- Japan
-- Singapore
-- United Arab Emirates (UAE)
-- Schengen Countries
+### ✅ EASY (7 countries)
+Nepal, Maldives, Sri Lanka, Vietnam, Turkey, Kenya, Ethiopia
+
+### ⚠️ MEDIUM (12 countries)
+Malaysia, Thailand, Singapore, UAE/Dubai, India, Indonesia, China, South Korea, Saudi Arabia, Philippines, Hong Kong, Pakistan
+
+### 🔴 HARD (17 countries)
+Japan, United Kingdom, Schengen Countries (Austria, Belgium, Denmark, Finland, France, Germany, Greece, Italy, Netherlands, Norway, Poland, Portugal, Spain, Sweden, Switzerland)
+
+### ⛔ VERY HARD (4 countries)
+USA, Canada, Australia, New Zealand
 
 ## 📋 Visa Types
 
@@ -87,6 +110,27 @@ Open your web browser and visit the URL to start using the tool.
 - Work Visa
 - Business Visa
 - Transit Visa
+
+## 🎯 Eligibility Scoring System
+
+The complete tool assesses your eligibility based on multiple factors:
+
+### Scoring Criteria:
+- **Passport Validity**: 8-30 points (depending on difficulty)
+- **Employment Status**: 15-20 points
+- **Financial Status**: 12-20 points (bank balance & income)
+- **Travel History**: 8-15 points
+- **Property Ownership**: Up to 8 points
+- **Family Ties**: Up to 10 points
+- **Previous Rejections**: 0-10 points
+
+### Passing Scores by Difficulty:
+- **Easy**: 40/100 points required
+- **Medium**: 55/100 points required
+- **Hard**: 65/100 points required
+- **Very Hard**: 70/100 points required
+
+*Pass the eligibility check to receive your personalized document checklist!*
 
 ## 🛠️ Technology Stack
 
@@ -99,7 +143,8 @@ Open your web browser and visit the URL to start using the tool.
 
 ```
 Personalized-Visa-Checklist/
-├── visa-checklist-mobile.html  # 📱 Standalone mobile version (no server needed!)
+├── visa-tool-complete.html     # 🌟 Complete tool with eligibility checker (RECOMMENDED!)
+├── visa-checklist-mobile.html  # 📱 Simple checklist version (no server needed!)
 ├── index.html                  # Main HTML file
 ├── styles.css                  # Styling and responsive design
 ├── app.js                      # Interactive functionality
