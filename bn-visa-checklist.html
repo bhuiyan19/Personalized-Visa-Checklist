@@ -718,9 +718,17 @@
         }
 
         function showChecklist() {
-            // Header
+            // Get user info for personalization
+            const userName = document.getElementById('userName').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+
+            // Header with personalization
             const difficultyClass = `difficulty-${selectedCountry.difficulty}`;
             document.getElementById('checklistHeader').innerHTML = `
+                <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="font-size: 0.95em;">👤 <strong>${userName}</strong> এর জন্য বিশেষভাবে তৈরি</div>
+                    <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.9;">📱 ${userPhone}</div>
+                </div>
                 <h2>📋 ${selectedCountry.name} - ${getVisaTypeBangla(selectedVisaType)}</h2>
                 <div class="info-row">
                     <strong>কঠিনতা:</strong>
@@ -729,6 +737,9 @@
                 <div class="info-row"><strong>খরচ:</strong> ${selectedCountry.cost}</div>
                 <div class="info-row"><strong>প্রসেসিং সময়:</strong> ${selectedCountry.processingTime}</div>
                 <div class="info-row"><strong>ভিসার ধরন:</strong> ${selectedCountry.visaType}</div>
+                <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; font-size: 0.85em;">
+                    💡 <strong>বিশেষ পরামর্শ:</strong> ${getPersonalizedTip(selectedCountry.difficulty, selectedVisaType)}
+                </div>
             `;
 
             // Checklist items
@@ -790,15 +801,55 @@
             return types[type] || type;
         }
 
+        function getPersonalizedTip(difficulty, visaType) {
+            const tips = {
+                'easy': {
+                    'Tourist': 'আপনার ভাগ্য ভালো! এই দেশে ভিসা পাওয়া খুবই সহজ। সব ডকুমেন্ট ঠিক থাকলে ১-২ দিনেই পেয়ে যাবেন।',
+                    'Student': 'এই দেশে স্টুডেন্ট ভিসা প্রসেস সহজ। তবে একাডেমিক ডকুমেন্ট ভালো করে যাচাই করে নিন।',
+                    'Business': 'বিজনেস ভিসার জন্য কোম্পানির সব কাগজপত্র আপডেট রাখুন। দ্রুত পেয়ে যাবেন।',
+                    'Transit': 'ট্রানজিট ভিসা খুবই সহজ। পরবর্তী ফ্লাইট নিশ্চিত থাকলে সমস্যা নেই।'
+                },
+                'medium': {
+                    'Tourist': 'মাঝারি কঠিন। ব্যাংক স্টেটমেন্ট ও চাকরির প্রমাণপত্র ভালো করে তৈরি রাখুন। ৭-১০ দিন সময় লাগতে পারে।',
+                    'Student': 'ভালো প্রস্তুতি দরকার। IELTS/TOEFL স্কোর ভালো হলে সুবিধা হবে। goFLY সাহায্য করতে পারবে।',
+                    'Business': 'দুই দেশের বিজনেস সম্পর্ক প্রমাণ করতে হবে। goFLY এর অভিজ্ঞতা এখানে কাজে লাগবে।',
+                    'Transit': 'চূড়ান্ত গন্তব্যের ভিসা অবশ্যই লাগবে। নিশ্চিত হয়ে নিন।'
+                },
+                'hard': {
+                    'Tourist': 'চ্যালেঞ্জিং! শক্তিশালী আর্থিক প্রমাণ ও ভ্রমণ ইতিহাস দরকার। goFLY এর সাথে যোগাযোগ করুন - আমরা সফলতার হার বাড়াতে পারব।',
+                    'Student': 'খুব ভালো একাডেমিক রেকর্ড ও আর্থিক সামর্থ্য দেখাতে হবে। goFLY এর গাইডেন্স নিন।',
+                    'Business': 'প্রফেশনাল সাপোর্ট প্রয়োজন। goFLY এর অভিজ্ঞ টিম আপনাকে সাহায্য করবে।',
+                    'Transit': 'শেঙ্গেন দেশের জন্য সব কাগজপত্র পারফেক্ট হতে হবে। এক্সপার্ট সাহায্য নিন।'
+                },
+                'very-hard': {
+                    'Tourist': 'অত্যন্ত কঠিন! এই দেশগুলোর জন্য এক্সপার্ট সাপোর্ট অত্যাবশ্যক। goFLY এর ৭০% রিপিট কাস্টমার রেট এর কারণ - আমরা সফল হতে সাহায্য করি।',
+                    'Student': 'টপ লেভেল প্রস্তুতি দরকার। goFLY এর ১০,০০০+ সফল ক্লায়েন্ট এর অভিজ্ঞতা থেকে শিখুন।',
+                    'Business': 'পারফেক্ট ডকুমেন্টেশন + এক্সপার্ট গাইডেন্স = সফলতা। goFLY কল করুন: 01713-289170',
+                    'Transit': 'ভিসা অফিসার খুবই কড়া। প্রফেশনাল সাহায্য ছাড়া রিস্ক নেবেন না।'
+                }
+            };
+
+            return tips[difficulty]?.[visaType] || 'সব ডকুমেন্ট সঠিকভাবে প্রস্তুত করুন এবং প্রয়োজনে goFLY এর সাথে যোগাযোগ করুন।';
+        }
+
         function downloadChecklist() {
+            const userName = document.getElementById('userName').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+
             let content = `বাংলাদেশী ভিসা চেকলিস্ট\n`;
             content += `${'='.repeat(50)}\n\n`;
+            content += `👤 নাম: ${userName}\n`;
+            content += `📱 ফোন: ${userPhone}\n`;
+            if (userEmail) content += `📧 ইমেইল: ${userEmail}\n`;
+            content += `\n${'='.repeat(50)}\n\n`;
             content += `গন্তব্য: ${selectedCountry.name}\n`;
             content += `ভিসার ধরন: ${getVisaTypeBangla(selectedVisaType)}\n`;
             content += `কঠিনতা: ${selectedCountry.difficultyBn}\n`;
             content += `খরচ: ${selectedCountry.cost}\n`;
             content += `প্রসেসিং সময়: ${selectedCountry.processingTime}\n`;
             content += `তারিখ: ${new Date().toLocaleDateString('bn-BD')}\n\n`;
+            content += `💡 বিশেষ পরামর্শ: ${getPersonalizedTip(selectedCountry.difficulty, selectedVisaType)}\n\n`;
             content += `${'='.repeat(50)}\n\n`;
             content += `প্রয়োজনীয় ডকুমেন্ট:\n\n`;
 
