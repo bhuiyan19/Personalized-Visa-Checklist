@@ -290,6 +290,230 @@
             cursor: not-allowed;
         }
 
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-next:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
+            background: linear-gradient(135deg, #00F0B5 0%, #FF7A47 100%);
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #00D9A3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Success Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #00D9A3;
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            color: #00D9A3;
+            font-weight: 600;
+            border-bottom: 1px dashed #00D9A3;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85em;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2c3e50 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Country Search */
+        .search-box {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 40px 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #00D9A3;
+            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        /* Enhanced document items */
+        .doc-item {
+            transition: all 0.2s ease;
+        }
+
+        .doc-item:hover {
+            transform: translateX(5px);
+            background: #f8f9fa;
+            border-left-color: #FF6B35;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 217, 163, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 217, 163, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 217, 163, 0);
+            }
+        }
+
+        .btn-submit {
+            animation: pulse 2s infinite;
+        }
+
+        /* Success checkmark animation */
+        .success-checkmark {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        .success-checkmark.show {
+            display: block;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke: #00D9A3;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: #00D9A3;
+            stroke-width: 3;
+            fill: none;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
         /* Checklist Results */
         .checklist-section {
             padding: 25px 20px;
@@ -413,7 +637,7 @@
                 background: white;
                 padding: 0;
             }
-            .progress-container, .btn-container, footer, .lang-toggle {
+            .progress-container, .btn-container, footer, .lang-toggle, .success-checkmark, .loading-overlay, .search-box {
                 display: none !important;
             }
             .container {
@@ -422,6 +646,53 @@
             }
             .checklist-header, .doc-category, .tip-box {
                 page-break-inside: avoid;
+            }
+            .doc-item {
+                border-left: 2px solid #00D9A3 !important;
+            }
+        }
+
+        /* Accessibility improvements */
+        *:focus {
+            outline: 2px solid #00D9A3;
+            outline-offset: 2px;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #00D9A3;
+            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.2);
+        }
+
+        /* Mobile improvements */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            .progress-label {
+                font-size: 0.65em;
+            }
+
+            .progress-circle {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .tooltip .tooltiptext {
+                width: 180px;
+                margin-left: -90px;
+                font-size: 0.75em;
             }
         }
 
@@ -436,6 +707,12 @@
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">✨ Generating your personalized checklist...</div>
+    </div>
+
     <div class="container">
         <header>
             <a href="bn-visa-checklist.html" class="lang-toggle">🇧🇩 বাংলা</a>
@@ -477,6 +754,10 @@
 
             <div class="form-group">
                 <label for="country">📍 Destination Country <span style="color: red;">*</span></label>
+                <div class="search-box">
+                    <input type="text" id="countrySearch" placeholder="🔍 Search country..." onkeyup="filterCountries()">
+                    <span class="search-icon">🔍</span>
+                </div>
                 <select id="country" required>
                     <option value="">-- Select Country --</option>
                     <optgroup label="🟢 Easy Visa (High Success Rate)">
@@ -584,6 +865,11 @@
 
             <div class="form-group">
                 <label for="employmentStatus">💼 Employment Status <span style="color: red;">*</span></label>
+                <p style="font-size: 0.85em; color: #666; margin-bottom: 10px;">
+                    This helps us determine required documents like <span class="tooltip">NOC<span class="tooltiptext">No Objection Certificate - letter from employer allowing you to travel</span></span>,
+                    <span class="tooltip">TIN<span class="tooltiptext">Tax Identification Number - your tax registration number</span></span>,
+                    and salary certificates
+                </p>
                 <select id="employmentStatus" required>
                     <option value="">-- Select Status --</option>
                     <option value="Government">👔 Government Employee</option>
@@ -1075,6 +1361,293 @@
             // Open print dialog which allows saving as PDF
             window.print();
         }
+
+        // Country Search Filter
+        function filterCountries() {
+            const searchInput = document.getElementById('countrySearch').value.toUpperCase();
+            const select = document.getElementById('country');
+            const options = select.getElementsByTagName('option');
+            const optgroups = select.getElementsByTagName('optgroup');
+
+            // Show/hide options based on search
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(searchInput) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+
+            // Show/hide optgroups if all children are hidden
+            for (let i = 0; i < optgroups.length; i++) {
+                const group = optgroups[i];
+                const visibleOptions = Array.from(group.getElementsByTagName('option'))
+                    .filter(opt => opt.style.display !== 'none');
+                group.style.display = visibleOptions.length > 0 ? "" : "none";
+            }
+
+            // Auto-select if only one match
+            const visibleOptions = Array.from(options).filter(opt =>
+                opt.style.display !== 'none' && opt.value !== ''
+            );
+            if (visibleOptions.length === 1) {
+                select.value = visibleOptions[0].value;
+            }
+        }
+
+        // Click on search fills the select
+        document.addEventListener('DOMContentLoaded', function() {
+            const countrySelect = document.getElementById('country');
+            const searchInput = document.getElementById('countrySearch');
+
+            if (countrySelect && searchInput) {
+                countrySelect.addEventListener('change', function() {
+                    if (this.value) {
+                        searchInput.value = '';
+                        filterCountries();
+                        // Reset size after selection
+                        this.size = 1;
+                        setTimeout(() => {
+                            this.size = 8;
+                        }, 100);
+                    }
+                });
+            }
+        });
+
+        // Show Loading Animation
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        // Confetti Animation
+        function createConfetti() {
+            const colors = ['#00D9A3', '#FF6B35', '#FFD93D', '#6BCF7F', '#4ECDC4'];
+            const confettiCount = 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+
+        // Add Success Checkmark SVG to result
+        function addSuccessCheckmark() {
+            const checkmarkHTML = `
+                <svg class="success-checkmark show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            `;
+            return checkmarkHTML;
+        }
+
+        // Enhanced generateChecklist with animations (wrapping the original)
+        (function() {
+            const originalGenerate = window.generateChecklist;
+            window.generateChecklist = function() {
+                // Validation
+                const employmentStatus = document.getElementById('employmentStatus').value;
+                const monthlyIncome = document.getElementById('monthlyIncome').value;
+                const travelHistory = document.getElementById('travelHistory').value;
+
+                if (!employmentStatus || !monthlyIncome || !travelHistory) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Show loading
+                showLoading();
+
+                // Simulate processing time for better UX
+                setTimeout(() => {
+                    // Call original function logic inline
+                    const country = document.getElementById('country').value;
+                    const visaType = document.getElementById('visaType').value;
+                    const userName = document.getElementById('userName').value.trim();
+                    const userEmail = document.getElementById('userEmail').value.trim();
+                    const userPhone = document.getElementById('userPhone').value.trim();
+
+                    const leadData = {
+                        timestamp: new Date().toLocaleString(),
+                        name: userName,
+                        email: userEmail,
+                        phone: userPhone,
+                        country: country,
+                        visaType: visaType,
+                        employment: employmentStatus,
+                        income: monthlyIncome,
+                        travelHistory: travelHistory
+                    };
+
+                    console.log('🎯 LEAD CAPTURED:', leadData);
+
+                    const countryInfo = countryData[country];
+                    let standardDocs, personalizedDocs, tips;
+
+                    if (countryInfo && countryInfo.verySimple) {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity)',
+                            'Return flight tickets',
+                            'Hotel booking or accommodation proof',
+                            'Sufficient travel funds (cash/card)'
+                        ];
+
+                        if (country === 'Bhutan') {
+                            standardDocs.push('Tour package booking (mandatory through approved tour operator)');
+                            standardDocs.push('Sustainable Development Fee ($100/day)');
+                        }
+
+                        personalizedDocs = [];
+                        tips = [`✅ ${country} is visa-free for Bangladeshi passport holders! Very easy process.`];
+
+                    } else if (countryInfo && countryInfo.easyEVisa) {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity + 2 blank pages)',
+                            'Recent passport-size photos (35x45mm, white background)',
+                            'Completed online visa application form',
+                            'Flight itinerary (return ticket booking)',
+                            'Hotel booking/accommodation proof',
+                            'Bank statement (last 3 months)',
+                            'Travel itinerary/plan'
+                        ];
+
+                        personalizedDocs = [];
+
+                        if (employmentStatus === 'Government' || employmentStatus === 'Private') {
+                            personalizedDocs.push('Employment letter/NOC from company');
+                        } else if (employmentStatus === 'Self-employed') {
+                            personalizedDocs.push('Trade license copy');
+                        } else if (employmentStatus === 'Student') {
+                            personalizedDocs.push('Student ID + NOC from institution');
+                            personalizedDocs.push('Parent sponsorship letter');
+                        } else if (employmentStatus === 'Unemployed') {
+                            personalizedDocs.push('Sponsor documents (if applicable)');
+                        }
+
+                        tips = [`✅ ${country} offers e-visa/visa on arrival - simple online process! Success rate is high for Bangladeshi passport holders.`];
+
+                    } else if (countryInfo && countryInfo.moderate) {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity + 2 blank pages)',
+                            'Recent passport photos (35x45mm, white background, country-specific)',
+                            'Completed visa application form (online/offline)',
+                            'Flight itinerary/reservation (return ticket proof)',
+                            'Hotel booking/accommodation proof',
+                            'Bank statements (last 6 months)',
+                            'Salary certificate or income proof (last 3 months)',
+                            'Employment letter/NOC (for employees)',
+                            'Cover letter explaining purpose of visit',
+                            'Travel itinerary with day-by-day plan'
+                        ];
+
+                        personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                        tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+
+                    } else {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
+                            'Recent passport photos (35x45mm, white background, country-specific)',
+                            'Completed visa application form (online/offline)',
+                            'Flight itinerary/reservation (return ticket proof)',
+                            'Hotel booking/accommodation proof for entire stay',
+                            'Travel insurance (Schengen mandatory: min €30,000 coverage)',
+                            'Bank statements (last 6 months with salary credits highlighted)',
+                            'Income tax returns (last 2 years)',
+                            'Salary slips (last 6 months)',
+                            'Employment letter/NOC on company letterhead',
+                            'Company registration/trade license (if self-employed)',
+                            'Property documents (land/house ownership)',
+                            'Family ties proof (marriage/birth certificates)',
+                            'Cover letter explaining purpose & return intent',
+                            'Detailed travel itinerary with bookings'
+                        ];
+
+                        personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                        tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+                    }
+
+                    let categoryLabel = 'Standard Documents';
+                    if (countryInfo && countryInfo.verySimple) {
+                        categoryLabel = 'Required Documents (Very Simple!)';
+                    } else if (countryInfo && countryInfo.easyEVisa) {
+                        categoryLabel = 'Required Documents (E-Visa/Simple Process)';
+                    } else if (countryInfo && countryInfo.moderate) {
+                        categoryLabel = 'Required Documents (Moderate Process)';
+                    } else if (countryInfo && countryInfo.comprehensive) {
+                        categoryLabel = 'Required Documents (Comprehensive Process)';
+                    }
+
+                    let html = addSuccessCheckmark() + `
+                        <div class="checklist-header">
+                            <h2>✅ Your Personalized Checklist</h2>
+                            <div class="info-row">🌍 Destination: <strong>${country}</strong></div>
+                            <div class="info-row">🎯 Purpose: <strong>${visaType}</strong></div>
+                            <div class="info-row">👤 ${userName}</div>
+                            <div class="info-row">📱 ${userPhone}</div>
+                            <div class="info-row">⏱️ Processing: <strong>${countryInfo ? countryInfo.time : 'N/A'} days</strong> | 💵 Fee: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
+                        </div>
+
+                        <div class="doc-category">
+                            <div class="category-title">📄 ${categoryLabel}</div>
+                            ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                        </div>
+
+                        ${personalizedDocs.length > 0 ? `
+                            <div class="doc-category">
+                                <div class="category-title">⭐ Additional Documents (Based on Your Profile)</div>
+                                ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${tips.length > 0 ? `
+                            <div class="tip-box">
+                                <strong>💡 Tips for You:</strong><br><br>
+                                ${tips.join('<br><br>')}
+                            </div>
+                        ` : ''}
+
+                        <div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;">
+                            <strong>🎯 Need Help?</strong><br><br>
+                            goFLY Limited can assist you with:<br>
+                            ✅ Document preparation & verification<br>
+                            ✅ Visa application submission<br>
+                            ✅ Interview preparation (if needed)<br>
+                            ✅ Flight & hotel booking<br><br>
+                            📞 Contact us for personalized guidance!
+                        </div>
+                    `;
+
+                    document.getElementById('checklistResult').innerHTML = html;
+                    document.getElementById('step3').classList.remove('active');
+                    document.getElementById('step4').classList.add('active');
+                    updateProgress(4);
+                    currentStep = 4;
+
+                    // Hide loading
+                    hideLoading();
+
+                    // Show confetti
+                    createConfetti();
+
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            };
+        })();
     </script>
 </body>
 </html>
