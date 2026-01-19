@@ -30,55 +30,114 @@
         }
 
         header {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: linear-gradient(135deg, #00D9A3 0%, #00B890 25%, #FF6B35 75%, #FF8C5A 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
             color: white;
-            padding: 25px 20px;
+            padding: 35px 20px;
             text-align: center;
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
         }
 
         .bd-flag {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: flagFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        @keyframes flagFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         header h1 {
-            font-size: 1.6em;
-            margin-bottom: 8px;
-            font-weight: 700;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
         }
 
         .subtitle {
-            font-size: 0.95em;
+            font-size: 1em;
             opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
         }
 
         .passport-rank {
-            background: rgba(255,255,255,0.15);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-top: 10px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            margin-top: 15px;
             display: inline-block;
             font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .passport-rank:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.35);
         }
 
         .lang-toggle {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
         .lang-toggle:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
         }
 
         /* Progress Indicator */
@@ -589,27 +648,125 @@
         }
 
         footer {
-            background: #2c3e50;
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #1a252f 100%);
             color: white;
-            padding: 25px 20px;
+            padding: 40px 20px 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D9A3 0%, #FF6B35 50%, #00D9A3 100%);
+            background-size: 200% 100%;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        footer::after {
+            content: '✈️';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: planeFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes planeFloat {
+            0%, 100% { transform: translate(0, 0) rotate(-10deg); }
+            50% { transform: translate(-20px, -10px) rotate(-15deg); }
         }
 
         .footer-title {
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #00D9A3;
+            font-size: 1.6em;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(0, 217, 163, 0.3);
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px;
+        }
+
+        .badge {
+            background: rgba(0, 217, 163, 0.15);
+            border: 2px solid rgba(0, 217, 163, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge:hover {
+            background: rgba(0, 217, 163, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 163, 0.3);
         }
 
         .footer-contact {
             font-size: 0.95em;
-            margin: 5px 0;
+            margin: 8px 0;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-contact:hover {
+            opacity: 1;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #00D9A3;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            opacity: 0.7;
+            margin-top: 3px;
         }
 
         .footer-credit {
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85em;
             opacity: 0.8;
@@ -617,18 +774,28 @@
 
         .whatsapp-btn {
             display: inline-block;
-            background: #25D366;
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
             color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 14px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            margin: 15px 0;
-            font-weight: 600;
-            transition: transform 0.2s;
+            margin: 20px 0;
+            font-weight: 700;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .whatsapp-btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+        }
+
+        .whatsapp-btn::before {
+            content: '💬 ';
+            font-size: 1.2em;
         }
 
         /* Print/PDF Styles */
@@ -911,14 +1078,31 @@
 
         <footer>
             <h3 class="footer-title">goFLY Limited</h3>
-            <p style="font-size: 0.85em; opacity: 0.9; margin-bottom: 10px;">
-                🏆 IATA: 42337956 | 📋 ATAB: 4298 | ✈️ Civil Aviation: 0007726
-            </p>
+            <div class="footer-badges">
+                <span class="badge">🏆 IATA: 42337956</span>
+                <span class="badge">📋 ATAB: 4298</span>
+                <span class="badge">✈️ Civil Aviation: 0007726</span>
+            </div>
             <p class="footer-contact">📍 1 Shukrabad Road Motiur Nibash, Beside New Model Degree College</p>
             <p class="footer-contact">Opposite of Metro Shopping Mall, Dhaka 1207</p>
             <p class="footer-contact">📞 01713-289170 | 📱 01713-289175</p>
-            <p class="footer-contact">⭐ 4.8/5.0 (431+ Reviews) | 👥 10,000+ Customers | 🔄 70% Repeat Rate</p>
-            <a href="https://wa.me/8801713289170" class="whatsapp-btn">💬 Chat on WhatsApp</a>
+
+            <div class="footer-stats">
+                <div class="stat-item">
+                    <span class="stat-number">⭐ 4.8/5.0</span>
+                    <span class="stat-label">431+ Reviews</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">👥 10,000+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">🔄 70%</span>
+                    <span class="stat-label">Repeat Rate</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/8801713289170" class="whatsapp-btn">Chat on WhatsApp</a>
             <p style="font-size: 0.8em; margin-top: 15px; opacity: 0.7; line-height: 1.6;">
                 <strong>Disclaimer:</strong> This checklist is for informational purposes only, based on public sources like Henley Passport Index 2026 (Bangladesh: Rank 95th, 37 visa-free destinations), Wikipedia, and embassy guidelines as of January 2026. Visa decisions depend on individual profiles. Rules change frequently. Always verify on official embassy websites or VFS Global. We are not responsible for visa rejections or changes.
             </p>
