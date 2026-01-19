@@ -890,37 +890,32 @@
                 </div>
                 <select id="country" required>
                     <option value="">-- দেশ নির্বাচন করুন --</option>
-                    <option value="Armenia">🇦🇲 আর্মেনিয়া</option>
                     <option value="Australia">🇦🇺 অস্ট্রেলিয়া</option>
-                    <option value="Austria">🇦🇹 অস্ট্রিয়া</option>
-                    <option value="Bahrain">🇧🇭 বাহরাইন</option>
                     <option value="Belgium">🇧🇪 বেলজিয়াম</option>
-                    <option value="Bhutan">🇧🇹 ভুটান</option>
                     <option value="Canada">🇨🇦 কানাডা</option>
                     <option value="China">🇨🇳 চীন</option>
                     <option value="Czech Republic">🇨🇿 চেক রিপাবলিক</option>
                     <option value="Denmark">🇩🇰 ডেনমার্ক</option>
-                    <option value="Egypt">🇪🇬 মিশর</option>
+                    <option value="Estonia">🇪🇪 এস্তোনিয়া</option>
+                    <option value="Ethiopia">🇪🇹 ইথিওপিয়া</option>
                     <option value="France">🇫🇷 ফ্রান্স</option>
-                    <option value="Georgia">🇬🇪 জর্জিয়া</option>
                     <option value="Germany">🇩🇪 জার্মানি</option>
+                    <option value="Greece">🇬🇷 গ্রীস</option>
+                    <option value="Hong Kong">🇭🇰 হংকং</option>
                     <option value="Hungary">🇭🇺 হাঙ্গেরি</option>
                     <option value="India">🇮🇳 ভারত</option>
                     <option value="Indonesia">🇮🇩 ইন্দোনেশিয়া</option>
                     <option value="Italy">🇮🇹 ইতালি</option>
                     <option value="Japan">🇯🇵 জাপান</option>
-                    <option value="Jordan">🇯🇴 জর্ডান</option>
-                    <option value="Kuwait">🇰🇼 কুয়েত</option>
+                    <option value="Kenya">🇰🇪 কেনিয়া</option>
                     <option value="Malaysia">🇲🇾 মালয়েশিয়া</option>
-                    <option value="Maldives">🇲🇻 মালদ্বীপ</option>
                     <option value="Nepal">🇳🇵 নেপাল</option>
                     <option value="Netherlands">🇳🇱 নেদারল্যান্ডস</option>
-                    <option value="New Zealand">🇳🇿 নিউজিল্যান্ড</option>
                     <option value="Norway">🇳🇴 নরওয়ে</option>
-                    <option value="Oman">🇴🇲 ওমান</option>
+                    <option value="Pakistan">🇵🇰 পাকিস্তান</option>
+                    <option value="Philippines">🇵🇭 ফিলিপাইন</option>
                     <option value="Poland">🇵🇱 পোল্যান্ড</option>
-                    <option value="Qatar">🇶🇦 কাতার</option>
-                    <option value="Saudi Arabia">🇸🇦 সৌদি আরব</option>
+                    <option value="Portugal">🇵🇹 পর্তুগাল</option>
                     <option value="Schengen">🇪🇺 শেনজেন (ইউরোপ)</option>
                     <option value="Singapore">🇸🇬 সিঙ্গাপুর</option>
                     <option value="South Korea">🇰🇷 দক্ষিণ কোরিয়া</option>
@@ -930,8 +925,9 @@
                     <option value="Switzerland">🇨🇭 সুইজারল্যান্ড</option>
                     <option value="Thailand">🇹🇭 থাইল্যান্ড</option>
                     <option value="Turkey">🇹🇷 তুরস্ক</option>
-                    <option value="UAE">🇦🇪 সংযুক্ত আরব আমিরাত</option>
-                    <option value="UK">🇬🇧 যুক্তরাজ্য</option>
+                    <option value="UAE">🇦🇪 সংযুক্ত আরব আমিরাত (দুবাই/UAE)</option>
+                    <option value="UK">🇬🇧 যুক্তরাজ্য (UK)</option>
+                    <option value="Umrah">🕋 উমরাহ (সৌদি আরব)</option>
                     <option value="USA">🇺🇸 মার্কিন যুক্তরাষ্ট্র</option>
                     <option value="Vietnam">🇻🇳 ভিয়েতনাম</option>
                 </select>
@@ -1082,35 +1078,74 @@
         let currentStep = 1;
         const totalSteps = 4;
 
+        // Country URLs for internal linking
+        const countryURLs = {
+            'Australia': 'https://goflybd.com/australia-visa-from-bangladesh/',
+            'Belgium': 'https://goflybd.com/belgium-visa-from-bangladesh/',
+            'Canada': 'https://goflybd.com/canada-visa-from-bangladesh/',
+            'China': 'https://goflybd.com/china-visa-for-bangladeshi/',
+            'Czech Republic': 'https://goflybd.com/czech-republic-visa-from-bangladesh/',
+            'Denmark': 'https://goflybd.com/denmark-visa-from-bangladesh/',
+            'Estonia': 'https://goflybd.com/estonia-visa-from-bangladesh/',
+            'Ethiopia': 'https://goflybd.com/ethiopia-visa-from-bangladesh/',
+            'France': 'https://goflybd.com/france-visa-from-bangladesh/',
+            'Germany': 'https://goflybd.com/germany-visa-from-bangladesh/',
+            'Greece': 'https://goflybd.com/greece-visa-from-bangladesh/',
+            'Hong Kong': 'https://goflybd.com/hong-kong-visa-from-bangladesh/',
+            'Hungary': 'https://goflybd.com/hungary-visa-from-bangladesh/',
+            'India': 'https://goflybd.com/indian-visa-for-bangladeshi/',
+            'Indonesia': 'https://goflybd.com/indonesia-visa-for-bangladeshi/',
+            'Italy': 'https://goflybd.com/italy-visa-from-bangladesh/',
+            'Japan': 'https://goflybd.com/japan-visa-from-bangladesh/',
+            'Kenya': 'https://goflybd.com/kenya-visa-for-bangladeshi/',
+            'Malaysia': 'https://goflybd.com/malaysia-visa-from-bangladesh/',
+            'Nepal': 'https://goflybd.com/nepal-visa-from-bangladesh/',
+            'Netherlands': 'https://goflybd.com/netherlands-visa-from-bangladesh/',
+            'Norway': 'https://goflybd.com/norway-visa-from-bangladesh/',
+            'Pakistan': 'https://goflybd.com/pakistan-visa-for-bangladeshi/',
+            'Philippines': 'https://goflybd.com/philippines-visa-from-bangladesh/',
+            'Poland': 'https://goflybd.com/poland-visa-from-bangladesh/',
+            'Portugal': 'https://goflybd.com/portugal-visa-for-bangladeshi/',
+            'Schengen': 'https://goflybd.com/schengen-visa-for-bangladeshi/',
+            'Singapore': 'https://goflybd.com/singapore-visa-from-bangladesh/',
+            'South Korea': 'https://goflybd.com/south-korea-visa-for-bangladeshi/',
+            'Spain': 'https://goflybd.com/spain-visa-from-bangladesh/',
+            'Sri Lanka': 'https://goflybd.com/sri-lanka-visa-from-bangladesh/',
+            'Sweden': 'https://goflybd.com/sweden-visa-from-bangladesh/',
+            'Switzerland': 'https://goflybd.com/switzerland-visa-from-bangladesh/',
+            'Thailand': 'https://goflybd.com/thailand-visa-from-bangladesh/',
+            'Turkey': 'https://goflybd.com/turkey-visa-from-bangladesh/',
+            'UAE': 'https://goflybd.com/dubai-visa-from-bangladesh/',
+            'UK': 'https://goflybd.com/uk-visa-from-bangladesh/',
+            'Umrah': 'https://goflybd.com/umrah-visa-from-bangladesh/',
+            'USA': 'https://goflybd.com/usa-visa-from-bangladesh/',
+            'Vietnam': 'https://goflybd.com/vietnam-visa-from-bangladesh/'
+        };
+
         // সব দেশের সঠিক ভিসা তথ্য
         const countryData = {
             // ON-ARRIVAL / VISA-FREE (Super Simple - 4 docs)
-            'Maldives': { time: '০', fee: 'ফ্রি (আগমনে)', verySimple: true },
             'Nepal': { time: '০', fee: 'ফ্রি (আগমনে)', verySimple: true },
             'Sri Lanka': { time: '০', fee: 'ফ্রি (আগমনে)', verySimple: true },
 
-            // SIMPLE E-VISA (4-6 docs)
-            'Bhutan': { time: '৫-৭', fee: '৳৮,০০০-১২,০০০', verySimple: true },
+            // SIMPLE E-VISA (7-10 docs)
             'Thailand': { time: '৩-৫', fee: '৳৪,০০০-৬,০০০', easyEVisa: true },
             'Malaysia': { time: '২-৪', fee: '৳৩,০০০-৫,০০০', easyEVisa: true },
             'Indonesia': { time: '৩-৭', fee: '৳৩,৫০০-৫,৫০০', easyEVisa: true },
             'Turkey': { time: '৫-১০', fee: '৳৫,০০০-৮,০০০', easyEVisa: true },
-            'Georgia': { time: '৩-৫', fee: '৳৪,০০০-৬,০০০', easyEVisa: true },
-            'Armenia': { time: '৩-৫', fee: '৳৩,০০০-৫,০০০', easyEVisa: true },
+            'Vietnam': { time: '৫-৭', fee: '৳৫,০০০-৮,০০০', easyEVisa: true },
+            'Kenya': { time: '৩-৫', fee: '৳৬,০০০-১০,০০০', easyEVisa: true },
+            'Ethiopia': { time: '৫-১০', fee: '৳৮,০০০-১২,০০০', easyEVisa: true },
 
             // MODERATE (10-12 docs)
             'India': { time: '৪-৭', fee: '৳২,০০০-৪,০০০', moderate: true },
             'UAE': { time: '৩-৫', fee: '৳৮,০০০-১৫,০০০', moderate: true },
-            'Saudi Arabia': { time: '৭-১৫', fee: '৳১৫,০০০-২৫,০০০', moderate: true },
-            'Qatar': { time: '৫-১০', fee: '৳১০,০০০-১৮,০০০', moderate: true },
-            'Oman': { time: '৫-১০', fee: '৳৮,০০০-১২,০০০', moderate: true },
-            'Kuwait': { time: '৭-১৫', fee: '৳১২,০০০-২০,০০০', moderate: true },
-            'Bahrain': { time: '৫-১০', fee: '৳৮,০০০-১৫,০০০', moderate: true },
+            'Umrah': { time: '৭-১৫', fee: '৳১৫,০০০-২৫,০০০', moderate: true },
             'China': { time: '৭-১৫', fee: '৳১২,০০০-১৮,০০০', moderate: true },
             'Singapore': { time: '৩-৫', fee: '৳৮,০০০-১২,০০০', moderate: true },
-            'Vietnam': { time: '৫-৭', fee: '৳৫,০০০-৮,০০০', moderate: true },
-            'Egypt': { time: '৭-১০', fee: '৳৮,০০০-১২,০০০', moderate: true },
-            'Jordan': { time: '৫-১০', fee: '৳৬,০০০-১০,০০০', moderate: true },
+            'Hong Kong': { time: '৩-৫', fee: '৳৬,০০০-১০,০০০', moderate: true },
+            'Philippines': { time: '৫-৭', fee: '৳৫,০০০-৮,০০০', moderate: true },
+            'Pakistan': { time: '৭-১০', fee: '৳৪,০০০-৬,০০০', moderate: true },
 
             // COMPREHENSIVE (15-20 docs)
             'USA': { time: '৩০-৯০', fee: '৳১৮,০০০-২৫,০০০', comprehensive: true },
@@ -1120,7 +1155,6 @@
             'Schengen': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'Japan': { time: '৭-১৫', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
             'South Korea': { time: '৭-১৫', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
-            'New Zealand': { time: '১৫-৩০', fee: '৳১৮,০০০-২৫,০০০', comprehensive: true },
             'Germany': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'France': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'Italy': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
@@ -1131,7 +1165,9 @@
             'Norway': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'Denmark': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'Belgium': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
-            'Austria': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Estonia': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Greece': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
+            'Portugal': { time: '১৫-৩০', fee: '৳৮,০০০-১২,০০০', comprehensive: true },
             'Poland': { time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
             'Czech Republic': { time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true },
             'Hungary': { time: '১৫-৩০', fee: '৳৬,০০০-১০,০০০', comprehensive: true }
@@ -1342,6 +1378,16 @@
                                    visaType === 'Medical' ? 'চিকিৎসা' :
                                    visaType === 'Visit' ? 'পরিবার দেখা' : 'ট্রানজিট';
 
+                // Get country URL
+                const countryURL = countryURLs[country];
+                const countryLinkHTML = countryURL ? `
+                    <div style="text-align: center; margin: 20px 0;">
+                        <a href="${countryURL}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 217, 163, 0.3);">
+                            📖 সম্পূর্ণ ${country} ভিসা গাইড পড়ুন
+                        </a>
+                    </div>
+                ` : '';
+
                 let html = addSuccessCheckmark() + `
                     <div class="checklist-header">
                         <h2>✅ আপনার ব্যক্তিগত চেকলিস্ট</h2>
@@ -1351,6 +1397,8 @@
                         <div class="info-row">📱 ${userPhone}</div>
                         <div class="info-row">⏱️ প্রসেসিং: <strong>${countryInfo ? countryInfo.time : 'N/A'} দিন</strong> | 💵 ফি: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
                     </div>
+
+                    ${countryLinkHTML}
 
                     <div class="doc-category">
                         <div class="category-title">📄 ${categoryLabel}</div>
