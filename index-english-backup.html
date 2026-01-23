@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇧🇩 Bangladesh Visa Checklist | Visa Checklist BD</title>
+    <meta name="description" content="Personalized visa document checklist for Bangladeshi passport holders - 44 countries">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            min-height: 100vh;
+            padding: 10px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #00D9A3 0%, #00B890 25%, #FF6B35 75%, #FF8C5A 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bd-flag {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: flagFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        @keyframes flagFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            opacity: 0.95;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .passport-rank {
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .passport-rank:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.35);
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            padding: 25px 20px 15px;
+            background: #f8f9fa;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-circle {
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .progress-step.completed .progress-circle {
+            background: #00D9A3;
+            color: white;
+        }
+
+        .progress-step.completed .progress-circle::after {
+            content: '✓';
+        }
+
+        .progress-label {
+            font-size: 0.75em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .progress-step.active .progress-label {
+            color: #00D9A3;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .progress-line-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Form Steps */
+        .form-step {
+            display: none;
+            padding: 25px 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .step-subtitle {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1em;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #00D9A3;
+            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1);
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .difficulty-very-hard {
+            background: #d6d8db;
+            color: #1b1e21;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next, .btn-submit {
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            color: white;
+        }
+
+        .btn-prev {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-next:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
+            background: linear-gradient(135deg, #00F0B5 0%, #FF7A47 100%);
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #00D9A3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Success Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #00D9A3;
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            color: #00D9A3;
+            font-weight: 600;
+            border-bottom: 1px dashed #00D9A3;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85em;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2c3e50 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Country Search */
+        .search-box {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 40px 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #00D9A3;
+            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        /* Enhanced document items */
+        .doc-item {
+            transition: all 0.2s ease;
+        }
+
+        .doc-item:hover {
+            transform: translateX(5px);
+            background: #f8f9fa;
+            border-left-color: #FF6B35;
+        }
+
+        /* Pulse animation for important elements */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 217, 163, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 217, 163, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 217, 163, 0);
+            }
+        }
+
+        .btn-submit {
+            animation: pulse 2s infinite;
+        }
+
+        /* Success checkmark animation */
+        .success-checkmark {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        .success-checkmark.show {
+            display: block;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke: #00D9A3;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: #00D9A3;
+            stroke-width: 3;
+            fill: none;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Checklist Results */
+        .checklist-section {
+            padding: 25px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .checklist-header {
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .checklist-header h2 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+        }
+
+        .info-row {
+            font-size: 0.9em;
+            opacity: 0.95;
+            margin-top: 6px;
+        }
+
+        .doc-category {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.1em;
+            color: #00D9A3;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doc-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #00D9A3;
+            font-size: 0.95em;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .doc-item::before {
+            content: '✓';
+            color: #00D9A3;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .tip-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        .tip-box strong {
+            color: #f57c00;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #1a252f 100%);
+            color: white;
+            padding: 40px 20px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D9A3 0%, #FF6B35 50%, #00D9A3 100%);
+            background-size: 200% 100%;
+            animation: gradientFlow 3s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        footer::after {
+            content: '✈️';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: planeFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes planeFloat {
+            0%, 100% { transform: translate(0, 0) rotate(-10deg); }
+            50% { transform: translate(-20px, -10px) rotate(-15deg); }
+        }
+
+        .footer-title {
+            font-size: 1.6em;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(0, 217, 163, 0.3);
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px;
+        }
+
+        .badge {
+            background: rgba(0, 217, 163, 0.15);
+            border: 2px solid rgba(0, 217, 163, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge:hover {
+            background: rgba(0, 217, 163, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 163, 0.3);
+        }
+
+        .footer-contact {
+            font-size: 0.95em;
+            margin: 8px 0;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-contact:hover {
+            opacity: 1;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #00D9A3;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            opacity: 0.7;
+            margin-top: 3px;
+        }
+
+        .footer-credit {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: 700;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+        }
+
+        .whatsapp-btn::before {
+            content: '💬 ';
+            font-size: 1.2em;
+        }
+
+        /* Print/PDF Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .progress-container, .btn-container, footer, .lang-toggle, .success-checkmark, .loading-overlay, .search-box {
+                display: none !important;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .checklist-header, .doc-category, .tip-box {
+                page-break-inside: avoid;
+            }
+            .doc-item {
+                border-left: 2px solid #00D9A3 !important;
+            }
+        }
+
+        /* Accessibility improvements */
+        *:focus {
+            outline: 2px solid #00D9A3;
+            outline-offset: 2px;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #00D9A3;
+            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.2);
+        }
+
+        /* Mobile improvements */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            .progress-label {
+                font-size: 0.65em;
+            }
+
+            .progress-circle {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .tooltip .tooltiptext {
+                width: 180px;
+                margin-left: -90px;
+                font-size: 0.75em;
+            }
+        }
+
+        /* Enhanced button styles */
+        .btn-container .btn {
+            font-size: 0.95em;
+        }
+
+        .btn-container {
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">✨ Generating your personalized checklist...</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="bn-visa-checklist.html" class="lang-toggle">🇧🇩 বাংলা</a>
+            <div class="bd-flag">🇧🇩</div>
+            <h1>Personalized Visa Checklist</h1>
+            <p class="subtitle">For Bangladeshi Passport Holders • 44 Countries</p>
+            <div class="passport-rank">🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️</div>
+        </header>
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-step active" data-step="1">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">Destination</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">Contact</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">Details</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">Checklist</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Destination Selection -->
+        <div class="form-step active" id="step1">
+            <h2 class="step-title">🌍 Select Your Destination</h2>
+            <p class="step-subtitle">Choose the country you want to visit</p>
+
+            <div class="form-group">
+                <label for="country">📍 Destination Country <span style="color: red;">*</span></label>
+                <div class="search-box">
+                    <input type="text" id="countrySearch" placeholder="🔍 Search country..." onkeyup="filterCountries()">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select id="country" required>
+                    <option value="">-- Select Country --</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Belgium">🇧🇪 Belgium</option>
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="China">🇨🇳 China</option>
+                    <option value="Czech Republic">🇨🇿 Czech Republic</option>
+                    <option value="Denmark">🇩🇰 Denmark</option>
+                    <option value="Estonia">🇪🇪 Estonia</option>
+                    <option value="Ethiopia">🇪🇹 Ethiopia</option>
+                    <option value="France">🇫🇷 France</option>
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="Greece">🇬🇷 Greece</option>
+                    <option value="Hong Kong">🇭🇰 Hong Kong</option>
+                    <option value="Hungary">🇭🇺 Hungary</option>
+                    <option value="India">🇮🇳 India</option>
+                    <option value="Indonesia">🇮🇩 Indonesia</option>
+                    <option value="Italy">🇮🇹 Italy</option>
+                    <option value="Japan">🇯🇵 Japan</option>
+                    <option value="Kenya">🇰🇪 Kenya</option>
+                    <option value="Malaysia">🇲🇾 Malaysia</option>
+                    <option value="Nepal">🇳🇵 Nepal</option>
+                    <option value="Netherlands">🇳🇱 Netherlands</option>
+                    <option value="Norway">🇳🇴 Norway</option>
+                    <option value="Pakistan">🇵🇰 Pakistan</option>
+                    <option value="Philippines">🇵🇭 Philippines</option>
+                    <option value="Poland">🇵🇱 Poland</option>
+                    <option value="Portugal">🇵🇹 Portugal</option>
+                    <option value="Schengen">🇪🇺 Schengen (Europe)</option>
+                    <option value="Singapore">🇸🇬 Singapore</option>
+                    <option value="South Korea">🇰🇷 South Korea</option>
+                    <option value="Spain">🇪🇸 Spain</option>
+                    <option value="Sri Lanka">🇱🇰 Sri Lanka</option>
+                    <option value="Sweden">🇸🇪 Sweden</option>
+                    <option value="Switzerland">🇨🇭 Switzerland</option>
+                    <option value="Thailand">🇹🇭 Thailand</option>
+                    <option value="Turkey">🇹🇷 Turkey</option>
+                    <option value="UAE">🇦🇪 United Arab Emirates (Dubai/UAE)</option>
+                    <option value="UK">🇬🇧 United Kingdom (UK)</option>
+                    <option value="Umrah">🕋 Umrah (Saudi Arabia)</option>
+                    <option value="USA">🇺🇸 USA</option>
+                    <option value="Vietnam">🇻🇳 Vietnam</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="visaType">🎯 Purpose of Visit <span style="color: red;">*</span></label>
+                <select id="visaType" required>
+                    <option value="">-- Select Purpose --</option>
+                    <option value="Tourist">🏖️ Tourist / Vacation</option>
+                    <option value="Business">💼 Business / Conference</option>
+                    <option value="Medical">🏥 Medical Treatment</option>
+                    <option value="Visit">👨‍👩‍👧 Family Visit</option>
+                    <option value="Transit">✈️ Transit (Connecting Flight)</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-next" onclick="nextStep(1)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Contact Information -->
+        <div class="form-step" id="step2">
+            <h2 class="step-title">👤 Your Contact Information</h2>
+            <p class="step-subtitle">We'll send your personalized checklist</p>
+
+            <div class="form-group">
+                <label for="userName">📝 Full Name <span style="color: red;">*</span></label>
+                <input type="text" id="userName" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail">📧 Email Address</label>
+                <input type="email" id="userEmail" placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="userPhone">📱 Phone Number <span style="color: red;">*</span></label>
+                <input type="tel" id="userPhone" placeholder="01XXXXXXXXX" required>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="prevStep(2)">← Back</button>
+                <button class="btn btn-next" onclick="nextStep(2)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Detailed Information -->
+        <div class="form-step" id="step3">
+            <h2 class="step-title">📋 Additional Details</h2>
+            <p class="step-subtitle">This helps us personalize your checklist</p>
+
+            <div class="form-group">
+                <label for="employmentStatus">💼 Employment Status <span style="color: red;">*</span></label>
+                <p style="font-size: 0.85em; color: #666; margin-bottom: 10px;">
+                    This helps us determine required documents like <span class="tooltip">NOC<span class="tooltiptext">No Objection Certificate - letter from employer allowing you to travel</span></span>,
+                    <span class="tooltip">TIN<span class="tooltiptext">Tax Identification Number - your tax registration number</span></span>,
+                    and salary certificates
+                </p>
+                <select id="employmentStatus" required>
+                    <option value="">-- Select Status --</option>
+                    <option value="Government">👔 Government Employee</option>
+                    <option value="Private">🏢 Private Company Employee</option>
+                    <option value="Self-employed">💼 Self-employed / Business Owner</option>
+                    <option value="Student">🎓 Student</option>
+                    <option value="Unemployed">❌ Unemployed / Homemaker</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="monthlyIncome">💰 Monthly Income Range <span style="color: red;">*</span></label>
+                <select id="monthlyIncome" required>
+                    <option value="">-- Select Range --</option>
+                    <option value="0-30k">৳0 - ৳30,000</option>
+                    <option value="30k-60k">৳30,000 - ৳60,000</option>
+                    <option value="60k-100k">৳60,000 - ৳1,00,000</option>
+                    <option value="100k+">৳1,00,000+</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="travelHistory">✈️ International Travel History <span style="color: red;">*</span></label>
+                <select id="travelHistory" required>
+                    <option value="">-- Select Option --</option>
+                    <option value="None">🆕 First time (No international travel)</option>
+                    <option value="Some">✈️ 1-2 times before</option>
+                    <option value="Multiple">🌍 3+ times (Frequent traveler)</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="prevStep(3)">← Back</button>
+                <button class="btn btn-submit" onclick="generateChecklist()">🎯 Get My Checklist</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div class="form-step" id="step4">
+            <div id="checklistResult"></div>
+            <div class="btn-container">
+                <button class="btn btn-prev" onclick="resetForm()">← Start Over</button>
+                <button class="btn btn-next" onclick="downloadPDF()" style="background: #FF6B35;">📥 Download PDF</button>
+                <button class="btn btn-next" onclick="window.print()">🖨️ Print</button>
+            </div>
+        </div>
+
+        <footer>
+            <h3 class="footer-title">goFLY Limited</h3>
+            <div class="footer-badges">
+                <span class="badge">🏆 IATA: 42337956</span>
+                <span class="badge">📋 ATAB: 4298</span>
+                <span class="badge">✈️ Civil Aviation: 0007726</span>
+            </div>
+            <p class="footer-contact">📍 1 Shukrabad Road Motiur Nibash, Beside New Model Degree College</p>
+            <p class="footer-contact">Opposite of Metro Shopping Mall, Dhaka 1207</p>
+            <p class="footer-contact">📞 01713-289170 | 📱 01713-289175</p>
+
+            <div class="footer-stats">
+                <div class="stat-item">
+                    <span class="stat-number">⭐ 4.8/5.0</span>
+                    <span class="stat-label">431+ Reviews</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">👥 10,000+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">🔄 70%</span>
+                    <span class="stat-label">Repeat Rate</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/8801713289170" class="whatsapp-btn">Chat on WhatsApp</a>
+            <p style="font-size: 0.8em; margin-top: 15px; opacity: 0.7; line-height: 1.6;">
+                <strong>Disclaimer:</strong> This checklist is for informational purposes only, based on public sources like Henley Passport Index 2026 (Bangladesh: Rank 95th, 37 visa-free destinations), Wikipedia, and embassy guidelines as of January 2026. Visa decisions depend on individual profiles. Rules change frequently. Always verify on official embassy websites or VFS Global. We are not responsible for visa rejections or changes.
+            </p>
+            <p style="font-size: 0.75em; margin-top: 10px; opacity: 0.6;">
+                📚 Sources: <a href="https://www.henleyglobal.com/passport-index" target="_blank" style="color: #00D9A3;">Henley Passport Index</a> |
+                <a href="https://www.passportindex.org" target="_blank" style="color: #00D9A3;">Passport Index</a> |
+                <a href="https://www.vfsglobal.com" target="_blank" style="color: #00D9A3;">VFS Global</a>
+            </p>
+            <p class="footer-credit">🚀 Powered by goFLY • Your Trusted Travel Partner Since 2020</p>
+        </footer>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Country URLs for internal linking
+        const countryURLs = {
+            'Australia': 'https://goflybd.com/australia-visa-from-bangladesh/',
+            'Belgium': 'https://goflybd.com/belgium-visa-from-bangladesh/',
+            'Canada': 'https://goflybd.com/canada-visa-from-bangladesh/',
+            'China': 'https://goflybd.com/china-visa-for-bangladeshi/',
+            'Czech Republic': 'https://goflybd.com/czech-republic-visa-from-bangladesh/',
+            'Denmark': 'https://goflybd.com/denmark-visa-from-bangladesh/',
+            'Estonia': 'https://goflybd.com/estonia-visa-from-bangladesh/',
+            'Ethiopia': 'https://goflybd.com/ethiopia-visa-from-bangladesh/',
+            'France': 'https://goflybd.com/france-visa-from-bangladesh/',
+            'Germany': 'https://goflybd.com/germany-visa-from-bangladesh/',
+            'Greece': 'https://goflybd.com/greece-visa-from-bangladesh/',
+            'Hong Kong': 'https://goflybd.com/hong-kong-visa-from-bangladesh/',
+            'Hungary': 'https://goflybd.com/hungary-visa-from-bangladesh/',
+            'India': 'https://goflybd.com/indian-visa-for-bangladeshi/',
+            'Indonesia': 'https://goflybd.com/indonesia-visa-for-bangladeshi/',
+            'Italy': 'https://goflybd.com/italy-visa-from-bangladesh/',
+            'Japan': 'https://goflybd.com/japan-visa-from-bangladesh/',
+            'Kenya': 'https://goflybd.com/kenya-visa-for-bangladeshi/',
+            'Malaysia': 'https://goflybd.com/malaysia-visa-from-bangladesh/',
+            'Nepal': 'https://goflybd.com/nepal-visa-from-bangladesh/',
+            'Netherlands': 'https://goflybd.com/netherlands-visa-from-bangladesh/',
+            'Norway': 'https://goflybd.com/norway-visa-from-bangladesh/',
+            'Pakistan': 'https://goflybd.com/pakistan-visa-for-bangladeshi/',
+            'Philippines': 'https://goflybd.com/philippines-visa-from-bangladesh/',
+            'Poland': 'https://goflybd.com/poland-visa-from-bangladesh/',
+            'Portugal': 'https://goflybd.com/portugal-visa-for-bangladeshi/',
+            'Schengen': 'https://goflybd.com/schengen-visa-for-bangladeshi/',
+            'Singapore': 'https://goflybd.com/singapore-visa-from-bangladesh/',
+            'South Korea': 'https://goflybd.com/south-korea-visa-for-bangladeshi/',
+            'Spain': 'https://goflybd.com/spain-visa-from-bangladesh/',
+            'Sri Lanka': 'https://goflybd.com/sri-lanka-visa-from-bangladesh/',
+            'Sweden': 'https://goflybd.com/sweden-visa-from-bangladesh/',
+            'Switzerland': 'https://goflybd.com/switzerland-visa-from-bangladesh/',
+            'Thailand': 'https://goflybd.com/thailand-visa-from-bangladesh/',
+            'Turkey': 'https://goflybd.com/turkey-visa-from-bangladesh/',
+            'UAE': 'https://goflybd.com/dubai-visa-from-bangladesh/',
+            'UK': 'https://goflybd.com/uk-visa-from-bangladesh/',
+            'Umrah': 'https://goflybd.com/umrah-visa-from-bangladesh/',
+            'USA': 'https://goflybd.com/usa-visa-from-bangladesh/',
+            'Vietnam': 'https://goflybd.com/vietnam-visa-from-bangladesh/'
+        };
+
+        // Accurate country-specific visa requirements
+        const countryData = {
+            // ON-ARRIVAL / VISA-FREE (Super Simple - 4 docs)
+            'Nepal': { time: '0', fee: 'Free (on arrival)', verySimple: true },
+            'Sri Lanka': { time: '0', fee: 'Free (on arrival)', verySimple: true },
+
+            // SIMPLE E-VISA (7-10 docs)
+            'Thailand': { time: '3-5', fee: '৳4,000-6,000', easyEVisa: true },
+            'Malaysia': { time: '2-4', fee: '৳3,000-5,000', easyEVisa: true },
+            'Indonesia': { time: '3-7', fee: '৳3,500-5,500', easyEVisa: true },
+            'Turkey': { time: '5-10', fee: '৳5,000-8,000', easyEVisa: true },
+            'Vietnam': { time: '5-7', fee: '৳5,000-8,000', easyEVisa: true },
+            'Kenya': { time: '3-5', fee: '৳6,000-10,000', easyEVisa: true },
+            'Ethiopia': { time: '5-10', fee: '৳8,000-12,000', easyEVisa: true },
+
+            // MODERATE (10-12 docs)
+            'India': { time: '4-7', fee: '৳2,000-4,000', moderate: true },
+            'UAE': { time: '3-5', fee: '৳8,000-15,000', moderate: true },
+            'Umrah': { time: '7-15', fee: '৳15,000-25,000', moderate: true },
+            'China': { time: '7-15', fee: '৳12,000-18,000', moderate: true },
+            'Singapore': { time: '3-5', fee: '৳8,000-12,000', moderate: true },
+            'Hong Kong': { time: '3-5', fee: '৳6,000-10,000', moderate: true },
+            'Philippines': { time: '5-7', fee: '৳5,000-8,000', moderate: true },
+            'Pakistan': { time: '7-10', fee: '৳4,000-6,000', moderate: true },
+
+            // COMPREHENSIVE (15-20 docs)
+            'USA': { time: '30-90', fee: '৳18,000-25,000', comprehensive: true },
+            'UK': { time: '15-30', fee: '৳35,000-45,000', comprehensive: true },
+            'Canada': { time: '15-30', fee: '৳15,000-22,000', comprehensive: true },
+            'Australia': { time: '15-30', fee: '৳20,000-30,000', comprehensive: true },
+            'Schengen': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Japan': { time: '7-15', fee: '৳6,000-10,000', comprehensive: true },
+            'South Korea': { time: '7-15', fee: '৳8,000-12,000', comprehensive: true },
+            'Germany': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'France': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Italy': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Spain': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Switzerland': { time: '15-30', fee: '৳10,000-15,000', comprehensive: true },
+            'Netherlands': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Sweden': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Norway': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Denmark': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Belgium': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Estonia': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Greece': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Portugal': { time: '15-30', fee: '৳8,000-12,000', comprehensive: true },
+            'Poland': { time: '15-30', fee: '৳6,000-10,000', comprehensive: true },
+            'Czech Republic': { time: '15-30', fee: '৳6,000-10,000', comprehensive: true },
+            'Hungary': { time: '15-30', fee: '৳6,000-10,000', comprehensive: true }
+        };
+
+        function nextStep(step) {
+            // Validation
+            if (step === 1) {
+                const country = document.getElementById('country').value;
+                const visaType = document.getElementById('visaType').value;
+                if (!country || !visaType) {
+                    alert('Please select both country and purpose of visit');
+                    return;
+                }
+            } else if (step === 2) {
+                const userName = document.getElementById('userName').value.trim();
+                const userPhone = document.getElementById('userPhone').value.trim();
+                if (!userName || !userPhone) {
+                    alert('Please enter your name and phone number');
+                    return;
+                }
+                if (!/^01[0-9]{9}$/.test(userPhone)) {
+                    alert('Please enter a valid Bangladeshi phone number (01XXXXXXXXX)');
+                    return;
+                }
+            }
+
+            // Move to next step
+            document.getElementById('step' + step).classList.remove('active');
+            document.getElementById('step' + (step + 1)).classList.add('active');
+
+            updateProgress(step + 1);
+            currentStep = step + 1;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            document.getElementById('step' + step).classList.remove('active');
+            document.getElementById('step' + (step - 1)).classList.add('active');
+
+            updateProgress(step - 1);
+            currentStep = step - 1;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress(step) {
+            // Update circles
+            document.querySelectorAll('.progress-step').forEach((el, index) => {
+                const stepNum = index + 1;
+                if (stepNum < step) {
+                    el.classList.add('completed');
+                    el.classList.remove('active');
+                } else if (stepNum === step) {
+                    el.classList.add('active');
+                    el.classList.remove('completed');
+                } else {
+                    el.classList.remove('active', 'completed');
+                }
+            });
+
+            // Update progress line
+            const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+        }
+
+        function generateChecklist() {
+            // Validation
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+            const travelHistory = document.getElementById('travelHistory').value;
+
+            if (!employmentStatus || !monthlyIncome || !travelHistory) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Capture lead data
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+
+            const leadData = {
+                timestamp: new Date().toLocaleString(),
+                name: userName,
+                email: userEmail,
+                phone: userPhone,
+                country: country,
+                visaType: visaType,
+                employment: employmentStatus,
+                income: monthlyIncome,
+                travelHistory: travelHistory
+            };
+
+            console.log('🎯 LEAD CAPTURED:', leadData);
+
+            // Get country info
+            const countryInfo = countryData[country];
+
+            // Generate checklist based on country type
+            let standardDocs, personalizedDocs, tips;
+
+            if (countryInfo && countryInfo.verySimple) {
+                // ON-ARRIVAL / VISA-FREE (Super Simple - 4 docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity)',
+                    'Return flight tickets (confirmed booking)',
+                    'Hotel booking / accommodation proof',
+                    'Sufficient travel funds (cash/card/bank statement)'
+                ];
+
+                if (country === 'Bhutan') {
+                    standardDocs = [
+                        'Valid passport (minimum 6 months validity)',
+                        'Tour package booking through approved Bhutanese tour operator (mandatory)',
+                        'Sustainable Development Fee payment proof ($100/day)',
+                        'Hotel booking confirmation (included in tour package)'
+                    ];
+                    tips = [`✅ ${country}: Visa processed through tour operator. Book package first, they handle visa!`];
+                } else if (country === 'Maldives') {
+                    tips = [`✅ ${country}: Free 30-day visa on arrival! Just show passport, ticket, hotel & funds. Very easy!`];
+                } else if (country === 'Nepal') {
+                    tips = [`✅ ${country}: Free visa on arrival at airport! No advance application needed. Very easy!`];
+                } else if (country === 'Sri Lanka') {
+                    tips = [`✅ ${country}: Visa on arrival for Bangladeshi passport! Simple process at airport.`];
+                } else {
+                    tips = [`✅ ${country} is easy for Bangladeshi passport holders! Simple process.`];
+                }
+
+                personalizedDocs = [];
+
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                // CATEGORY 2: E-VISA EASY COUNTRIES (Simple - 7-10 docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity + 2 blank pages)',
+                    'Recent passport-size photos (35x45mm, white background)',
+                    'Completed online visa application form',
+                    'Flight itinerary (return ticket booking)',
+                    'Hotel booking/accommodation proof',
+                    'Bank statement (last 3 months)',
+                    'Travel itinerary/plan'
+                ];
+
+                personalizedDocs = [];
+
+                // Add specific docs based on employment
+                if (employmentStatus === 'Government' || employmentStatus === 'Private') {
+                    personalizedDocs.push('Employment letter/NOC from company');
+                } else if (employmentStatus === 'Self-employed') {
+                    personalizedDocs.push('Trade license copy');
+                } else if (employmentStatus === 'Student') {
+                    personalizedDocs.push('Student ID + NOC from institution');
+                    personalizedDocs.push('Parent sponsorship letter');
+                } else if (employmentStatus === 'Unemployed') {
+                    personalizedDocs.push('Sponsor documents (if applicable)');
+                }
+
+                tips = [`✅ ${country} offers e-visa/visa on arrival - simple online process! Success rate is high for Bangladeshi passport holders.`];
+
+            } else if (countryInfo && countryInfo.moderate) {
+                // CATEGORY 3: MEDIUM DIFFICULTY (Moderate - 12-16 docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity + 2 blank pages)',
+                    'Recent passport photos (35x45mm, white background, country-specific)',
+                    'Completed visa application form (online/offline)',
+                    'Flight itinerary/reservation (return ticket proof)',
+                    'Hotel booking/accommodation proof',
+                    'Bank statements (last 6 months)',
+                    'Salary certificate or income proof (last 3 months)',
+                    'Employment letter/NOC (for employees)',
+                    'Cover letter explaining purpose of visit',
+                    'Travel itinerary with day-by-day plan'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+
+            } else {
+                // CATEGORY 4: HARD & VERY HARD (Full comprehensive - 20+ docs)
+                standardDocs = [
+                    'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
+                    'Recent passport photos (35x45mm, white background, country-specific)',
+                    'Completed visa application form (online/offline)',
+                    'Flight itinerary/reservation (return ticket proof)',
+                    'Hotel booking/accommodation proof for entire stay',
+                    'Travel insurance (Schengen mandatory: min €30,000 coverage)',
+                    'Bank statements (last 6 months with salary credits highlighted)',
+                    'Income tax returns (last 2 years)',
+                    'Salary slips (last 6 months)',
+                    'Employment letter/NOC on company letterhead',
+                    'Company registration/trade license (if self-employed)',
+                    'Property documents (land/house ownership)',
+                    'Family ties proof (marriage/birth certificates)',
+                    'Cover letter explaining purpose & return intent',
+                    'Detailed travel itinerary with bookings'
+                ];
+
+                personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+            }
+
+            // Generate HTML
+            let categoryLabel = 'Required Documents';
+            if (countryInfo && countryInfo.verySimple) {
+                if (country === 'Maldives' || country === 'Nepal' || country === 'Sri Lanka') {
+                    categoryLabel = 'Required Documents (On Arrival - Very Simple!)';
+                } else if (country === 'Bhutan') {
+                    categoryLabel = 'Required Documents (Tour Package Based)';
+                } else {
+                    categoryLabel = 'Required Documents (Simple Process)';
+                }
+            } else if (countryInfo && countryInfo.easyEVisa) {
+                categoryLabel = 'Required Documents (E-Visa - Easy Online Process)';
+            } else if (countryInfo && countryInfo.moderate) {
+                categoryLabel = 'Required Documents (Moderate Process)';
+            } else if (countryInfo && countryInfo.comprehensive) {
+                categoryLabel = 'Required Documents (Comprehensive Documentation)';
+            }
+
+            let html = `
+                <div class="checklist-header">
+                    <h2>✅ Your Personalized Checklist</h2>
+                    <div class="info-row">🌍 Destination: <strong>${country}</strong></div>
+                    <div class="info-row">🎯 Purpose: <strong>${visaType}</strong></div>
+                    <div class="info-row">👤 ${userName}</div>
+                    <div class="info-row">📱 ${userPhone}</div>
+                    <div class="info-row">⏱️ Processing: <strong>${countryInfo ? countryInfo.time : 'N/A'} days</strong> | 💵 Fee: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
+                </div>
+
+                <div class="doc-category">
+                    <div class="category-title">📄 ${categoryLabel}</div>
+                    ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                </div>
+
+                ${personalizedDocs.length > 0 ? `
+                    <div class="doc-category">
+                        <div class="category-title">⭐ Additional Documents (Based on Your Profile)</div>
+                        ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                    </div>
+                ` : ''}
+
+                ${tips.length > 0 ? `
+                    <div class="tip-box">
+                        <strong>💡 Tips for You:</strong><br><br>
+                        ${tips.join('<br><br>')}
+                    </div>
+                ` : ''}
+
+                <div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;">
+                    <strong>🎯 Need Help?</strong><br><br>
+                    goFLY Limited can assist you with:<br>
+                    ✅ Document preparation & verification<br>
+                    ✅ Visa application submission<br>
+                    ✅ Interview preparation (if needed)<br>
+                    ✅ Flight & hotel booking<br><br>
+                    📞 Contact us for personalized guidance!
+                </div>
+            `;
+
+            document.getElementById('checklistResult').innerHTML = html;
+
+            // Move to step 4
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('step4').classList.add('active');
+            updateProgress(4);
+            currentStep = 4;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getPersonalizedDocuments(employment, travelHistory, income, visaType) {
+            const docs = [];
+
+            // Employment-based documents
+            if (employment === 'Government') {
+                docs.push('Government ID card copy');
+                docs.push('Official NOC/Service certificate with leave approval & return date');
+                docs.push('Salary certificate/pay slips (last 6 months)');
+                docs.push('Promotion letter (if any - strengthens ties)');
+            } else if (employment === 'Private') {
+                docs.push('Company ID card');
+                docs.push('Employment letter/NOC on company letterhead');
+                docs.push('Salary slips (3-6 months)');
+                docs.push('Bank statement showing salary deposit');
+            } else if (employment === 'Self-employed') {
+                docs.push('Renewed Trade License');
+                docs.push('TIN certificate + Tax return (last 2 years)');
+                docs.push('Business bank statements (6-12 months)');
+                docs.push('Chamber membership, invoices, visiting card');
+            } else if (employment === 'Student') {
+                docs.push('Student ID card');
+                docs.push('Enrollment/Admission letter from institution');
+                docs.push('NOC from university/school');
+                docs.push('Parent/guardian sponsorship letter + income proof');
+                docs.push('Parent\'s bank statements (6 months)');
+            } else if (employment === 'Unemployed') {
+                docs.push('Sponsor (spouse/parent) full documents');
+                docs.push('Notarized sponsorship letter');
+                docs.push('Sponsor\'s bank statements + income proof');
+                docs.push('Relation proof (marriage/birth certificate)');
+            }
+
+            // Travel history based
+            if (travelHistory === 'None') {
+                docs.push('Property documents (land/house ownership)');
+                docs.push('Family registration certificate (birth/marriage)');
+                docs.push('Strong return intent proof');
+            }
+
+            // Income based
+            if (income === '0-30k') {
+                docs.push('💰 Sponsor help or joint property proof recommended');
+                docs.push('💰 Additional financial support documents needed');
+            } else if (income === '100k+') {
+                docs.push('💰 Investment documents (if any) - strengthens application');
+                docs.push('💰 Credit card statements - shows financial stability');
+            }
+
+            // Visa type specific
+            if (visaType === 'Business') {
+                docs.push('Business invitation letter from host company');
+                docs.push('Chamber of Commerce membership (if applicable)');
+            } else if (visaType === 'Medical') {
+                docs.push('Medical reports & hospital appointment letter');
+                docs.push('Doctor\'s recommendation letter');
+            } else if (visaType === 'Visit') {
+                docs.push('Invitation letter from host (notarized)');
+                docs.push('Host\'s residence proof & ID copy');
+            }
+
+            return docs;
+        }
+
+        function getPersonalizedTips(country, employment, travelHistory, income) {
+            const tips = [];
+            const countryInfo = countryData[country];
+
+            // First-timer tips
+            if (travelHistory === 'None') {
+                tips.push('⚠️ <strong>First-time traveler:</strong> Visa officers are strict. Show strong family/property ties in Bangladesh. Consider professional help from goFLY.');
+            }
+
+            // Income-based tips
+            if (income === '0-30k' && countryInfo.difficulty !== 'easy') {
+                tips.push('💰 <strong>Low income for this destination:</strong> Get a sponsor (parent/spouse) or show joint property. High rejection risk without strong financial proof.');
+            }
+
+            // Country difficulty tips
+            if (countryInfo.difficulty === 'hard' || countryInfo.difficulty === 'very-hard') {
+                if (employment === 'Unemployed' || employment === 'Student') {
+                    tips.push('🚨 <strong>Challenging combination:</strong> ' + country + ' visa is hard, and your profile needs extra documentation. goFLY can significantly improve your success rate.');
+                }
+            }
+
+            // Self-employed tips
+            if (employment === 'Self-employed') {
+                tips.push('💼 <strong>Business owner:</strong> Make sure your business documents are properly verified and translated (if needed). Show business stability with 6+ months statements.');
+            }
+
+            return tips;
+        }
+
+        function resetForm() {
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            updateProgress(1);
+            currentStep = 1;
+
+            // Clear form
+            document.getElementById('country').value = '';
+            document.getElementById('visaType').value = '';
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('userPhone').value = '';
+            document.getElementById('employmentStatus').value = '';
+            document.getElementById('monthlyIncome').value = '';
+            document.getElementById('travelHistory').value = '';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function downloadPDF() {
+            // Open print dialog which allows saving as PDF
+            window.print();
+        }
+
+        // Country Search Filter
+        function filterCountries() {
+            const searchInput = document.getElementById('countrySearch').value.toUpperCase();
+            const select = document.getElementById('country');
+            const options = select.getElementsByTagName('option');
+            const optgroups = select.getElementsByTagName('optgroup');
+
+            // Show/hide options based on search
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(searchInput) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+
+            // Show/hide optgroups if all children are hidden
+            for (let i = 0; i < optgroups.length; i++) {
+                const group = optgroups[i];
+                const visibleOptions = Array.from(group.getElementsByTagName('option'))
+                    .filter(opt => opt.style.display !== 'none');
+                group.style.display = visibleOptions.length > 0 ? "" : "none";
+            }
+
+            // Auto-select if only one match
+            const visibleOptions = Array.from(options).filter(opt =>
+                opt.style.display !== 'none' && opt.value !== ''
+            );
+            if (visibleOptions.length === 1) {
+                select.value = visibleOptions[0].value;
+            }
+        }
+
+        // Click on search fills the select
+        document.addEventListener('DOMContentLoaded', function() {
+            const countrySelect = document.getElementById('country');
+            const searchInput = document.getElementById('countrySearch');
+
+            if (countrySelect && searchInput) {
+                countrySelect.addEventListener('change', function() {
+                    if (this.value) {
+                        searchInput.value = '';
+                        filterCountries();
+                        // Reset size after selection
+                        this.size = 1;
+                        setTimeout(() => {
+                            this.size = 8;
+                        }, 100);
+                    }
+                });
+            }
+        });
+
+        // Show Loading Animation
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        // Confetti Animation
+        function createConfetti() {
+            const colors = ['#00D9A3', '#FF6B35', '#FFD93D', '#6BCF7F', '#4ECDC4'];
+            const confettiCount = 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+
+        // Add Success Checkmark SVG to result
+        function addSuccessCheckmark() {
+            const checkmarkHTML = `
+                <svg class="success-checkmark show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            `;
+            return checkmarkHTML;
+        }
+
+        // Enhanced generateChecklist with animations (wrapping the original)
+        (function() {
+            const originalGenerate = window.generateChecklist;
+            window.generateChecklist = function() {
+                // Validation
+                const employmentStatus = document.getElementById('employmentStatus').value;
+                const monthlyIncome = document.getElementById('monthlyIncome').value;
+                const travelHistory = document.getElementById('travelHistory').value;
+
+                if (!employmentStatus || !monthlyIncome || !travelHistory) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Show loading
+                showLoading();
+
+                // Simulate processing time for better UX
+                setTimeout(() => {
+                    // Call original function logic inline
+                    const country = document.getElementById('country').value;
+                    const visaType = document.getElementById('visaType').value;
+                    const userName = document.getElementById('userName').value.trim();
+                    const userEmail = document.getElementById('userEmail').value.trim();
+                    const userPhone = document.getElementById('userPhone').value.trim();
+
+                    const leadData = {
+                        timestamp: new Date().toLocaleString(),
+                        name: userName,
+                        email: userEmail,
+                        phone: userPhone,
+                        country: country,
+                        visaType: visaType,
+                        employment: employmentStatus,
+                        income: monthlyIncome,
+                        travelHistory: travelHistory
+                    };
+
+                    console.log('🎯 LEAD CAPTURED:', leadData);
+
+                    const countryInfo = countryData[country];
+                    let standardDocs, personalizedDocs, tips;
+
+                    if (countryInfo && countryInfo.verySimple) {
+                        // ON-ARRIVAL / VISA-FREE (Super Simple - 4 docs)
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity)',
+                            'Return flight tickets (confirmed booking)',
+                            'Hotel booking / accommodation proof',
+                            'Sufficient travel funds (cash/card/bank statement)'
+                        ];
+
+                        if (country === 'Bhutan') {
+                            standardDocs = [
+                                'Valid passport (minimum 6 months validity)',
+                                'Tour package booking through approved Bhutanese tour operator (mandatory)',
+                                'Sustainable Development Fee payment proof ($100/day)',
+                                'Hotel booking confirmation (included in tour package)'
+                            ];
+                            tips = [`✅ ${country}: Visa processed through tour operator. Book package first, they handle visa!`];
+                        } else if (country === 'Maldives') {
+                            tips = [`✅ ${country}: Free 30-day visa on arrival! Just show passport, ticket, hotel & funds. Very easy!`];
+                        } else if (country === 'Nepal') {
+                            tips = [`✅ ${country}: Free visa on arrival at airport! No advance application needed. Very easy!`];
+                        } else if (country === 'Sri Lanka') {
+                            tips = [`✅ ${country}: Visa on arrival for Bangladeshi passport! Simple process at airport.`];
+                        } else {
+                            tips = [`✅ ${country} is easy for Bangladeshi passport holders! Simple process.`];
+                        }
+
+                        personalizedDocs = [];
+
+                    } else if (countryInfo && countryInfo.easyEVisa) {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity + 2 blank pages)',
+                            'Recent passport-size photos (35x45mm, white background)',
+                            'Completed online visa application form',
+                            'Flight itinerary (return ticket booking)',
+                            'Hotel booking/accommodation proof',
+                            'Bank statement (last 3 months)',
+                            'Travel itinerary/plan'
+                        ];
+
+                        personalizedDocs = [];
+
+                        if (employmentStatus === 'Government' || employmentStatus === 'Private') {
+                            personalizedDocs.push('Employment letter/NOC from company');
+                        } else if (employmentStatus === 'Self-employed') {
+                            personalizedDocs.push('Trade license copy');
+                        } else if (employmentStatus === 'Student') {
+                            personalizedDocs.push('Student ID + NOC from institution');
+                            personalizedDocs.push('Parent sponsorship letter');
+                        } else if (employmentStatus === 'Unemployed') {
+                            personalizedDocs.push('Sponsor documents (if applicable)');
+                        }
+
+                        tips = [`✅ ${country} offers e-visa/visa on arrival - simple online process! Success rate is high for Bangladeshi passport holders.`];
+
+                    } else if (countryInfo && countryInfo.moderate) {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity + 2 blank pages)',
+                            'Recent passport photos (35x45mm, white background, country-specific)',
+                            'Completed visa application form (online/offline)',
+                            'Flight itinerary/reservation (return ticket proof)',
+                            'Hotel booking/accommodation proof',
+                            'Bank statements (last 6 months)',
+                            'Salary certificate or income proof (last 3 months)',
+                            'Employment letter/NOC (for employees)',
+                            'Cover letter explaining purpose of visit',
+                            'Travel itinerary with day-by-day plan'
+                        ];
+
+                        personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                        tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+
+                    } else {
+                        standardDocs = [
+                            'Valid passport (minimum 6 months validity beyond stay + 2 blank pages)',
+                            'Recent passport photos (35x45mm, white background, country-specific)',
+                            'Completed visa application form (online/offline)',
+                            'Flight itinerary/reservation (return ticket proof)',
+                            'Hotel booking/accommodation proof for entire stay',
+                            'Travel insurance (Schengen mandatory: min €30,000 coverage)',
+                            'Bank statements (last 6 months with salary credits highlighted)',
+                            'Income tax returns (last 2 years)',
+                            'Salary slips (last 6 months)',
+                            'Employment letter/NOC on company letterhead',
+                            'Company registration/trade license (if self-employed)',
+                            'Property documents (land/house ownership)',
+                            'Family ties proof (marriage/birth certificates)',
+                            'Cover letter explaining purpose & return intent',
+                            'Detailed travel itinerary with bookings'
+                        ];
+
+                        personalizedDocs = getPersonalizedDocuments(employmentStatus, travelHistory, monthlyIncome, visaType);
+                        tips = getPersonalizedTips(country, employmentStatus, travelHistory, monthlyIncome);
+                    }
+
+                    let categoryLabel = 'Required Documents';
+                    if (countryInfo && countryInfo.verySimple) {
+                        if (country === 'Maldives' || country === 'Nepal' || country === 'Sri Lanka') {
+                            categoryLabel = 'Required Documents (On Arrival - Very Simple!)';
+                        } else if (country === 'Bhutan') {
+                            categoryLabel = 'Required Documents (Tour Package Based)';
+                        } else {
+                            categoryLabel = 'Required Documents (Simple Process)';
+                        }
+                    } else if (countryInfo && countryInfo.easyEVisa) {
+                        categoryLabel = 'Required Documents (E-Visa - Easy Online Process)';
+                    } else if (countryInfo && countryInfo.moderate) {
+                        categoryLabel = 'Required Documents (Moderate Process)';
+                    } else if (countryInfo && countryInfo.comprehensive) {
+                        categoryLabel = 'Required Documents (Comprehensive Documentation)';
+                    }
+
+                    // Get country URL
+                    const countryURL = countryURLs[country];
+                    const countryLinkHTML = countryURL ? `
+                        <div style="text-align: center; margin: 20px 0;">
+                            <a href="${countryURL}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 217, 163, 0.3);">
+                                📖 Read Complete ${country} Visa Guide
+                            </a>
+                        </div>
+                    ` : '';
+
+                    let html = addSuccessCheckmark() + `
+                        <div class="checklist-header">
+                            <h2>✅ Your Personalized Checklist</h2>
+                            <div class="info-row">🌍 Destination: <strong>${country}</strong></div>
+                            <div class="info-row">🎯 Purpose: <strong>${visaType}</strong></div>
+                            <div class="info-row">👤 ${userName}</div>
+                            <div class="info-row">📱 ${userPhone}</div>
+                            <div class="info-row">⏱️ Processing: <strong>${countryInfo ? countryInfo.time : 'N/A'} days</strong> | 💵 Fee: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
+                        </div>
+
+                        ${countryLinkHTML}
+
+                        <div class="doc-category">
+                            <div class="category-title">📄 ${categoryLabel}</div>
+                            ${standardDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                        </div>
+
+                        ${personalizedDocs.length > 0 ? `
+                            <div class="doc-category">
+                                <div class="category-title">⭐ Additional Documents (Based on Your Profile)</div>
+                                ${personalizedDocs.map(doc => `<div class="doc-item">${doc}</div>`).join('')}
+                            </div>
+                        ` : ''}
+
+                        ${tips.length > 0 ? `
+                            <div class="tip-box">
+                                <strong>💡 Tips for You:</strong><br><br>
+                                ${tips.join('<br><br>')}
+                            </div>
+                        ` : ''}
+
+                        <div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;">
+                            <strong>🎯 Need Help?</strong><br><br>
+                            goFLY Limited can assist you with:<br>
+                            ✅ Document preparation & verification<br>
+                            ✅ Visa application submission<br>
+                            ✅ Interview preparation (if needed)<br>
+                            ✅ Flight & hotel booking<br><br>
+                            📞 Contact us for personalized guidance!
+                        </div>
+                    `;
+
+                    document.getElementById('checklistResult').innerHTML = html;
+                    document.getElementById('step3').classList.remove('active');
+                    document.getElementById('step4').classList.add('active');
+                    updateProgress(4);
+                    currentStep = 4;
+
+                    // Hide loading
+                    hideLoading();
+
+                    // Show confetti
+                    createConfetti();
+
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            };
+        })();
+    </script>
+</body>
+</html>
