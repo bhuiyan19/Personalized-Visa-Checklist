@@ -4,23 +4,23 @@
   "redirects": [
     {
       "source": "/bn-visa-checklist.html",
-      "destination": "/index.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/bn-visa-checklist",
+      "destination": "/",
       "permanent": false
     },
     {
       "source": "/en-visa-checklist.html",
-      "destination": "/index.html",
+      "destination": "/",
       "permanent": false
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*).html",
-      "dest": "/$1.html"
     },
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/en-visa-checklist",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }
