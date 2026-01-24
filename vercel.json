@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/bn-visa-checklist.html",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/en-visa-checklist.html",
+      "destination": "/index.html",
+      "permanent": false
+    }
+  ],
   "routes": [
     {
       "src": "/(.*).html",
