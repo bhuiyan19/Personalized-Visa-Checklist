@@ -1214,6 +1214,7 @@
                 const visaType = document.getElementById('visaType').value;
                 const userName = document.getElementById('userName').value.trim();
                 const userPhone = document.getElementById('userPhone').value.trim();
+                const userEmail = document.getElementById('userEmail').value.trim();
 
                 const countryInfo = countryData[country];
                 let html = generateChecklistHTML(country, visaType, userName, userPhone, employmentStatus, monthlyIncome, travelHistory, countryInfo);
@@ -1226,6 +1227,15 @@
                 document.getElementById('loadingOverlay').classList.remove('active');
                 createConfetti();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                submitToWordPress({
+                    userName: userName,
+                    userPhone: userPhone,
+                    userEmail: userEmail,
+                    destination: country,
+                    visaType: visaType,
+                    specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome + ' | Travel History: ' + travelHistory
+                });
             }, 1500);
         }
 
@@ -1324,6 +1334,61 @@
                 confetti.style.animationDelay = Math.random() * 0.3 + 's';
                 document.body.appendChild(confetti);
                 setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // ==================== SEND HEIGHT TO PARENT (iframe resize) ====================
+        function sendHeightToParent() {
+            try {
+                const height = document.body.scrollHeight;
+                window.parent.postMessage({ type: 'resize', height: height }, '*');
+            } catch(e) {}
+        }
+
+        // Page load + content change e auto resize
+        window.addEventListener('load', sendHeightToParent);
+        window.addEventListener('resize', sendHeightToParent);
+        setInterval(sendHeightToParent, 1000); // safety fallback
+
+
+        // ==================== SUBMIT TO WORDPRESS API ====================
+        async function submitToWordPress(visaData) {
+            const API_URL = 'https://goflybd.com/wp-content/themes/travel-agency/visa-checklist-api/api.php';
+
+            const payload = {
+                name:            visaData.userName        || '',
+                phone:           visaData.userPhone       || '',
+                email:           visaData.userEmail       || '',
+                destination:     visaData.destination     || '',
+                visaType:        visaData.visaType        || '',
+                travelDate:      visaData.travelDate      || '',
+                passportStatus:  visaData.passportStatus  || '',
+                previousVisas:   visaData.previousVisas   || [],
+                documentsReady:  visaData.documentsReady  || [],
+                specialNotes:    visaData.specialNotes    || '',
+                browser:         navigator.userAgent ? navigator.userAgent.substring(0, 190) : 'unknown'
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    console.log('✅ Visa lead saved!', result.data);
+                } else {
+                    console.error('❌ Lead save failed:', result.message);
+                }
+            } catch (error) {
+                console.error('❌ API error:', error);
+                // Backup to localStorage
+                try {
+                    const leads = JSON.parse(localStorage.getItem('gofly_visa_leads') || '[]');
+                    leads.push({ ...payload, timestamp: new Date().toISOString() });
+                    localStorage.setItem('gofly_visa_leads', JSON.stringify(leads));
+                } catch(e) {}
             }
         }
     </script>
