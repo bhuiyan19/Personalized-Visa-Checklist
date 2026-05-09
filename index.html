@@ -1381,6 +1381,20 @@
 
                 const totalDocuments = document.querySelectorAll('#checklistResult .doc-item').length;
 
+                const checklistItems = [];
+                document.querySelectorAll('#checklistResult .doc-category').forEach(cat => {
+                    const catTitle = (cat.querySelector('.category-title')?.textContent || '').trim();
+                    const items = [];
+                    cat.querySelectorAll('.doc-item').forEach(item => {
+                        items.push({
+                            icon:   (item.querySelector('.doc-icon')?.textContent || '').trim(),
+                            title:  (item.querySelector('.doc-text strong')?.textContent || '').trim(),
+                            detail: (item.querySelector('.doc-text span')?.textContent || '').trim()
+                        });
+                    });
+                    if (items.length) checklistItems.push({ category: catTitle, items: items });
+                });
+
                 submitToWordPress({
                     userName: userName,
                     userPhone: userPhone,
@@ -1389,6 +1403,7 @@
                     visaType: visaType,
                     previousVisas: travelHistoryMap[travelHistory] || [],
                     totalDocuments: totalDocuments,
+                    checklistItems: checklistItems,
                     specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome
                 });
             }, 1500);
@@ -1728,6 +1743,7 @@
                 totalDocuments:  totalDocs,
                 readinessScore:  readiness,
                 notes:           visaData.specialNotes    || '',
+                checklistItems:  Array.isArray(visaData.checklistItems) ? visaData.checklistItems : [],
                 browser:         navigator.userAgent ? navigator.userAgent.substring(0, 190) : 'unknown'
             };
             try {
