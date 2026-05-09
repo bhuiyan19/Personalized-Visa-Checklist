@@ -1228,13 +1228,20 @@
                 createConfetti();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
+                const travelHistoryMap = {
+                    'None': ['First-time international traveler'],
+                    'Some': ['1-2 previous international trips'],
+                    'Multiple': ['3+ previous international trips (frequent traveler)']
+                };
+
                 submitToWordPress({
                     userName: userName,
                     userPhone: userPhone,
                     userEmail: userEmail,
                     destination: country,
                     visaType: visaType,
-                    specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome + ' | Travel History: ' + travelHistory
+                    previousVisas: travelHistoryMap[travelHistory] || [],
+                    specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome
                 });
             }, 1500);
         }
