@@ -1214,6 +1214,7 @@
                 const visaType = document.getElementById('visaType').value;
                 const userName = document.getElementById('userName').value.trim();
                 const userPhone = document.getElementById('userPhone').value.trim();
+                const userEmail = document.getElementById('userEmail').value.trim();
 
                 const countryInfo = countryData[country];
                 let html = generateChecklistHTML(country, visaType, userName, userPhone, employmentStatus, monthlyIncome, travelHistory, countryInfo);
@@ -1226,6 +1227,15 @@
                 document.getElementById('loadingOverlay').classList.remove('active');
                 createConfetti();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                submitToWordPress({
+                    userName: userName,
+                    userPhone: userPhone,
+                    userEmail: userEmail,
+                    destination: country,
+                    visaType: visaType,
+                    specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome + ' | Travel History: ' + travelHistory
+                });
             }, 1500);
         }
 
