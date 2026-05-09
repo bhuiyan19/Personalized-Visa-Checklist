@@ -1722,13 +1722,7 @@
             const previousVisasStr = Array.isArray(visaData.previousVisas)
                 ? visaData.previousVisas.join(', ')
                 : (visaData.previousVisas || '');
-            const docsReadyCount = Array.isArray(visaData.documentsReady)
-                ? visaData.documentsReady.length
-                : (parseInt(visaData.documentsReady, 10) || 0);
             const totalDocs = parseInt(visaData.totalDocuments, 10) || 0;
-            const readiness = totalDocs > 0
-                ? Math.round((docsReadyCount / totalDocs) * 100)
-                : (parseInt(visaData.readinessScore, 10) || 0);
 
             const payload = {
                 name:            visaData.userName        || '',
@@ -1739,9 +1733,7 @@
                 travelDate:      visaData.travelDate      || '',
                 passportStatus:  visaData.passportStatus  || '',
                 previousVisas:   previousVisasStr,
-                documentsReady:  docsReadyCount,
                 totalDocuments:  totalDocs,
-                readinessScore:  readiness,
                 notes:           visaData.specialNotes    || '',
                 checklistItems:  Array.isArray(visaData.checklistItems) ? visaData.checklistItems : [],
                 browser:         navigator.userAgent ? navigator.userAgent.substring(0, 190) : 'unknown'
