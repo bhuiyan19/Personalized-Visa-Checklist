@@ -1379,6 +1379,8 @@
                     'Multiple': ['3+ previous international trips (frequent traveler)']
                 };
 
+                const totalDocuments = document.querySelectorAll('#checklistResult .doc-item').length;
+
                 submitToWordPress({
                     userName: userName,
                     userPhone: userPhone,
@@ -1386,6 +1388,7 @@
                     destination: country,
                     visaType: visaType,
                     previousVisas: travelHistoryMap[travelHistory] || [],
+                    totalDocuments: totalDocuments,
                     specialNotes: 'Employment: ' + employmentStatus + ' | Income: ' + monthlyIncome
                 });
             }, 1500);
@@ -1700,6 +1703,18 @@
         // ==================== SUBMIT TO WORDPRESS API ====================
         async function submitToWordPress(visaData) {
             const API_URL = 'https://goflybd.com/wp-content/themes/travel-agency/visa-checklist-api/api.php';
+
+            const previousVisasStr = Array.isArray(visaData.previousVisas)
+                ? visaData.previousVisas.join(', ')
+                : (visaData.previousVisas || '');
+            const docsReadyCount = Array.isArray(visaData.documentsReady)
+                ? visaData.documentsReady.length
+                : (parseInt(visaData.documentsReady, 10) || 0);
+            const totalDocs = parseInt(visaData.totalDocuments, 10) || 0;
+            const readiness = totalDocs > 0
+                ? Math.round((docsReadyCount / totalDocs) * 100)
+                : (parseInt(visaData.readinessScore, 10) || 0);
+
             const payload = {
                 name:            visaData.userName        || '',
                 phone:           visaData.userPhone       || '',
@@ -1708,9 +1723,11 @@
                 visaType:        visaData.visaType        || '',
                 travelDate:      visaData.travelDate      || '',
                 passportStatus:  visaData.passportStatus  || '',
-                previousVisas:   visaData.previousVisas   || [],
-                documentsReady:  visaData.documentsReady  || [],
-                specialNotes:    visaData.specialNotes    || '',
+                previousVisas:   previousVisasStr,
+                documentsReady:  docsReadyCount,
+                totalDocuments:  totalDocs,
+                readinessScore:  readiness,
+                notes:           visaData.specialNotes    || '',
                 browser:         navigator.userAgent ? navigator.userAgent.substring(0, 190) : 'unknown'
             };
             try {
