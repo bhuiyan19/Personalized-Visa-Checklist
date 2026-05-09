@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">🇧🇩 Bangladesh Visa Checklist | Visa Checklist BD</title>
     <meta name="description" content="Personalized visa document checklist for Bangladeshi passport holders - 40 countries - English & বাংলা">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cantora+One&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --mint: #10b981;
+            --mint-dark: #059669;
+            --mint-light: #d1fae5;
+            --mint-bg: #f0fdf8;
+            --orange: #f59e0b;
+            --orange-dark: #d97706;
+            --orange-light: #fef3c7;
+            --gold: #fbbf24;
+            --grad-main: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            --dark: #111827;
+            --text-body: #374151;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --border-mint: #a7f3d0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,36 +33,49 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+            background: transparent;
             min-height: 100vh;
-            padding: 10px;
-            line-height: 1.8;
+            padding: 0;
+            line-height: 1.7;
+            color: var(--text-body);
         }
 
         body[lang="bn"] {
-            font-family: 'SolaimanLipi', 'Kalpurush', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'SolaimanLipi', 'Kalpurush', system-ui, sans-serif;
+        }
+
+        h1, h2, .step-title, .footer-title {
+            font-family: 'Cantora One', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .container {
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
         }
 
         header {
-            background: linear-gradient(135deg, #00D9A3 0%, #00B890 25%, #FF6B35 75%, #FF8C5A 100%);
+            background: var(--grad-main);
             background-size: 200% 200%;
             animation: gradientShift 8s ease infinite;
             color: white;
-            padding: 35px 20px;
+            padding: 44px 24px 38px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+        .header-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes gradientShift {
@@ -86,18 +119,18 @@
         }
 
         header h1 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            letter-spacing: 0.5px;
+            font-size: clamp(1.6em, 4vw, 2.2em);
+            margin-bottom: 12px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            color: white;
         }
 
         .subtitle {
-            font-size: 1em;
-            opacity: 0.95;
+            font-size: clamp(0.95em, 2vw, 1.08em);
+            opacity: 1;
             font-weight: 500;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            color: white;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.15);
         }
 
         .passport-rank {
@@ -145,8 +178,13 @@
 
         /* Progress Indicator */
         .progress-container {
-            padding: 25px 20px 15px;
-            background: #f8f9fa;
+            padding: 28px 24px 18px;
+            background: var(--mint-bg);
+            border-bottom: 1px solid var(--border-mint);
+        }
+        .progress-inner {
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         .progress-bar {
@@ -180,13 +218,13 @@
         }
 
         .progress-step.active .progress-circle {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
             color: white;
             transform: scale(1.1);
         }
 
         .progress-step.completed .progress-circle {
-            background: #00D9A3;
+            background: #10b981;
             color: white;
         }
 
@@ -201,7 +239,7 @@
         }
 
         .progress-step.active .progress-label {
-            color: #00D9A3;
+            color: #10b981;
         }
 
         .progress-line {
@@ -216,7 +254,7 @@
 
         .progress-line-fill {
             height: 100%;
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
             transition: width 0.3s ease;
             width: 0%;
         }
@@ -224,8 +262,15 @@
         /* Form Steps */
         .form-step {
             display: none;
-            padding: 25px 20px;
+            padding: 36px 24px 30px;
             animation: fadeIn 0.4s ease;
+        }
+        .form-step-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .form-step.wide .form-step-inner {
+            max-width: 980px;
         }
 
         .form-step.active {
@@ -244,16 +289,15 @@
         }
 
         .step-title {
-            font-size: 1.3em;
-            color: #333;
+            font-size: clamp(1.5em, 3vw, 1.85em);
+            color: var(--dark);
             margin-bottom: 8px;
-            font-weight: 700;
         }
 
         .step-subtitle {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 25px;
+            font-size: 0.95em;
+            color: var(--text-muted);
+            margin-bottom: 28px;
         }
 
         .form-group {
@@ -264,26 +308,28 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #333;
-            font-size: 1em;
+            color: var(--dark);
+            font-size: 0.95em;
         }
 
         .form-group select,
         .form-group input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            font-family: inherit;
+            transition: all 0.2s ease;
             background: white;
+            color: var(--text-body);
         }
 
         .form-group select:focus,
         .form-group input:focus {
             outline: none;
-            border-color: #00D9A3;
-            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1);
+            border-color: var(--mint);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
         }
 
         /* Buttons */
@@ -295,24 +341,29 @@
 
         .btn {
             flex: 1;
-            padding: 14px;
+            padding: 15px 20px;
             border: none;
-            border-radius: 8px;
-            font-size: 1.05em;
-            font-weight: 600;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            min-height: 54px;
         }
 
         .btn-next, .btn-submit {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: var(--grad-main);
             color: white;
+            box-shadow: 0 8px 22px rgba(16,185,129,0.28);
         }
 
         .btn-prev {
-            background: #f0f0f0;
-            color: #333;
+            background: white;
+            color: var(--text-body);
+            border: 2px solid var(--border);
         }
+        .btn-prev:hover { background: var(--mint-bg); border-color: var(--mint); color: var(--mint-dark); }
 
         .btn:active {
             transform: scale(0.98);
@@ -329,7 +380,7 @@
         }
 
         .btn-next:hover:not(:disabled), .btn-submit:hover:not(:disabled) {
-            background: linear-gradient(135deg, #00F0B5 0%, #FF7A47 100%);
+            background: linear-gradient(135deg, #34d399 0%, #fbbf24 100%);
         }
 
         /* Loading Spinner */
@@ -355,7 +406,7 @@
             width: 60px;
             height: 60px;
             border: 4px solid #f0f0f0;
-            border-top: 4px solid #00D9A3;
+            border-top: 4px solid #10b981;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -370,52 +421,6 @@
             font-size: 1.1em;
             color: #333;
             font-weight: 600;
-        }
-
-        /* Tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-            color: #00D9A3;
-            font-weight: 600;
-            border-bottom: 1px dashed #00D9A3;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 220px;
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 8px 12px;
-            position: absolute;
-            z-index: 1000;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.85em;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .tooltip .tooltiptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #2c3e50 transparent transparent transparent;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
         }
 
         /* Country Search */
@@ -435,8 +440,8 @@
 
         .search-box input:focus {
             outline: none;
-            border-color: #00D9A3;
-            box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.1);
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .search-icon {
@@ -450,87 +455,248 @@
 
         /* Checklist Results */
         .checklist-header {
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: var(--grad-main);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 32px 26px;
+            border-radius: 18px;
+            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(16,185,129,0.18);
+        }
+        .checklist-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.18) 0%, transparent 60%);
+        }
+        .checklist-header > * { position: relative; z-index: 1; }
+
+        .checklist-tier { margin-bottom: 14px; }
+        .tier-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.78em;
+            font-weight: 700;
+            background: rgba(255,255,255,0.22);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(255,255,255,0.4);
+            letter-spacing: 0.02em;
         }
 
         .checklist-header h2 {
-            font-size: 1.4em;
-            margin-bottom: 12px;
+            font-size: clamp(1.5em, 3.5vw, 2em);
+            margin-bottom: 18px;
+            color: white;
         }
 
-        .info-row {
+        .checklist-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .meta-card {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.28);
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .meta-card span {
+            font-size: 0.78em;
+            opacity: 0.92;
+            font-weight: 500;
+        }
+        .meta-card strong {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.95);
+            color: var(--mint-dark);
+            padding: 11px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
             font-size: 0.9em;
-            opacity: 0.95;
-            margin-top: 6px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+        .guide-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
         }
 
         .doc-category {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         .category-title {
-            font-size: 1.1em;
-            color: #00D9A3;
+            font-size: 1.08em;
+            color: var(--mint-dark);
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--mint-bg);
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        .category-title small {
+            font-size: 0.78em;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-left: auto;
+        }
 
         .doc-item {
-            padding: 12px;
+            padding: 14px 16px;
             margin-bottom: 10px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid #00D9A3;
+            background: var(--mint-bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--mint);
             font-size: 0.95em;
             display: flex;
-            align-items: start;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 14px;
             transition: all 0.2s ease;
         }
-
-        .doc-item::before {
-            content: '✓';
-            color: #00D9A3;
+        .doc-item:last-child { margin-bottom: 0; }
+        .doc-item:hover {
+            background: white;
+            border-left-color: var(--orange);
+            transform: translateX(4px);
+            box-shadow: 0 3px 10px rgba(16,185,129,0.12);
+        }
+        .doc-icon {
+            font-size: 1.4em;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .doc-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .doc-text strong {
+            color: var(--dark);
+            font-size: 0.98em;
             font-weight: 700;
-            font-size: 1.2em;
+        }
+        .doc-text span {
+            color: var(--text-muted);
+            font-size: 0.88em;
+            line-height: 1.55;
         }
 
-        .doc-item:hover {
-            transform: translateX(5px);
-            background: #f8f9fa;
-            border-left-color: #FF6B35;
+        /* Mid-result CTA */
+        .cta-result {
+            background: linear-gradient(135deg, #fff 0%, var(--mint-bg) 100%);
+            border: 2px solid var(--border-mint);
+            border-radius: 18px;
+            padding: 26px 24px;
+            margin: 22px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(16,185,129,0.10);
+        }
+        .cta-result::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--grad-main);
+        }
+        .cta-result-text strong {
+            display: block;
+            font-size: 1.15em;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .cta-result-text p {
+            font-size: 0.92em;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+        .cta-result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cta-result-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-result-btn.primary {
+            background: var(--grad-main);
+            color: white;
+            box-shadow: 0 8px 22px rgba(16,185,129,0.32);
+        }
+        .cta-result-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(16,185,129,0.4);
+        }
+        .cta-result-btn.outline {
+            background: white;
+            color: var(--mint-dark);
+            border: 2px solid var(--mint);
+        }
+        .cta-result-btn.outline:hover {
+            background: var(--mint-bg);
+            transform: translateY(-2px);
         }
 
         .tip-box {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 0.95em;
+            background: var(--orange-light);
+            border-left: 4px solid var(--orange);
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 22px 0;
+            font-size: 0.94em;
+            line-height: 1.7;
         }
 
         .tip-box strong {
-            color: #f57c00;
+            color: var(--orange-dark);
         }
 
         footer {
             background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #1a252f 100%);
             color: white;
-            padding: 40px 20px 25px;
+            padding: 44px 24px 28px;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        .footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         footer::before {
@@ -540,7 +706,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #00D9A3 0%, #FF6B35 50%, #00D9A3 100%);
+            background: linear-gradient(90deg, #10b981 0%, #f59e0b 50%, #10b981 100%);
             background-size: 200% 100%;
             animation: gradientFlow 3s linear infinite;
         }
@@ -569,7 +735,7 @@
             font-size: 1.6em;
             font-weight: 800;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%);
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -585,8 +751,8 @@
         }
 
         .badge {
-            background: rgba(0, 217, 163, 0.15);
-            border: 2px solid rgba(0, 217, 163, 0.3);
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid rgba(16, 185, 129, 0.3);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.8em;
@@ -596,9 +762,9 @@
         }
 
         .badge:hover {
-            background: rgba(0, 217, 163, 0.25);
+            background: rgba(16, 185, 129, 0.25);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 217, 163, 0.3);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
         }
 
         .footer-contact {
@@ -625,7 +791,7 @@
         .stat-number {
             font-size: 1.3em;
             font-weight: 700;
-            color: #00D9A3;
+            color: #10b981;
             display: block;
         }
 
@@ -661,18 +827,47 @@
         }
 
         /* Mobile improvements */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.3em;
-            }
+        @media (max-width: 768px) {
+            header { padding: 38px 18px 32px; }
+            .progress-container { padding: 22px 16px 14px; }
+            .progress-label { font-size: 0.7em; }
+            .form-step { padding: 28px 16px 26px; }
+            .checklist-header { padding: 24px 18px; border-radius: 14px; }
+            .checklist-meta { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .meta-card { padding: 10px 12px; }
+            .doc-category { padding: 18px 16px; border-radius: 12px; }
+            .doc-item { padding: 12px 14px; gap: 10px; }
+            .btn-container { flex-direction: column; gap: 10px; }
+            .btn { width: 100%; }
+            .cta-result-buttons { flex-direction: column; }
+            .cta-result-btn { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .checklist-meta { grid-template-columns: 1fr; }
+            .footer-stats { gap: 14px; }
+        }
 
-            .btn-container {
-                flex-direction: column;
+        /* Print stylesheet */
+        @media print {
+            body { background: white !important; }
+            header, .progress-container, .form-step:not(#step4), .btn-container, footer, .cta-result, .lang-toggle {
+                display: none !important;
             }
-
-            .btn {
-                width: 100%;
+            .form-step.wide { display: block !important; padding: 0 !important; }
+            .checklist-header {
+                background: white !important;
+                color: var(--dark) !important;
+                box-shadow: none !important;
+                border: 2px solid var(--mint) !important;
+                padding: 20px !important;
             }
+            .checklist-header h2, .checklist-header span, .checklist-header strong { color: var(--dark) !important; }
+            .meta-card { background: var(--mint-bg) !important; border: 1px solid var(--border-mint) !important; color: var(--dark) !important; }
+            .tier-badge { background: var(--mint-bg) !important; color: var(--mint-dark) !important; border-color: var(--mint) !important; }
+            .doc-category { box-shadow: none !important; border: 1px solid var(--border) !important; page-break-inside: avoid; }
+            .doc-item { background: white !important; transform: none !important; }
+            .guide-link { display: none !important; }
+            .tip-box { page-break-inside: avoid; }
         }
 
         /* Confetti */
@@ -680,7 +875,7 @@
             position: fixed;
             width: 10px;
             height: 10px;
-            background: #00D9A3;
+            background: #10b981;
             position: absolute;
             animation: confetti-fall 3s ease-out forwards;
         }
@@ -719,7 +914,7 @@
             stroke-dasharray: 166;
             stroke-dashoffset: 166;
             stroke-width: 2;
-            stroke: #00D9A3;
+            stroke: #10b981;
             fill: none;
             animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
         }
@@ -728,7 +923,7 @@
             transform-origin: 50% 50%;
             stroke-dasharray: 48;
             stroke-dashoffset: 48;
-            stroke: #00D9A3;
+            stroke: #10b981;
             stroke-width: 3;
             fill: none;
             animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
@@ -749,14 +944,16 @@
     <div class="container">
         <header>
             <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">🇧🇩 বাংলা</button>
-            <div class="bd-flag">🇧🇩</div>
-            <h1 data-en="Personalized Visa Checklist" data-bn="ব্যক্তিগত ভিসা চেকলিস্ট">Personalized Visa Checklist</h1>
-            <p class="subtitle" data-en="For Bangladeshi Passport Holders • 40 Countries" data-bn="বাংলাদেশী পাসপোর্টধারীদের জন্য • ৪০টি দেশ">For Bangladeshi Passport Holders • 40 Countries</p>
-            <div class="passport-rank" data-en="🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️" data-bn="🌍 বাংলাদেশ পাসপোর্ট ২০২৬: র‍্যাঙ্ক ৯৫তম | ৩৭টি ভিসা-মুক্ত গন্তব্য ✈️">🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️</div>
+            <div class="header-inner">
+                <div class="bd-flag">🇧🇩</div>
+                <h1 data-en="Personalized Visa Checklist" data-bn="ব্যক্তিগত ভিসা চেকলিস্ট">Personalized Visa Checklist</h1>
+                <p class="subtitle" data-en="For Bangladeshi Passport Holders • 40 Countries" data-bn="বাংলাদেশী পাসপোর্টধারীদের জন্য • ৪০টি দেশ">For Bangladeshi Passport Holders • 40 Countries</p>
+                <div class="passport-rank" data-en="🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️" data-bn="🌍 বাংলাদেশ পাসপোর্ট ২০২৬: র‍্যাঙ্ক ৯৫তম | ৩৭টি ভিসা-মুক্ত গন্তব্য ✈️">🌍 Bangladesh Passport 2026: Rank 95th | 37 Visa-Free Destinations ✈️</div>
+            </div>
         </header>
 
-        <!-- Progress Indicator -->
         <div class="progress-container">
+          <div class="progress-inner">
             <div class="progress-bar">
                 <div class="progress-line">
                     <div class="progress-line-fill" id="progressFill"></div>
@@ -778,10 +975,10 @@
                     <div class="progress-label" data-en="Checklist" data-bn="চেকলিস্ট">Checklist</div>
                 </div>
             </div>
+          </div>
         </div>
 
-        <!-- Step 1: Destination Selection -->
-        <div class="form-step active" id="step1">
+        <div class="form-step active" id="step1"><div class="form-step-inner">
             <h2 class="step-title" data-en="🌍 Select Your Destination" data-bn="🌍 আপনার গন্তব্য নির্বাচন করুন">🌍 Select Your Destination</h2>
             <p class="step-subtitle" data-en="Choose the country you want to visit" data-bn="যে দেশে যেতে চান তা বেছে নিন">Choose the country you want to visit</p>
 
@@ -811,10 +1008,9 @@
             <div class="btn-container">
                 <button class="btn btn-next" onclick="nextStep(1)"><span data-en="Next →" data-bn="পরবর্তী →">Next →</span></button>
             </div>
-        </div>
+        </div></div>
 
-        <!-- Step 2: Contact Information -->
-        <div class="form-step" id="step2">
+        <div class="form-step" id="step2"><div class="form-step-inner">
             <h2 class="step-title" data-en="👤 Your Contact Information" data-bn="👤 আপনার যোগাযোগের তথ্য">👤 Your Contact Information</h2>
             <p class="step-subtitle" data-en="We'll send your personalized checklist" data-bn="আমরা আপনার ব্যক্তিগত চেকলিস্ট পাঠাবো">We'll send your personalized checklist</p>
 
@@ -837,10 +1033,9 @@
                 <button class="btn btn-prev" onclick="prevStep(2)"><span data-en="← Back" data-bn="← পিছনে">← Back</span></button>
                 <button class="btn btn-next" onclick="nextStep(2)"><span data-en="Next →" data-bn="পরবর্তী →">Next →</span></button>
             </div>
-        </div>
+        </div></div>
 
-        <!-- Step 3: Detailed Information -->
-        <div class="form-step" id="step3">
+        <div class="form-step" id="step3"><div class="form-step-inner">
             <h2 class="step-title" data-en="📋 Additional Details" data-bn="📋 অতিরিক্ত বিবরণ">📋 Additional Details</h2>
             <p class="step-subtitle" data-en="This helps us personalize your checklist" data-bn="এটি আমাদের আপনার চেকলিস্ট ব্যক্তিগতকরণে সাহায্য করে">This helps us personalize your checklist</p>
 
@@ -873,7 +1068,7 @@
                     <option value="" data-en="-- Select Option --" data-bn="-- অপশন নির্বাচন করুন --">-- Select Option --</option>
                     <option value="None" data-en="🆕 First time (No international travel)" data-bn="🆕 প্রথমবার (কোন আন্তর্জাতিক ভ্রমণ নেই)">🆕 First time (No international travel)</option>
                     <option value="Some" data-en="✈️ 1-2 times before" data-bn="✈️ আগে ১-২ বার">✈️ 1-2 times before</option>
-                    <option value="Multiple" data-en="🌍 3+ times (Frequent traveler)" data-bn="🌍 ৩+ বার (নিয়মিত ভ্রমণকারী)">🌍 3+ times (Frequent traveler)</option>
+                    <option value="Multiple" data-en="🌍 3+ times (Frequent traveler)" data-bn="🌍 ৩+ বার (নিয়মিত ভ্রমণকারী)">🌍 ৩+ বার (নিয়মিত ভ্রমণকারী)</option>
                 </select>
             </div>
 
@@ -881,52 +1076,51 @@
                 <button class="btn btn-prev" onclick="prevStep(3)"><span data-en="← Back" data-bn="← পিছনে">← Back</span></button>
                 <button class="btn btn-submit" onclick="generateChecklist()"><span data-en="🎯 Get My Checklist" data-bn="🎯 আমার চেকলিস্ট পান">🎯 Get My Checklist</span></button>
             </div>
-        </div>
+        </div></div>
 
-        <!-- Step 4: Results -->
-        <div class="form-step" id="step4">
+        <div class="form-step wide" id="step4"><div class="form-step-inner">
             <div id="checklistResult"></div>
             <div class="btn-container">
                 <button class="btn btn-prev" onclick="resetForm()"><span data-en="← Start Over" data-bn="← পুনরায় শুরু করুন">← Start Over</span></button>
-                <button class="btn btn-next" onclick="window.print()" style="background: #FF6B35;"><span data-en="🖨️ Print" data-bn="🖨️ প্রিন্ট">🖨️ Print</span></button>
+                <button class="btn btn-next" onclick="window.print()" style="background: var(--orange);"><span data-en="🖨️ Print" data-bn="🖨️ প্রিন্ট">🖨️ Print</span></button>
             </div>
-        </div>
+        </div></div>
 
         <footer>
+          <div class="footer-inner">
             <h3 class="footer-title">goFLY Limited</h3>
             <div class="footer-badges">
                 <span class="badge">🏆 IATA: 42337956</span>
                 <span class="badge">📋 ATAB: 4298</span>
                 <span class="badge">✈️ Civil Aviation: 0007726</span>
             </div>
-            <p class="footer-contact">📍 1 Shukrabad Road Motiur Nibash, Beside New Model Degree College</p>
-            <p class="footer-contact">Opposite of Metro Shopping Mall, Dhaka 1207</p>
-            <p class="footer-contact">📞 01713-289170 | 📱 01713-289175</p>
+            <p class="footer-contact">📍 1 Shukrabad Road, Beside New Model Degree College, Dhaka 1207</p>
+            <p class="footer-contact">📞 +880-9639-203090 | 📱 01713-289175</p>
 
             <div class="footer-stats">
                 <div class="stat-item">
                     <span class="stat-number">⭐ 4.8/5.0</span>
-                    <span class="stat-label" data-en="431+ Reviews" data-bn="৪৩১+ রিভিউ">431+ Reviews</span>
+                    <span class="stat-label" data-en="450+ Reviews" data-bn="৪৫০+ রিভিউ">450+ Reviews</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">👥 10,000+</span>
                     <span class="stat-label" data-en="Happy Customers" data-bn="খুশি গ্রাহক">Happy Customers</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">🔄 70%</span>
-                    <span class="stat-label" data-en="Repeat Rate" data-bn="রিপিট রেট">Repeat Rate</span>
+                    <span class="stat-number">🔄 90%+</span>
+                    <span class="stat-label" data-en="Success Rate" data-bn="সাফল্যের হার">Success Rate</span>
                 </div>
             </div>
 
-            <a href="https://wa.me/8801713289170" class="whatsapp-btn"><span data-en="Chat on WhatsApp" data-bn="WhatsApp এ চ্যাট করুন">Chat on WhatsApp</span></a>
+            <a href="https://wa.me/8801713289175" class="whatsapp-btn"><span data-en="Chat on WhatsApp" data-bn="WhatsApp এ চ্যাট করুন">Chat on WhatsApp</span></a>
             <p style="font-size: 0.75em; margin-top: 10px; opacity: 0.6;">
-                🚀 <span data-en="Powered by goFLY • Your Trusted Travel Partner Since 2020" data-bn="Powered by goFLY • ২০২০ সাল থেকে আপনার বিশ্বস্ত ভ্রমণ সঙ্গী">Powered by goFLY • Your Trusted Travel Partner Since 2020</span>
+                🚀 <span data-en="Powered by goFLY • Your Trusted Travel Partner Since 2017" data-bn="Powered by goFLY • ২০১৭ সাল থেকে আপনার বিশ্বস্ত ভ্রমণ সঙ্গী">Powered by goFLY • Your Trusted Travel Partner Since 2017</span>
             </p>
+          </div>
         </footer>
     </div>
 
     <script>
-        // Country data with URLs
         const countryURLs = {
             'Australia': 'https://goflybd.com/australia-visa-from-bangladesh/',
             'Belgium': 'https://goflybd.com/belgium-visa-from-bangladesh/',
@@ -970,7 +1164,6 @@
             'Vietnam': 'https://goflybd.com/vietnam-visa-from-bangladesh/'
         };
 
-        // Country list with English and Bangla names
         const countries = [
             { value: 'Australia', en: '🇦🇺 Australia', bn: '🇦🇺 অস্ট্রেলিয়া' },
             { value: 'Belgium', en: '🇧🇪 Belgium', bn: '🇧🇪 বেলজিয়াম' },
@@ -1014,7 +1207,6 @@
             { value: 'Vietnam', en: '🇻🇳 Vietnam', bn: '🇻🇳 ভিয়েতনাম' }
         ];
 
-        // Country data (visa info)
         const countryData = {
             'Nepal': { time: '0', fee: 'Free (on arrival)', verySimple: true },
             'Sri Lanka': { time: '0', fee: 'Free (on arrival)', verySimple: true },
@@ -1058,35 +1250,25 @@
             'Hungary': { time: '15-30', fee: '৳6,000-10,000', comprehensive: true }
         };
 
-        // Current language (default: English)
         let currentLang = localStorage.getItem('visaLang') || 'en';
         let currentStep = 1;
         const totalSteps = 4;
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Populate country dropdown
             populateCountryDropdown();
-
-            // Apply saved language
-            if (currentLang === 'bn') {
-                applyLanguage('bn');
-            }
+            if (currentLang === 'bn') applyLanguage('bn');
         });
 
         function populateCountryDropdown() {
             const select = document.getElementById('country');
-            const currentLang = document.body.getAttribute('lang');
-
-            // Keep the first option (Select Country)
+            const lang = document.body.getAttribute('lang');
             select.innerHTML = '<option value="">-- Select Country --</option>';
-
             countries.forEach(country => {
                 const option = document.createElement('option');
                 option.value = country.value;
                 option.setAttribute('data-en', country.en);
                 option.setAttribute('data-bn', country.bn);
-                option.textContent = currentLang === 'bn' ? country.bn : country.en;
+                option.textContent = lang === 'bn' ? country.bn : country.en;
                 select.appendChild(option);
             });
         }
@@ -1099,68 +1281,43 @@
         }
 
         function applyLanguage(lang) {
-            // Update body lang attribute
             document.body.setAttribute('lang', lang);
-
-            // Update page title
             document.getElementById('pageTitle').textContent = lang === 'en'
                 ? '🇧🇩 Bangladesh Visa Checklist | Visa Checklist BD'
                 : '🇧🇩 ভিসা চেকলিস্ট | বাংলাদেশী পাসপোর্টধারীদের জন্য';
-
-            // Update language toggle button
             document.getElementById('langBtn').textContent = lang === 'en' ? '🇧🇩 বাংলা' : '🇬🇧 English';
-
-            // Update all elements with data-en and data-bn attributes
-            const elements = document.querySelectorAll('[data-en][data-bn]');
-            elements.forEach(el => {
+            document.querySelectorAll('[data-en][data-bn]').forEach(el => {
                 const text = el.getAttribute('data-' + lang);
                 if (text) {
-                    if (el.tagName === 'INPUT') {
-                        el.placeholder = text;
-                    } else {
-                        el.textContent = text;
-                    }
+                    if (el.tagName === 'INPUT') el.placeholder = text;
+                    else el.textContent = text;
                 }
             });
-
-            // Update country dropdown
             populateCountryDropdown();
-
-            // Update search placeholder
             const searchInput = document.getElementById('countrySearch');
-            if (searchInput) {
-                searchInput.placeholder = lang === 'en' ? '🔍 Search country...' : '🔍 দেশ খুঁজুন...';
-            }
+            if (searchInput) searchInput.placeholder = lang === 'en' ? '🔍 Search country...' : '🔍 দেশ খুঁজুন...';
         }
 
         function nextStep(step) {
-            // Validation
             if (step === 1) {
                 const country = document.getElementById('country').value;
                 const visaType = document.getElementById('visaType').value;
                 if (!country || !visaType) {
-                    alert(currentLang === 'en'
-                        ? 'Please select both country and purpose of visit'
-                        : 'দয়া করে দেশ এবং ভ্রমণের উদ্দেশ্য উভয়ই নির্বাচন করুন');
+                    alert(currentLang === 'en' ? 'Please select both country and purpose of visit' : 'দয়া করে দেশ এবং ভ্রমণের উদ্দেশ্য উভয়ই নির্বাচন করুন');
                     return;
                 }
             } else if (step === 2) {
                 const userName = document.getElementById('userName').value.trim();
                 const userPhone = document.getElementById('userPhone').value.trim();
                 if (!userName || !userPhone) {
-                    alert(currentLang === 'en'
-                        ? 'Please enter your name and phone number'
-                        : 'দয়া করে আপনার নাম এবং ফোন নম্বর লিখুন');
+                    alert(currentLang === 'en' ? 'Please enter your name and phone number' : 'দয়া করে আপনার নাম এবং ফোন নম্বর লিখুন');
                     return;
                 }
                 if (!/^01[0-9]{9}$/.test(userPhone)) {
-                    alert(currentLang === 'en'
-                        ? 'Please enter a valid Bangladeshi phone number (01XXXXXXXXX)'
-                        : 'দয়া করে একটি বৈধ বাংলাদেশী ফোন নম্বর লিখুন (01XXXXXXXXX)');
+                    alert(currentLang === 'en' ? 'Please enter a valid Bangladeshi phone number (01XXXXXXXXX)' : 'দয়া করে একটি বৈধ বাংলাদেশী ফোন নম্বর লিখুন (01XXXXXXXXX)');
                     return;
                 }
             }
-
             document.getElementById('step' + step).classList.remove('active');
             document.getElementById('step' + (step + 1)).classList.add('active');
             updateProgress(step + 1);
@@ -1179,17 +1336,10 @@
         function updateProgress(step) {
             document.querySelectorAll('.progress-step').forEach((el, index) => {
                 const stepNum = index + 1;
-                if (stepNum < step) {
-                    el.classList.add('completed');
-                    el.classList.remove('active');
-                } else if (stepNum === step) {
-                    el.classList.add('active');
-                    el.classList.remove('completed');
-                } else {
-                    el.classList.remove('active', 'completed');
-                }
+                if (stepNum < step) { el.classList.add('completed'); el.classList.remove('active'); }
+                else if (stepNum === step) { el.classList.add('active'); el.classList.remove('completed'); }
+                else { el.classList.remove('active', 'completed'); }
             });
-
             const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
             document.getElementById('progressFill').style.width = progressPercent + '%';
         }
@@ -1200,13 +1350,9 @@
             const travelHistory = document.getElementById('travelHistory').value;
 
             if (!employmentStatus || !monthlyIncome || !travelHistory) {
-                alert(currentLang === 'en'
-                    ? 'Please fill in all required fields'
-                    : 'দয়া করে সমস্ত প্রয়োজনীয় ক্ষেত্র পূরণ করুন');
+                alert(currentLang === 'en' ? 'Please fill in all required fields' : 'দয়া করে সমস্ত প্রয়োজনীয় ক্ষেত্র পূরণ করুন');
                 return;
             }
-
-            // Show loading
             document.getElementById('loadingOverlay').classList.add('active');
 
             setTimeout(() => {
@@ -1215,7 +1361,6 @@
                 const userName = document.getElementById('userName').value.trim();
                 const userPhone = document.getElementById('userPhone').value.trim();
                 const userEmail = document.getElementById('userEmail').value.trim();
-
                 const countryInfo = countryData[country];
                 let html = generateChecklistHTML(country, visaType, userName, userPhone, employmentStatus, monthlyIncome, travelHistory, countryInfo);
 
@@ -1246,56 +1391,265 @@
             }, 1500);
         }
 
+        const docTemplates = {
+            core: {
+                en: [
+                    { icon: '🛂', title: 'Valid Passport', detail: 'Minimum 6 months validity from travel date, with at least 2 blank pages' },
+                    { icon: '📷', title: 'Passport-size Photos (2-4 copies)', detail: 'White background, recent (within 3 months), as per embassy specifications' },
+                    { icon: '📝', title: 'Completed Visa Application Form', detail: 'Filled, signed and dated — printed copy required' }
+                ],
+                bn: [
+                    { icon: '🛂', title: 'বৈধ পাসপোর্ট', detail: 'ভ্রমণের তারিখ থেকে ন্যূনতম ৬ মাসের বৈধতা ও ২টি ফাঁকা পেজ' },
+                    { icon: '📷', title: 'পাসপোর্ট সাইজ ছবি (২-৪ কপি)', detail: 'সাদা ব্যাকগ্রাউন্ড, সাম্প্রতিক (৩ মাসের মধ্যে), এমবাসির স্পেসিফিকেশন অনুযায়ী' },
+                    { icon: '📝', title: 'পূরণকৃত ভিসা আবেদন ফরম', detail: 'সম্পূর্ণ পূরণ, স্বাক্ষরিত — প্রিন্ট কপি দিতে হবে' }
+                ]
+            },
+            financial: {
+                light: {
+                    en: [{ icon: '🏦', title: 'Bank Statement (3 months)', detail: 'Updated statement showing minimum BDT 50,000-100,000 balance' }],
+                    bn: [{ icon: '🏦', title: 'ব্যাংক স্টেটমেন্ট (৩ মাস)', detail: 'ন্যূনতম ৫০-১,০০,০০০ টাকা ব্যালেন্স দেখানো আপডেটেড স্টেটমেন্ট' }]
+                },
+                medium: {
+                    en: [
+                        { icon: '🏦', title: 'Bank Statement (6 months)', detail: 'Showing minimum BDT 1,50,000-3,00,000 balance with regular transactions' },
+                        { icon: '💳', title: 'Bank Solvency Certificate', detail: 'Original certificate from your bank' }
+                    ],
+                    bn: [
+                        { icon: '🏦', title: 'ব্যাংক স্টেটমেন্ট (৬ মাস)', detail: 'ন্যূনতম ১,৫০,০০০-৩,০০,০০০ টাকা ব্যালেন্স ও নিয়মিত লেনদেন' },
+                        { icon: '💳', title: 'ব্যাংক সলভেন্সি সার্টিফিকেট', detail: 'আপনার ব্যাংক থেকে অরিজিনাল সার্টিফিকেট' }
+                    ]
+                },
+                strong: {
+                    en: [
+                        { icon: '🏦', title: 'Bank Statement (6 months)', detail: 'Minimum BDT 5,00,000+ balance with consistent inflow — embassy scrutinizes carefully' },
+                        { icon: '💳', title: 'Bank Solvency Certificate (Original)', detail: 'Confirming balance, account standing, signed by bank manager' },
+                        { icon: '💸', title: 'Tax Return / TIN Certificate', detail: 'Last 2 years acknowledgement copy' },
+                        { icon: '🏢', title: 'FDR / Property Documents (if any)', detail: 'Strong supporting evidence of financial stability' }
+                    ],
+                    bn: [
+                        { icon: '🏦', title: 'ব্যাংক স্টেটমেন্ট (৬ মাস)', detail: 'ন্যূনতম ৫,০০,০০০+ টাকা ব্যালেন্স ও নিয়মিত আয়ের প্রমাণ — এমবাসি কঠোরভাবে যাচাই করে' },
+                        { icon: '💳', title: 'ব্যাংক সলভেন্সি সার্টিফিকেট (অরিজিনাল)', detail: 'ব্যালেন্স, অ্যাকাউন্ট স্ট্যাটাস ও ব্যাংক ম্যানেজার-স্বাক্ষরিত' },
+                        { icon: '💸', title: 'ট্যাক্স রিটার্ন / TIN সার্টিফিকেট', detail: 'গত ২ বছরের অ্যাকনলেজমেন্ট কপি' },
+                        { icon: '🏢', title: 'FDR / সম্পত্তির কাগজপত্র (থাকলে)', detail: 'আর্থিক স্থিতিশীলতার শক্তিশালী প্রমাণ' }
+                    ]
+                }
+            },
+            travel: {
+                en: [
+                    { icon: '✈️', title: 'Flight Itinerary / Reservation', detail: 'Confirmed return ticket OR booking reservation (not necessarily paid)' },
+                    { icon: '🏨', title: 'Hotel Booking / Accommodation Proof', detail: 'For entire stay duration (refundable bookings work)' },
+                    { icon: '🛡️', title: 'Travel Insurance', detail: 'Minimum coverage as per destination requirement (Schengen: €30,000+)' }
+                ],
+                bn: [
+                    { icon: '✈️', title: 'ফ্লাইট সিডিউল / রিজার্ভেশন', detail: 'কনফার্মড রিটার্ন টিকিট অথবা বুকিং রিজার্ভেশন (পেইড না হলেও চলবে)' },
+                    { icon: '🏨', title: 'হোটেল বুকিং / থাকার প্রমাণ', detail: 'সম্পূর্ণ অবস্থানের জন্য (রিফান্ডেবল বুকিং দিলেও হবে)' },
+                    { icon: '🛡️', title: 'ট্রাভেল ইন্স্যুরেন্স', detail: 'গন্তব্য অনুযায়ী ন্যূনতম কভারেজ (শেনজেন: €৩০,০০০+)' }
+                ]
+            },
+            employment: {
+                Government: {
+                    en: [
+                        { icon: '📃', title: 'NOC from Department', detail: 'No Objection Certificate on official letterhead' },
+                        { icon: '💼', title: 'Government ID / Employment Card', detail: 'Showing your current designation and posting' }
+                    ],
+                    bn: [
+                        { icon: '📃', title: 'বিভাগ থেকে NOC', detail: 'অফিসিয়াল লেটারহেডে No Objection Certificate' },
+                        { icon: '💼', title: 'গভ. আইডি / কর্মসংস্থান কার্ড', detail: 'বর্তমান পদবি ও পোস্টিং দেখানো' }
+                    ]
+                },
+                Private: {
+                    en: [
+                        { icon: '💼', title: 'Employment Letter (NOC)', detail: 'On company letterhead, signed by HR — designation, salary, joining date, leave approval' },
+                        { icon: '💵', title: 'Salary Slips (last 3 months)', detail: 'Original or stamped copies' },
+                        { icon: '🏢', title: 'Company Trade License', detail: 'Recent copy showing valid registration' }
+                    ],
+                    bn: [
+                        { icon: '💼', title: 'এমপ্লয়মেন্ট লেটার (NOC)', detail: 'কোম্পানি লেটারহেডে, HR-স্বাক্ষরিত — পদবি, বেতন, জয়েনিং, ছুটি অনুমোদন' },
+                        { icon: '💵', title: 'স্যালারি স্লিপ (শেষ ৩ মাস)', detail: 'অরিজিনাল বা স্ট্যাম্পড কপি' },
+                        { icon: '🏢', title: 'কোম্পানির ট্রেড লাইসেন্স', detail: 'সাম্প্রতিক কপি বৈধ রেজিস্ট্রেশনসহ' }
+                    ]
+                },
+                'Self-employed': {
+                    en: [
+                        { icon: '🏢', title: 'Trade License (Updated)', detail: 'Original or notarized copy' },
+                        { icon: '📊', title: 'Business Bank Statement (6 months)', detail: 'Showing healthy business cash flow' },
+                        { icon: '💸', title: 'Tax Returns (last 2 years)', detail: 'Acknowledgement receipt' }
+                    ],
+                    bn: [
+                        { icon: '🏢', title: 'ট্রেড লাইসেন্স (আপডেটেড)', detail: 'অরিজিনাল বা নোটারাইজড কপি' },
+                        { icon: '📊', title: 'ব্যবসায়িক ব্যাংক স্টেটমেন্ট (৬ মাস)', detail: 'সুস্থ ব্যবসায়িক ক্যাশ ফ্লো দেখানো' },
+                        { icon: '💸', title: 'ট্যাক্স রিটার্ন (গত ২ বছর)', detail: 'অ্যাকনলেজমেন্ট রিসিট' }
+                    ]
+                },
+                Student: {
+                    en: [
+                        { icon: '🎓', title: 'Student ID Card', detail: 'Currently valid' },
+                        { icon: '📃', title: 'NOC from Institution', detail: 'On letterhead, signed by Head of Department/Principal' },
+                        { icon: '👨‍👩‍👧', title: "Sponsor's Documents", detail: "Father/Guardian's NOC, ID, bank statement (6 months)" }
+                    ],
+                    bn: [
+                        { icon: '🎓', title: 'স্টুডেন্ট আইডি কার্ড', detail: 'বর্তমানে বৈধ' },
+                        { icon: '📃', title: 'প্রতিষ্ঠান থেকে NOC', detail: 'লেটারহেডে, বিভাগীয় প্রধান/অধ্যক্ষ-স্বাক্ষরিত' },
+                        { icon: '👨‍👩‍👧', title: 'স্পন্সরের ডকুমেন্ট', detail: 'বাবা/অভিভাবকের NOC, আইডি, ব্যাংক স্টেটমেন্ট (৬ মাস)' }
+                    ]
+                },
+                Unemployed: {
+                    en: [
+                        { icon: '👨‍👩‍👧', title: 'Sponsor Letter & Affidavit', detail: 'Notarized affidavit from sponsor stating financial responsibility' },
+                        { icon: '🏦', title: "Sponsor's Bank Statement (6 months)", detail: 'Strong balance & solvency from sponsor' },
+                        { icon: '💼', title: "Sponsor's Employment / Business Proof", detail: 'NOC, salary slip OR trade license' }
+                    ],
+                    bn: [
+                        { icon: '👨‍👩‍👧', title: 'স্পন্সর লেটার ও অ্যাফিডেভিট', detail: 'আর্থিক দায়িত্ব নেওয়ার নোটারাইজড অ্যাফিডেভিট' },
+                        { icon: '🏦', title: 'স্পন্সরের ব্যাংক স্টেটমেন্ট (৬ মাস)', detail: 'স্পন্সরের শক্তিশালী ব্যালেন্স ও সলভেন্সি' },
+                        { icon: '💼', title: 'স্পন্সরের কর্মসংস্থান / ব্যবসার প্রমাণ', detail: 'NOC, স্যালারি স্লিপ বা ট্রেড লাইসেন্স' }
+                    ]
+                }
+            },
+            extras: {
+                comprehensive: {
+                    en: [
+                        { icon: '📅', title: 'Detailed Day-by-Day Itinerary', detail: 'Cover letter explaining travel purpose, dates, places to visit' },
+                        { icon: '📜', title: 'Cover Letter / Sponsor Letter', detail: 'Personally written explaining trip purpose & financial sponsorship' },
+                        { icon: '👨‍👩‍👧', title: 'Marriage Certificate (if married)', detail: 'For couple/family applications' },
+                        { icon: '👶', title: 'Birth Certificate (children)', detail: "For minors — both parents' consent if one parent travels" }
+                    ],
+                    bn: [
+                        { icon: '📅', title: 'বিস্তারিত ডে-বাই-ডে ইটিনারারি', detail: 'কভার লেটারে ভ্রমণের উদ্দেশ্য, তারিখ, পরিদর্শনের স্থান উল্লেখ' },
+                        { icon: '📜', title: 'কভার লেটার / স্পন্সর লেটার', detail: 'ভ্রমণের উদ্দেশ্য ও আর্থিক স্পন্সরশিপ ব্যাখ্যা করে নিজে লেখা' },
+                        { icon: '👨‍👩‍👧', title: 'বিবাহের সার্টিফিকেট (বিবাহিত হলে)', detail: 'দম্পতি / পারিবারিক আবেদনের জন্য' },
+                        { icon: '👶', title: 'জন্ম সার্টিফিকেট (শিশু)', detail: 'নাবালকদের জন্য — এক অভিভাবক ভ্রমণ করলে দুজনেরই সম্মতি' }
+                    ]
+                },
+                medical: {
+                    en: [
+                        { icon: '🏥', title: 'Medical Appointment Letter', detail: 'From foreign hospital/clinic with treatment details & estimated cost' },
+                        { icon: '📋', title: "Local Doctor's Recommendation", detail: 'Referral letter explaining diagnosis & need for foreign treatment' },
+                        { icon: '🧾', title: 'Medical History Reports', detail: 'Test reports, prescriptions from past treatments' }
+                    ],
+                    bn: [
+                        { icon: '🏥', title: 'মেডিকেল অ্যাপয়েন্টমেন্ট লেটার', detail: 'বিদেশি হাসপাতাল/ক্লিনিক থেকে চিকিৎসার বিবরণ ও আনুমানিক খরচসহ' },
+                        { icon: '📋', title: 'স্থানীয় ডাক্তারের সুপারিশ', detail: 'রোগ নির্ণয় ও বিদেশে চিকিৎসার প্রয়োজনীয়তা ব্যাখ্যা করে রেফারেল লেটার' },
+                        { icon: '🧾', title: 'মেডিকেল হিস্টরি রিপোর্ট', detail: 'টেস্ট রিপোর্ট, পূর্ববর্তী চিকিৎসার প্রেসক্রিপশন' }
+                    ]
+                },
+                business: {
+                    en: [
+                        { icon: '📨', title: 'Invitation Letter (Foreign Company)', detail: 'On letterhead, signed, with company registration details, purpose & duration' },
+                        { icon: '🤝', title: 'Business Relationship Proof', detail: 'Past correspondence, contracts, prior trade history' },
+                        { icon: '📜', title: 'Trade License & Business Cards', detail: 'Both companies (yours & host)' }
+                    ],
+                    bn: [
+                        { icon: '📨', title: 'ইনভিটেশন লেটার (বিদেশি কোম্পানি)', detail: 'লেটারহেডে, স্বাক্ষরিত, কোম্পানি রেজিস্ট্রেশন, উদ্দেশ্য ও সময়কালসহ' },
+                        { icon: '🤝', title: 'ব্যবসায়িক সম্পর্কের প্রমাণ', detail: 'পূর্ববর্তী যোগাযোগ, চুক্তি, আগের বাণিজ্য ইতিহাস' },
+                        { icon: '📜', title: 'ট্রেড লাইসেন্স ও বিজনেস কার্ড', detail: 'উভয় কোম্পানির (আপনার ও হোস্ট)' }
+                    ]
+                }
+            }
+        };
+
+        function getDifficultyTier(countryInfo) {
+            if (!countryInfo) return { financial: 'medium', extras: false, label: 'medium' };
+            if (countryInfo.verySimple) return { financial: 'light', extras: false, label: 'easy' };
+            if (countryInfo.easyEVisa) return { financial: 'light', extras: false, label: 'easy' };
+            if (countryInfo.moderate) return { financial: 'medium', extras: false, label: 'medium' };
+            if (countryInfo.comprehensive) return { financial: 'strong', extras: true, label: 'strict' };
+            return { financial: 'medium', extras: false, label: 'medium' };
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, function(c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        function renderDocList(items) {
+            return items.map(function(d) {
+                return '<div class="doc-item"><span class="doc-icon">' + d.icon + '</span><div class="doc-text"><strong>' + d.title + '</strong><span>' + d.detail + '</span></div></div>';
+            }).join('');
+        }
+
         function generateChecklistHTML(country, visaType, userName, userPhone, employment, income, travelHistory, countryInfo) {
             const lang = currentLang;
             const countryURL = countryURLs[country];
+            const tier = getDifficultyTier(countryInfo);
+            const safeName = escapeHtml(userName);
+            const safeCountry = escapeHtml(country);
+            const safeVisaType = escapeHtml(visaType);
 
-            const countryLinkHTML = countryURL ? `
-                <div style="text-align: center; margin: 20px 0;">
-                    <a href="${countryURL}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #00D9A3 0%, #FF6B35 100%); color: white; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 217, 163, 0.3);">
-                        📖 ${lang === 'en' ? 'Read Complete' : 'সম্পূর্ণ'} ${country} ${lang === 'en' ? 'Visa Guide' : 'ভিসা গাইড পড়ুন'}
-                    </a>
-                </div>
-            ` : '';
+            const tierBadge = tier.label === 'easy'
+                ? '<span class="tier-badge">' + (lang === 'en' ? '🟢 Easy Process' : '🟢 সহজ প্রক্রিয়া') + '</span>'
+                : tier.label === 'medium'
+                    ? '<span class="tier-badge">' + (lang === 'en' ? '🟡 Standard Process' : '🟡 সাধারণ প্রক্রিয়া') + '</span>'
+                    : '<span class="tier-badge">' + (lang === 'en' ? '🔴 Strict Embassy Process' : '🔴 কঠোর এমবাসি প্রক্রিয়া') + '</span>';
 
-            let html = `
-                <svg class="success-checkmark show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
-                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                </svg>
-                <div class="checklist-header">
-                    <h2>✅ ${lang === 'en' ? 'Your Personalized Checklist' : 'আপনার ব্যক্তিগত চেকলিস্ট'}</h2>
-                    <div class="info-row">🌍 ${lang === 'en' ? 'Destination' : 'গন্তব্য'}: <strong>${country}</strong></div>
-                    <div class="info-row">🎯 ${lang === 'en' ? 'Purpose' : 'উদ্দেশ্য'}: <strong>${visaType}</strong></div>
-                    <div class="info-row">👤 ${userName}</div>
-                    <div class="info-row">📱 ${userPhone}</div>
-                    <div class="info-row">⏱️ ${lang === 'en' ? 'Processing' : 'প্রক্রিয়াকরণ'}: <strong>${countryInfo ? countryInfo.time : 'N/A'} ${lang === 'en' ? 'days' : 'দিন'}</strong> | 💵 ${lang === 'en' ? 'Fee' : 'ফি'}: <strong>${countryInfo ? countryInfo.fee : 'N/A'}</strong></div>
-                </div>
+            const countryLinkHTML = countryURL
+                ? '<a href="' + countryURL + '" target="_blank" rel="noopener" class="guide-link">📖 ' + (lang === 'en' ? 'Read Complete' : 'সম্পূর্ণ') + ' ' + safeCountry + ' ' + (lang === 'en' ? 'Visa Guide' : 'ভিসা গাইড পড়ুন') + ' →</a>'
+                : '';
 
-                ${countryLinkHTML}
+            const coreItems = docTemplates.core[lang];
+            const financialItems = docTemplates.financial[tier.financial][lang];
+            const travelItems = docTemplates.travel[lang];
+            const employmentKey = docTemplates.employment[employment] ? employment : 'Private';
+            const employmentItems = docTemplates.employment[employmentKey][lang];
 
-                <div class="doc-category">
-                    <div class="category-title">📄 ${lang === 'en' ? 'Required Documents' : 'প্রয়োজনীয় ডকুমেন্ট'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Valid passport (minimum 6 months validity)' : 'বৈধ পাসপোর্ট (ন্যূনতম ৬ মাসের বৈধতা)'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Recent passport-size photos' : 'সাম্প্রতিক পাসপোর্ট সাইজ ছবি'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Flight itinerary/reservation' : 'ফ্লাইট সিডিউল/রিজার্ভেশন'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Hotel booking/accommodation proof' : 'হোটেল বুকিং/থাকার প্রমাণ'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Bank statements (last 3-6 months)' : 'ব্যাংক স্টেটমেন্ট (শেষ ৩-৬ মাস)'}</div>
-                    <div class="doc-item">${lang === 'en' ? 'Employment letter/NOC' : 'চাকরির চিঠি/NOC'}</div>
-                </div>
+            let extraSections = '';
+            if (tier.extras) {
+                extraSections += '<div class="doc-category"><div class="category-title">📋 ' + (lang === 'en' ? 'Embassy-Specific Documents' : 'এমবাসি-নির্দিষ্ট ডকুমেন্ট') + '</div>' + renderDocList(docTemplates.extras.comprehensive[lang]) + '</div>';
+            }
+            if (visaType === 'Medical') {
+                extraSections += '<div class="doc-category"><div class="category-title">🏥 ' + (lang === 'en' ? 'Medical Visa Documents' : 'মেডিকেল ভিসার ডকুমেন্ট') + '</div>' + renderDocList(docTemplates.extras.medical[lang]) + '</div>';
+            }
+            if (visaType === 'Business') {
+                extraSections += '<div class="doc-category"><div class="category-title">💼 ' + (lang === 'en' ? 'Business Visa Documents' : 'বিজনেস ভিসার ডকুমেন্ট') + '</div>' + renderDocList(docTemplates.extras.business[lang]) + '</div>';
+            }
 
-                <div class="tip-box" style="background: #e8f5e9; border-color: #00D9A3;">
-                    <strong>🎯 ${lang === 'en' ? 'Need Help?' : 'সাহায্য প্রয়োজন?'}</strong><br><br>
-                    ${lang === 'en' ? 'goFLY Limited can assist you with' : 'goFLY Limited আপনাকে সাহায্য করতে পারে'}:<br>
-                    ✅ ${lang === 'en' ? 'Document preparation & verification' : 'ডকুমেন্ট প্রস্তুতি এবং যাচাইকরণ'}<br>
-                    ✅ ${lang === 'en' ? 'Visa application submission' : 'ভিসা আবেদন জমা'}<br>
-                    ✅ ${lang === 'en' ? 'Interview preparation (if needed)' : 'ইন্টারভিউ প্রস্তুতি (যদি প্রয়োজন হয়)'}<br>
-                    ✅ ${lang === 'en' ? 'Flight & hotel booking' : 'ফ্লাইট এবং হোটেল বুকিং'}<br><br>
-                    📞 ${lang === 'en' ? 'Contact us for personalized guidance!' : 'ব্যক্তিগত নির্দেশনার জন্য আমাদের সাথে যোগাযোগ করুন!'}
-                </div>
-            `;
+            const totalDocs = coreItems.length + financialItems.length + travelItems.length + employmentItems.length
+                + (tier.extras ? docTemplates.extras.comprehensive[lang].length : 0)
+                + (visaType === 'Medical' ? docTemplates.extras.medical[lang].length : 0)
+                + (visaType === 'Business' ? docTemplates.extras.business[lang].length : 0);
 
-            return html;
+            const whatsappMsg = encodeURIComponent(
+                lang === 'en'
+                    ? 'Hi goFLY! I just used the visa checklist tool. I am planning a ' + visaType + ' visa to ' + country + '. Can you help me with processing?\n\nName: ' + userName + '\nPhone: ' + userPhone
+                    : 'হ্যালো goFLY! আমি ভিসা চেকলিস্ট টুল ব্যবহার করেছি। ' + country + '-এর জন্য ' + visaType + ' ভিসা করতে চাই। প্রসেসিং-এ সাহায্য করতে পারবেন?\n\nনাম: ' + userName + '\nফোন: ' + userPhone
+            );
+
+            return '<svg class="success-checkmark show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>'
+                + '<div class="checklist-header">'
+                + '<div class="checklist-tier">' + tierBadge + '</div>'
+                + '<h2>' + (lang === 'en' ? 'Your Personalized Checklist' : 'আপনার ব্যক্তিগত চেকলিস্ট') + '</h2>'
+                + '<div class="checklist-meta">'
+                + '<div class="meta-card"><span>🌍 ' + (lang === 'en' ? 'Destination' : 'গন্তব্য') + '</span><strong>' + safeCountry + '</strong></div>'
+                + '<div class="meta-card"><span>🎯 ' + (lang === 'en' ? 'Purpose' : 'উদ্দেশ্য') + '</span><strong>' + safeVisaType + '</strong></div>'
+                + '<div class="meta-card"><span>⏱️ ' + (lang === 'en' ? 'Processing' : 'প্রক্রিয়াকরণ') + '</span><strong>' + (countryInfo ? countryInfo.time : 'N/A') + ' ' + (lang === 'en' ? 'days' : 'দিন') + '</strong></div>'
+                + '<div class="meta-card"><span>💵 ' + (lang === 'en' ? 'Fee Range' : 'ফি') + '</span><strong>' + (countryInfo ? countryInfo.fee : 'N/A') + '</strong></div>'
+                + '<div class="meta-card"><span>📋 ' + (lang === 'en' ? 'Total Documents' : 'মোট ডকুমেন্ট') + '</span><strong>' + totalDocs + ' ' + (lang === 'en' ? 'items' : 'টি') + '</strong></div>'
+                + '<div class="meta-card"><span>👤 ' + (lang === 'en' ? 'Applicant' : 'আবেদনকারী') + '</span><strong>' + safeName + '</strong></div>'
+                + '</div>'
+                + countryLinkHTML
+                + '</div>'
+                + '<div class="doc-category"><div class="category-title">📄 ' + (lang === 'en' ? 'Core Documents' : 'মৌলিক ডকুমেন্ট') + '</div>' + renderDocList(coreItems) + '</div>'
+                + '<div class="doc-category"><div class="category-title">💰 ' + (lang === 'en' ? 'Financial Documents' : 'আর্থিক ডকুমেন্ট') + '</div>' + renderDocList(financialItems) + '</div>'
+                + '<div class="doc-category"><div class="category-title">✈️ ' + (lang === 'en' ? 'Travel Documents' : 'ভ্রমণের ডকুমেন্ট') + '</div>' + renderDocList(travelItems) + '</div>'
+                + '<div class="doc-category"><div class="category-title">💼 ' + (lang === 'en' ? 'Employment Documents' : 'কর্মসংস্থান ডকুমেন্ট') + ' <small>(' + employmentKey + ')</small></div>' + renderDocList(employmentItems) + '</div>'
+                + extraSections
+                + '<div class="cta-result">'
+                + '<div class="cta-result-text">'
+                + '<strong>🎯 ' + (lang === 'en' ? 'Need expert help with this checklist?' : 'এই চেকলিস্টে বিশেষজ্ঞ সাহায্য দরকার?') + '</strong>'
+                + '<p>' + (lang === 'en' ? 'goFLY can prepare, verify and submit your visa — 90%+ success rate, IATA-certified, 8+ years.' : 'goFLY আপনার ভিসা প্রস্তুত, যাচাই ও জমা দিতে পারে — ৯০%+ সাফল্যের হার, IATA-সার্টিফাইড, ৮+ বছর।') + '</p>'
+                + '</div>'
+                + '<div class="cta-result-buttons">'
+                + '<a href="https://wa.me/8801713289175?text=' + whatsappMsg + '" target="_blank" rel="noopener" class="cta-result-btn primary">💬 ' + (lang === 'en' ? 'WhatsApp goFLY Now' : 'WhatsApp করুন') + '</a>'
+                + '<a href="tel:+8801713289175" class="cta-result-btn outline">📞 ' + (lang === 'en' ? 'Call: 01713-289175' : 'কল: ০১৭১৩-২৮৯১৭৫') + '</a>'
+                + '</div>'
+                + '</div>'
+                + '<div class="tip-box">'
+                + '<strong>💡 ' + (lang === 'en' ? 'Pro Tip' : 'প্রো টিপ') + ':</strong> '
+                + (lang === 'en'
+                    ? 'Submit all documents in original + 1 photocopy. Translation to English/host language is required for documents in Bengali. Apply 4-6 weeks before travel.'
+                    : 'সব ডকুমেন্ট অরিজিনাল + ১ ফটোকপি জমা দিন। বাংলা ডকুমেন্টের ইংরেজি/হোস্ট ভাষায় অনুবাদ প্রয়োজন। ভ্রমণের ৪-৬ সপ্তাহ আগে আবেদন করুন।')
+                + '</div>';
         }
 
         function resetForm() {
@@ -1303,16 +1657,9 @@
             document.getElementById('step1').classList.add('active');
             updateProgress(1);
             currentStep = 1;
-
-            document.getElementById('country').value = '';
-            document.getElementById('visaType').value = '';
-            document.getElementById('userName').value = '';
-            document.getElementById('userEmail').value = '';
-            document.getElementById('userPhone').value = '';
-            document.getElementById('employmentStatus').value = '';
-            document.getElementById('monthlyIncome').value = '';
-            document.getElementById('travelHistory').value = '';
-
+            ['country','visaType','userName','userEmail','userPhone','employmentStatus','monthlyIncome','travelHistory'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1320,19 +1667,14 @@
             const searchInput = document.getElementById('countrySearch').value.toUpperCase();
             const select = document.getElementById('country');
             const options = select.getElementsByTagName('option');
-
             for (let i = 0; i < options.length; i++) {
                 const txtValue = options[i].textContent || options[i].innerText;
-                if (txtValue.toUpperCase().indexOf(searchInput) > -1) {
-                    options[i].style.display = "";
-                } else {
-                    options[i].style.display = "none";
-                }
+                options[i].style.display = txtValue.toUpperCase().indexOf(searchInput) > -1 ? "" : "none";
             }
         }
 
         function createConfetti() {
-            const colors = ['#00D9A3', '#FF6B35', '#FFD93D', '#6BCF7F', '#4ECDC4'];
+            const colors = ['#10b981', '#f59e0b', '#fbbf24', '#34d399', '#fde68a'];
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
@@ -1351,17 +1693,13 @@
                 window.parent.postMessage({ type: 'resize', height: height }, '*');
             } catch(e) {}
         }
-
-        // Page load + content change e auto resize
         window.addEventListener('load', sendHeightToParent);
         window.addEventListener('resize', sendHeightToParent);
-        setInterval(sendHeightToParent, 1000); // safety fallback
-
+        setInterval(sendHeightToParent, 1000);
 
         // ==================== SUBMIT TO WORDPRESS API ====================
         async function submitToWordPress(visaData) {
             const API_URL = 'https://goflybd.com/wp-content/themes/travel-agency/visa-checklist-api/api.php';
-
             const payload = {
                 name:            visaData.userName        || '',
                 phone:           visaData.userPhone       || '',
@@ -1375,7 +1713,6 @@
                 specialNotes:    visaData.specialNotes    || '',
                 browser:         navigator.userAgent ? navigator.userAgent.substring(0, 190) : 'unknown'
             };
-
             try {
                 const response = await fetch(API_URL, {
                     method:  'POST',
@@ -1383,14 +1720,10 @@
                     body:    JSON.stringify(payload)
                 });
                 const result = await response.json();
-                if (result.success) {
-                    console.log('✅ Visa lead saved!', result.data);
-                } else {
-                    console.error('❌ Lead save failed:', result.message);
-                }
+                if (result.success) console.log('✅ Visa lead saved!', result.data);
+                else console.error('❌ Lead save failed:', result.message);
             } catch (error) {
                 console.error('❌ API error:', error);
-                // Backup to localStorage
                 try {
                     const leads = JSON.parse(localStorage.getItem('gofly_visa_leads') || '[]');
                     leads.push({ ...payload, timestamp: new Date().toISOString() });
@@ -1401,6 +1734,3 @@
     </script>
 </body>
 </html>
-<!-- Build: 1769186322 -->
-<!-- Force deploy: 1769199599 -->
-<!-- Trigger: 1769252733 -->
