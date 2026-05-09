@@ -1250,7 +1250,15 @@
             'Hungary': { time: '15-30', fee: '৳6,000-10,000', comprehensive: true }
         };
 
-        let currentLang = localStorage.getItem('visaLang') || 'en';
+        // Safe localStorage wrapper — in incognito cross-origin iframes, browsers
+        // throw SecurityError on access. Falling through to in-memory defaults
+        // keeps the tool functional when storage is unavailable.
+        const safeStorage = {
+            get(key)         { try { return localStorage.getItem(key); }   catch (e) { return null; } },
+            set(key, value)  { try { localStorage.setItem(key, value); }   catch (e) { /* ignore */ } }
+        };
+
+        let currentLang = safeStorage.get('visaLang') || 'en';
         let currentStep = 1;
         const totalSteps = 4;
 
@@ -1276,7 +1284,7 @@
         function toggleLanguage() {
             const newLang = currentLang === 'en' ? 'bn' : 'en';
             applyLanguage(newLang);
-            localStorage.setItem('visaLang', newLang);
+            safeStorage.set('visaLang', newLang);
             currentLang = newLang;
         }
 
