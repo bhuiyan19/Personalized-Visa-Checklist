@@ -574,6 +574,8 @@
             align-items: flex-start;
             gap: 14px;
             transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
         }
         .doc-item:last-child { margin-bottom: 0; }
         .doc-item:hover {
@@ -601,6 +603,69 @@
             color: var(--text-muted);
             font-size: 0.88em;
             line-height: 1.55;
+        }
+
+        /* Checkable document items */
+        .doc-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--mint);
+            border-radius: 6px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+            transition: all 0.2s ease;
+        }
+        .doc-check::after {
+            content: '✓';
+            color: white;
+            font-size: 0.9em;
+            font-weight: 700;
+            line-height: 1;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease;
+        }
+        .doc-item.checked { background: var(--mint-light); border-left-color: var(--mint-dark); }
+        .doc-item.checked .doc-check { background: var(--mint-dark); border-color: var(--mint-dark); }
+        .doc-item.checked .doc-check::after { opacity: 1; transform: scale(1); }
+        .doc-item.checked .doc-text strong { text-decoration: line-through; color: var(--text-muted); }
+        .doc-item:focus-visible { outline: 2px solid var(--mint-dark); outline-offset: 2px; }
+
+        /* Checklist progress tracker */
+        .checklist-progress {
+            background: #fff;
+            border: 1.5px solid var(--border-mint);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .checklist-progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .checklist-progress-label strong { color: var(--mint-dark); }
+        .checklist-progress-track {
+            height: 10px;
+            background: var(--mint-bg);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .checklist-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--grad-main);
+            border-radius: 50px;
+            transition: width 0.35s ease;
         }
 
         /* Mid-result CTA */
@@ -866,17 +931,18 @@
             .tier-badge { background: var(--mint-bg) !important; color: var(--mint-dark) !important; border-color: var(--mint) !important; }
             .doc-category { box-shadow: none !important; border: 1px solid var(--border) !important; page-break-inside: avoid; }
             .doc-item { background: white !important; transform: none !important; }
+            .doc-item.checked .doc-text strong { text-decoration: none !important; color: var(--dark) !important; }
+            .checklist-progress { display: none !important; }
             .guide-link { display: none !important; }
             .tip-box { page-break-inside: avoid; }
         }
 
         /* Confetti */
         .confetti {
-            position: fixed;
+            position: absolute;
             width: 10px;
             height: 10px;
             background: #10b981;
-            position: absolute;
             animation: confetti-fall 3s ease-out forwards;
         }
 
@@ -1209,7 +1275,7 @@
 
         const countryData = {
             'Nepal': { time: '0', fee: 'Free (on arrival)', verySimple: true },
-            'Sri Lanka': { time: '0', fee: 'Free (on arrival)', verySimple: true },
+            'Sri Lanka': { time: '0', fee: 'Free ETA (online)', verySimple: true },
             'Thailand': { time: '3-5', fee: '৳4,000-6,000', easyEVisa: true },
             'Malaysia': { time: '2-4', fee: '৳3,000-5,000', easyEVisa: true },
             'Indonesia': { time: '3-7', fee: '৳3,500-5,500', easyEVisa: true },
@@ -1265,6 +1331,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             populateCountryDropdown();
             if (currentLang === 'bn') applyLanguage('bn');
+            // Keyboard accessibility for checkable document items
+            document.getElementById('checklistResult').addEventListener('keydown', function(e) {
+                const item = e.target.closest('.doc-item');
+                if (item && (e.key === ' ' || e.key === 'Enter')) {
+                    e.preventDefault();
+                    toggleDoc(item);
+                }
+            });
         });
 
         function populateCountryDropdown() {
@@ -1325,6 +1399,11 @@
                     alert(currentLang === 'en' ? 'Please enter a valid Bangladeshi phone number (01XXXXXXXXX)' : 'দয়া করে একটি বৈধ বাংলাদেশী ফোন নম্বর লিখুন (01XXXXXXXXX)');
                     return;
                 }
+                const userEmail = document.getElementById('userEmail').value.trim();
+                if (userEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+                    alert(currentLang === 'en' ? 'Please enter a valid email address' : 'দয়া করে একটি বৈধ ইমেল ঠিকানা লিখুন');
+                    return;
+                }
             }
             document.getElementById('step' + step).classList.remove('active');
             document.getElementById('step' + (step + 1)).classList.add('active');
@@ -1373,6 +1452,7 @@
                 let html = generateChecklistHTML(country, visaType, userName, userPhone, employmentStatus, monthlyIncome, travelHistory, countryInfo);
 
                 document.getElementById('checklistResult').innerHTML = html;
+                updateChecklistProgress();
                 document.getElementById('step3').classList.remove('active');
                 document.getElementById('step4').classList.add('active');
                 updateProgress(4);
@@ -1591,7 +1671,7 @@
 
         function renderDocList(items) {
             return items.map(function(d) {
-                return '<div class="doc-item"><span class="doc-icon">' + d.icon + '</span><div class="doc-text"><strong>' + d.title + '</strong><span>' + d.detail + '</span></div></div>';
+                return '<div class="doc-item" role="checkbox" aria-checked="false" tabindex="0" onclick="toggleDoc(this)"><span class="doc-check" aria-hidden="true"></span><span class="doc-icon">' + d.icon + '</span><div class="doc-text"><strong>' + d.title + '</strong><span>' + d.detail + '</span></div></div>';
             }).join('');
         }
 
@@ -1655,6 +1735,10 @@
                 + '</div>'
                 + countryLinkHTML
                 + '</div>'
+                + '<div class="checklist-progress">'
+                + '<div class="checklist-progress-label"><span>' + (lang === 'en' ? '📊 Document Progress' : '📊 ডকুমেন্ট অগ্রগতি') + '</span><strong id="docProgressText">0 / ' + totalDocs + (lang === 'en' ? ' ready' : ' প্রস্তুত') + '</strong></div>'
+                + '<div class="checklist-progress-track"><div class="checklist-progress-fill" id="docProgressFill"></div></div>'
+                + '</div>'
                 + '<div class="doc-category"><div class="category-title">📄 ' + (lang === 'en' ? 'Core Documents' : 'মৌলিক ডকুমেন্ট') + '</div>' + renderDocList(coreItems) + '</div>'
                 + '<div class="doc-category"><div class="category-title">💰 ' + (lang === 'en' ? 'Financial Documents' : 'আর্থিক ডকুমেন্ট') + '</div>' + renderDocList(financialItems) + '</div>'
                 + '<div class="doc-category"><div class="category-title">✈️ ' + (lang === 'en' ? 'Travel Documents' : 'ভ্রমণের ডকুমেন্ট') + '</div>' + renderDocList(travelItems) + '</div>'
@@ -1686,6 +1770,10 @@
             ['country','visaType','userName','userEmail','userPhone','employmentStatus','monthlyIncome','travelHistory'].forEach(id => {
                 document.getElementById(id).value = '';
             });
+            // Clear the country search and restore any options hidden by filterCountries()
+            const searchInput = document.getElementById('countrySearch');
+            if (searchInput) searchInput.value = '';
+            populateCountryDropdown();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1696,6 +1784,30 @@
             for (let i = 0; i < options.length; i++) {
                 const txtValue = options[i].textContent || options[i].innerText;
                 options[i].style.display = txtValue.toUpperCase().indexOf(searchInput) > -1 ? "" : "none";
+            }
+        }
+
+        function toggleDoc(el) {
+            const checked = el.classList.toggle('checked');
+            el.setAttribute('aria-checked', checked ? 'true' : 'false');
+            updateChecklistProgress();
+        }
+
+        function updateChecklistProgress() {
+            const items = document.querySelectorAll('#checklistResult .doc-item');
+            const total = items.length;
+            const done = document.querySelectorAll('#checklistResult .doc-item.checked').length;
+            const txtEl = document.getElementById('docProgressText');
+            const fillEl = document.getElementById('docProgressFill');
+            if (!txtEl || !fillEl) return;
+            txtEl.textContent = done + ' / ' + total + (currentLang === 'en' ? ' ready' : ' প্রস্তুত');
+            fillEl.style.width = (total ? (done / total) * 100 : 0) + '%';
+            // Celebrate once when the full checklist is completed
+            if (total && done === total && fillEl.dataset.celebrated !== '1') {
+                fillEl.dataset.celebrated = '1';
+                createConfetti();
+            } else if (done < total) {
+                fillEl.dataset.celebrated = '';
             }
         }
 
