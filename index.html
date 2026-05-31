@@ -1357,9 +1357,37 @@
 
         function toggleLanguage() {
             const newLang = currentLang === 'en' ? 'bn' : 'en';
+            currentLang = newLang;
             applyLanguage(newLang);
             safeStorage.set('visaLang', newLang);
-            currentLang = newLang;
+            // If the checklist is already on screen, re-render it in the new
+            // language while preserving which documents are checked off.
+            if (currentStep === 4) rerenderChecklist();
+        }
+
+        function rerenderChecklist() {
+            const result = document.getElementById('checklistResult');
+            if (!result || !result.innerHTML.trim()) return;
+            const prevChecked = Array.from(result.querySelectorAll('.doc-item'))
+                .map(el => el.classList.contains('checked'));
+            const country = document.getElementById('country').value;
+            const visaType = document.getElementById('visaType').value;
+            const userName = document.getElementById('userName').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+            const employmentStatus = document.getElementById('employmentStatus').value;
+            const monthlyIncome = document.getElementById('monthlyIncome').value;
+            const travelHistory = document.getElementById('travelHistory').value;
+            const countryInfo = countryData[country];
+            result.innerHTML = generateChecklistHTML(country, visaType, userName, userPhone, employmentStatus, monthlyIncome, travelHistory, countryInfo);
+            // The document list is deterministic for the same inputs, so the
+            // index order matches across languages — restore checked state by index.
+            result.querySelectorAll('.doc-item').forEach((el, i) => {
+                if (prevChecked[i]) {
+                    el.classList.add('checked');
+                    el.setAttribute('aria-checked', 'true');
+                }
+            });
+            updateChecklistProgress();
         }
 
         function applyLanguage(lang) {
